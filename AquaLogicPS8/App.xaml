@@ -13,28 +13,30 @@
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black" />
                 <Setter Property="FontSize" Value="20" />
+                <Setter Property="MinimumHeightRequest" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <!--<Setter Property="VerticalOptions" Value="CenterAndExpand" />-->
-                <Setter Property="MinimumHeightRequest" Value="50" />
-                <Setter Property="Margin" Value="10"/>
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                 <Setter Property="Margin" Value="5"/>
             </Style>
 
             <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="LightGray" />
-                <Setter Property="BackgroundColor" Value="black"/>
+                <Setter Property="BackgroundColor" Value="DimGray"/>
                 <Setter Property="FontSize" Value="20" />
-                <!--<Setter Property="VerticalOptions" Value="CenterAndExpand" />-->
-                <Setter Property="MinimumHeightRequest" Value="50" />
-                <!--<Setter Property="Margin" Value="5"/>-->
+                <Setter Property="MinimumHeightRequest" Value="20" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                 <Setter Property="Margin" Value="5"/>
             </Style>
 
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="LightGray" />
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="MinimumHeightRequest" Value="50" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="Margin" Value="5"/>
             </Style>
         </ResourceDictionary>

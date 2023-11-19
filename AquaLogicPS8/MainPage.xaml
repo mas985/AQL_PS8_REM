@@ -81,7 +81,7 @@
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" HeightRequest="480">
+            <Grid Margin="10" VerticalOptions="Start" HeightRequest="560">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -121,7 +121,7 @@
 
     <ContentPage Title="Settings" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" HeightRequest="600">
+            <Grid Margin="10" VerticalOptions="Start" HeightRequest="700">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
