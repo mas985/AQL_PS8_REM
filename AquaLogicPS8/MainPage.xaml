@@ -4,9 +4,9 @@
             x:Class="AquaLogicPS8.MainPage"
             x:Name="TabPage"
             Title="AquaLogic PS8"
-            SelectedTabColor="White"
-            UnselectedTabColor="Lightgray"
-            BarBackgroundColor="Gray">
+            SelectedTabColor="Lightgray"
+            UnselectedTabColor="Darkgray"
+            BarBackgroundColor="DimGray">
 
     <ContentPage Title="AquaLogic" BackgroundColor="Black" Appearing="OnTabAppearing">
         <ScrollView>

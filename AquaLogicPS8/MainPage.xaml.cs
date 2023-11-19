@@ -21,7 +21,7 @@ namespace AquaLogicPS8
             InitializeBackgroundWorker();
         }
 
-        public string Valve3_Text { get; set; }
+        //public string Valve3_Text { get; set; }
 
         string _ipAddr;
         int _portNum;
