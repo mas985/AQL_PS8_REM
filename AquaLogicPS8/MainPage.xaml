@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="AquaLogicPS8.MainPage"
+            x:Name="TabPage"
+            Title="AquaLogic PS8"
+            SelectedTabColor="White"
+            UnselectedTabColor="Lightgray"
+            BarBackgroundColor="Gray">
+
+    <ContentPage Title="AquaLogic" BackgroundColor="Black" Appearing="OnTabAppearing">
+        <ScrollView>
+            <Grid Margin="10" VerticalOptions="Start">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="420"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="TextDisplay" FontSize="30" MinimumHeightRequest="90" HorizontalTextAlignment="Center" />
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="PlusBtn" Text="+" FontSize="30" Clicked="Button_Click" Grid.Row="0"/>
+                        <Button x:Name="MenuBtn" Text="Menu" Clicked="Button_Click"  Grid.Row="1"/>
+                        <Button x:Name="MinusBtn" Text="-" FontSize="30" Clicked="Button_Click" Grid.Row="2"/>
+                    </Grid>
+
+                    <Button x:Name="LeftBtn" Text="&lt;" FontSize="40" MinimumHeightRequest="170" Clicked="Button_Click" />
+                    <Button x:Name="RightBtn" Text="&gt;" FontSize="40" MinimumHeightRequest="170" Clicked="Button_Click" Grid.Column="2"/>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Button x:Name="Pool" Text="Pool" Clicked="Button_Click"/>
+                    <Button x:Name="Spa" Text="Spa" Clicked="Button_Click" Grid.Row="1"/>
+                    <Button x:Name="Spillover" Text="Spillover" Clicked="Button_Click" Grid.Row="2"/>
+                    <Button x:Name="Filter" Text="Filter" Clicked="Button_Click" Grid.Row="3"/>
+                    <Button x:Name="Lights" Text="Lights" Clicked="Button_Click" Grid.Row="4"/>
+                    <Button x:Name="Heater1" Text="Heater1" Clicked="Button_Click" Grid.Row="5"/>
+
+                    <Button x:Name="Aux1" Text="{Binding Text, Source={x:Reference Aux1_Edit}}" Clicked="Button_Click" Grid.Column="1"/>
+                    <Button x:Name="Aux2" Text="{Binding Text, Source={x:Reference Aux2_Edit}}" Clicked="Button_Click" Grid.Row="1" Grid.Column="1"/>
+                    <Button x:Name="Aux3" Text="{Binding Text, Source={x:Reference Aux3_Edit}}" Clicked="Button_Click" Grid.Row="2" Grid.Column="1"/>
+                    <Button x:Name="Aux4" Text="{Binding Text, Source={x:Reference Aux4_Edit}}" Clicked="Button_Click" Grid.Row="3" Grid.Column="1"/>
+                    <Button x:Name="Aux5" Text="{Binding Text, Source={x:Reference Aux5_Edit}}" Clicked="Button_Click" Grid.Row="4" Grid.Column="1"/>
+                    <Button x:Name="Aux6" Text="{Binding Text, Source={x:Reference Aux6_Edit}}" Clicked="Button_Click" Grid.Row="5" Grid.Column="1"/>
+
+                    <Button x:Name="Valve3" Text="{Binding Text, Source={x:Reference Valve3_Edit}}" Clicked="Button_Click" Grid.Row="6"/>
+                    <Button x:Name="Valve4" Text="{Binding Text, Source={x:Reference Valve4_Edit}}" Clicked="Button_Click" Grid.Row="6" Grid.Column="1"/>
+
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage>
+
+    <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
+        <ScrollView>
+            <Grid Margin="10" VerticalOptions="Start" HeightRequest="480">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="Label0" Text="Aux1 Label:" Grid.Row="0"/>
+                <Label x:Name="Label1" Text="Aux2 Label:" Grid.Row="1"/>
+                <Label x:Name="Label2" Text="Aux3 Label:" Grid.Row="2"/>
+                <Label x:Name="Label3" Text="Aux4 Label:" Grid.Row="3"/>
+                <Label x:Name="Label4" Text="Aux5 Label:" Grid.Row="4"/>
+                <Label x:Name="Label5" Text="Aux6 Label:" Grid.Row="5"/>
+                <Label x:Name="Label6" Text="Valve3 Label:" Grid.Row="6"/>
+                <Label x:Name="Label7" Text="Valve4 Label:" Grid.Row="7"/>
+
+                <Entry x:Name="Aux1_Edit" Grid.Row="0" Grid.Column="1"/>
+                <Entry x:Name="Aux2_Edit" Grid.Row="1" Grid.Column="1"/>
+                <Entry x:Name="Aux3_Edit" Grid.Row="2" Grid.Column="1"/>
+                <Entry x:Name="Aux4_Edit" Grid.Row="3" Grid.Column="1"/>
+                <Entry x:Name="Aux5_Edit" Grid.Row="4" Grid.Column="1"/>
+                <Entry x:Name="Aux6_Edit" Grid.Row="5" Grid.Column="1"/>
+                <Entry x:Name="Valve3_Edit" Grid.Row="6" Grid.Column="1"/>
+                <Entry x:Name="Valve4_Edit" Grid.Row="7" Grid.Column="1"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage>
+
+    <ContentPage Title="Settings" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
+        <ScrollView>
+            <Grid Margin="10" VerticalOptions="Start" HeightRequest="600">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="Label10" Text="IP Address:" Grid.Row="0"/>
+                <Entry x:Name="IPaddr" Text="192.168.0.15" Grid.Row="0" Grid.Column="1"/>
+
+                <Label x:Name="Label11" Text="Port Number:" Grid.Row="1"/>
+                <Entry x:Name="PortNum" Text="8899" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
+
+                <Label x:Name="Label12" Text="Log Interval:" Grid.Row="2"/>
+                <Entry x:Name="LogInt" Text="0" Keyboard="Numeric" Grid.Row="2" Grid.Column="1"/>
+
+                <Label x:Name="Label13" Text="" Grid.Row="3"/>
+
+                <Label x:Name="Label14" Text="Service Mode:" Grid.Row="4"/>
+                <Button x:Name="Service" Text="Service" Clicked="Button_Click" Grid.Row="4" Grid.Column="1"/>
+
+                <Label x:Name="Label15" Text="" Grid.Row="5"/>
+
+                <Label x:Name="Label16" Text="Remote Device:" Grid.Row="6"/>
+                <Button x:Name="Reset" Text="Reset" Clicked="Button_Click" Grid.Row="6" Grid.Column="1"/>
+
+                <Label x:Name="Label17" Text="" Grid.Row="7"/>
+
+                <Label x:Name="Label18" Text="Version:" Grid.Row="8"/>
+                <Label x:Name="App_Version" Text="0.0.0.0" HorizontalTextAlignment="Center" Grid.Row="8" Grid.Column="1"/>
+
+                <Label x:Name="Label19" Text="Developer:" Grid.Row="9"/>
+                <Label x:Name="Developer" Text="MAS Consulting" HorizontalTextAlignment="Center" Grid.Row="9" Grid.Column="1"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>
