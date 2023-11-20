@@ -6,7 +6,7 @@
             Title="AquaLogic PS8"
             SelectedTabColor="Lightgray"
             UnselectedTabColor="Darkgray"
-            BarBackgroundColor="DimGray">
+            BarBackgroundColor="Black">
 
     <ContentPage Title="AquaLogic" BackgroundColor="Black" Appearing="OnTabAppearing">
         <ScrollView>
@@ -107,14 +107,37 @@
                 <Label x:Name="Label6" Text="Valve3 Label:" Grid.Row="6"/>
                 <Label x:Name="Label7" Text="Valve4 Label:" Grid.Row="7"/>
 
-                <Entry x:Name="Aux1_Edit" Grid.Row="0" Grid.Column="1"/>
-                <Entry x:Name="Aux2_Edit" Grid.Row="1" Grid.Column="1"/>
+                <Border Grid.Row="0" Grid.Column="1">
+                    <Entry x:Name="Aux1_Edit"/>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1">
+                    <Entry x:Name="Aux2_Edit"/>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="1">
+                    <Entry x:Name="Aux3_Edit"/>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="1">
+                    <Entry x:Name="Aux4_Edit"/>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="1">
+                    <Entry x:Name="Aux5_Edit"/>
+                </Border>
+                <Border Grid.Row="5" Grid.Column="1">
+                    <Entry x:Name="Aux6_Edit"/>
+                </Border>
+                <Border Grid.Row="6" Grid.Column="1">
+                    <Entry x:Name="Valve3_Edit"/>
+                </Border>
+                <Border Grid.Row="7" Grid.Column="1">
+                    <Entry x:Name="Valve4_Edit"/>
+                </Border>
+                <!--<Entry x:Name="Aux2_Edit" Grid.Row="1" Grid.Column="1"/>
                 <Entry x:Name="Aux3_Edit" Grid.Row="2" Grid.Column="1"/>
                 <Entry x:Name="Aux4_Edit" Grid.Row="3" Grid.Column="1"/>
                 <Entry x:Name="Aux5_Edit" Grid.Row="4" Grid.Column="1"/>
                 <Entry x:Name="Aux6_Edit" Grid.Row="5" Grid.Column="1"/>
                 <Entry x:Name="Valve3_Edit" Grid.Row="6" Grid.Column="1"/>
-                <Entry x:Name="Valve4_Edit" Grid.Row="7" Grid.Column="1"/>
+                <Entry x:Name="Valve4_Edit" Grid.Row="7" Grid.Column="1"/>-->
             </Grid>
         </ScrollView>
     </ContentPage>
@@ -140,15 +163,23 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="Label10" Text="IP Address:" Grid.Row="0"/>
-                <Entry x:Name="IPaddr" Text="192.168.0.15" Grid.Row="0" Grid.Column="1"/>
-
-                <Label x:Name="Label11" Text="Port Number:" Grid.Row="1"/>
+                <Border Grid.Row="0" Grid.Column="1">
+                    <Entry x:Name="IPaddr"/>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1">
+                    <Entry x:Name="PortNum"/>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="1">
+                    <Entry x:Name="LogInt"/>
+                </Border>
+                <!--<Entry x:Name="IPaddr" Text="192.168.0.15" Grid.Row="0" Grid.Column="1"/>
                 <Entry x:Name="PortNum" Text="8899" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
+                <Entry x:Name="LogInt" Text="0" Keyboard="Numeric" Grid.Row="2" Grid.Column="1"/>-->
 
+                <Label x:Name="Label10" Text="IP Address:" Grid.Row="0"/>
+                <Label x:Name="Label11" Text="Port Number:" Grid.Row="1"/>
                 <Label x:Name="Label12" Text="Log Interval:" Grid.Row="2"/>
-                <Entry x:Name="LogInt" Text="0" Keyboard="Numeric" Grid.Row="2" Grid.Column="1"/>
-
+ 
                 <Label x:Name="Label13" Text="" Grid.Row="3"/>
 
                 <Label x:Name="Label14" Text="Service Mode:" Grid.Row="4"/>

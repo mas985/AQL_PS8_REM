@@ -23,29 +23,9 @@ namespace AquaLogicPS8
 
         //public string Valve3_Text { get; set; }
 
-        string _ipAddr;
-        int _portNum;
-        int _logInt;
-        private void GetSettings()
-        {
-            if (IPAddress.TryParse(IPaddr.Text, out IPAddress ipAddress))
-            {
-                _ipAddr = ipAddress.ToString();
-            }
-            else { IPaddr.Text = _ipAddr; }
-
-            if (int.TryParse(PortNum.Text, out int pNum))
-            {
-                _portNum = pNum;
-            }
-            else { PortNum.Text = _portNum.ToString(); }
-
-            _ = int.TryParse(LogInt.Text, out _logInt);
-            LogInt.Text = _logInt.ToString();
-        }
         protected void OnDisappearing_Settings(object sender, EventArgs e)
         {
-            GetSettings();
+            UpdateIPPort();
             SaveSettings();
         }
         protected void OnDisappearing_Labels(object sender, EventArgs e)
@@ -72,7 +52,26 @@ namespace AquaLogicPS8
                 TabPage.CurrentPage = TabPage.Children[0];
             }
         }
+        string _ipAddr;
+        int _portNum;
+        int _logInt;
+        private void UpdateIPPort()
+        {
+            if (IPAddress.TryParse(IPaddr.Text, out IPAddress ipAddress))
+            {
+                _ipAddr = ipAddress.ToString();
+            }
+            else { IPaddr.Text = _ipAddr; }
 
+            if (int.TryParse(PortNum.Text, out int pNum))
+            {
+                _portNum = pNum;
+            }
+            else { PortNum.Text = _portNum.ToString(); }
+
+            _ = int.TryParse(LogInt.Text, out _logInt);
+            LogInt.Text = _logInt.ToString();
+        }
         public void LoadSettings()
         {
             Aux1_Edit.Text = Preferences.Get(Aux1_Edit.StyleId, "Aux1");
@@ -87,7 +86,7 @@ namespace AquaLogicPS8
             IPaddr.Text = Preferences.Get(IPaddr.StyleId, "192.168.0.15");
             PortNum.Text = Preferences.Get(PortNum.StyleId, "8899");
 
-            GetSettings();
+            UpdateIPPort();
         }
         public void SaveSettings()
         {

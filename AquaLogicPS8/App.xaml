@@ -17,18 +17,23 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                 <Setter Property="Margin" Value="5"/>
             </Style>
 
+            <Style TargetType="Border">
+                <Setter Property="Stroke" Value="LightGray" />
+                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="StrokeThickness" Value="2" />
+                 <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            
             <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="LightGray" />
-                <Setter Property="BackgroundColor" Value="DimGray"/>
+                <Setter Property="BackgroundColor" Value="Black"/>
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="MinimumHeightRequest" Value="20" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                 <Setter Property="Margin" Value="5"/>
-            </Style>
+             </Style>
 
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="Black" />
@@ -37,7 +42,7 @@
                 <Setter Property="MinimumHeightRequest" Value="50" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Margin" Value="5" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>
