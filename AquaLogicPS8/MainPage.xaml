@@ -131,13 +131,6 @@
                 <Border Grid.Row="7" Grid.Column="1">
                     <Entry x:Name="Valve4_Edit"/>
                 </Border>
-                <!--<Entry x:Name="Aux2_Edit" Grid.Row="1" Grid.Column="1"/>
-                <Entry x:Name="Aux3_Edit" Grid.Row="2" Grid.Column="1"/>
-                <Entry x:Name="Aux4_Edit" Grid.Row="3" Grid.Column="1"/>
-                <Entry x:Name="Aux5_Edit" Grid.Row="4" Grid.Column="1"/>
-                <Entry x:Name="Aux6_Edit" Grid.Row="5" Grid.Column="1"/>
-                <Entry x:Name="Valve3_Edit" Grid.Row="6" Grid.Column="1"/>
-                <Entry x:Name="Valve4_Edit" Grid.Row="7" Grid.Column="1"/>-->
             </Grid>
         </ScrollView>
     </ContentPage>
@@ -172,9 +165,6 @@
                 <Border Grid.Row="2" Grid.Column="1">
                     <Entry x:Name="LogInt"/>
                 </Border>
-                <!--<Entry x:Name="IPaddr" Text="192.168.0.15" Grid.Row="0" Grid.Column="1"/>
-                <Entry x:Name="PortNum" Text="8899" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
-                <Entry x:Name="LogInt" Text="0" Keyboard="Numeric" Grid.Row="2" Grid.Column="1"/>-->
 
                 <Label x:Name="Label10" Text="IP Address:" Grid.Row="0"/>
                 <Label x:Name="Label11" Text="Port Number:" Grid.Row="1"/>
