@@ -10,7 +10,7 @@
 
     <ContentPage Title="AquaLogic" BackgroundColor="Black" Appearing="OnTabAppearing" >
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" WidthRequest="400">
+            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="400">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="180"/>
@@ -81,7 +81,7 @@
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" HeightRequest="560" WidthRequest="400">
+            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="560" MaximumWidthRequest="400">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -137,7 +137,7 @@
 
     <ContentPage Title="Settings" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" HeightRequest="700" WidthRequest="400">
+            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="400">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
