@@ -114,10 +114,12 @@ namespace AquaLogic
                 if (IPAddress.TryParse(ipAddr, out IPAddress ipAddress) && portNum > 0)
                 {
                     _tcpClient.Close();
-                    _tcpClient = new();
-                    _tcpClient.NoDelay = true;
-                    _tcpClient.ReceiveTimeout = 5000;
-                    _tcpClient.SendTimeout = 1000;
+                    _tcpClient = new()
+                    {
+                        NoDelay = true,
+                        ReceiveTimeout = 5000,
+                        SendTimeout = 1000
+                    };
                     _tcpClient.Connect(ipAddr.Trim(), portNum);
                 }
             }

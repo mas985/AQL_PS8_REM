@@ -15,12 +15,10 @@
 		<ApplicationTitle>AquaLogicPS8</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.aqualogicps8</ApplicationId>
+		<ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 		<ApplicationIdGuid>1e4b4c7a-ab28-4968-95da-ef4aba251537</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
@@ -35,71 +33,68 @@
 		<Copyright>MAS Consulting 2023</Copyright>
 		<PackageIcon>pool128.png</PackageIcon>
 		<PlatformTarget>AnyCPU</PlatformTarget>
-		<GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-		<PackageCertificateThumbprint>6FC1A2F89E595A051FA5E84B197BC71BDC5F3D8E</PackageCertificateThumbprint>
+		<PackageCertificateThumbprint>0319DE792E65EFD7A20CBB2D582E8B0FDB04F8DD</PackageCertificateThumbprint>
 		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
 		<AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
 		<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
 		<GenerateTestArtifacts>True</GenerateTestArtifacts>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 		<DefaultLanguage>en-us</DefaultLanguage>
+		<AppInstallerUri>G:\My Drive\PoolTools\AquaLogic\win</AppInstallerUri>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.1</ApplicationDisplayVersion>
-	  <ApplicationVersion>31</ApplicationVersion>
+	  <ApplicationVersion>32</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
 	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.1</ApplicationDisplayVersion>
-	  <ApplicationVersion>31</ApplicationVersion>
+	  <ApplicationVersion>32</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
 	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.1</ApplicationDisplayVersion>
-	  <ApplicationVersion>31</ApplicationVersion>
+	  <ApplicationVersion>32</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.1</ApplicationDisplayVersion>
-	  <ApplicationVersion>31</ApplicationVersion>
+	  <ApplicationVersion>32</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.1</ApplicationDisplayVersion>
-	  <ApplicationVersion>31</ApplicationVersion>
+	  <ApplicationVersion>32</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.1</ApplicationDisplayVersion>
-	  <ApplicationVersion>31</ApplicationVersion>
+	  <ApplicationVersion>32</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.1</ApplicationDisplayVersion>
-	  <ApplicationVersion>31</ApplicationVersion>
+	  <ApplicationVersion>32</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.1</ApplicationDisplayVersion>
-	  <ApplicationVersion>31</ApplicationVersion>
+	  <ApplicationVersion>32</ApplicationVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -127,6 +122,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\PublishProfiles\" />
 	</ItemGroup>
 
 </Project>
