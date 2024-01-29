@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Net;
+using static AquaLogic.SocketProcess;
 
 namespace AquaLogic
 {
@@ -111,7 +112,7 @@ namespace AquaLogic
         {
             try
             {
-                if (IPAddress.TryParse(ipAddr, out IPAddress ipAddress) && portNum > 0)
+                if (IPAddress.TryParse(ipAddr, out IPAddress ipAddress) && portNum > 0 && portNum < 65536)
                 {
                     _tcpClient.Close();
                     _tcpClient = new()
@@ -121,7 +122,7 @@ namespace AquaLogic
                         SendTimeout = 1000
                     };
                     _tcpClient.Connect(ipAddr.Trim(), portNum);
-                }
+                 }
             }
             catch (Exception e)
             {
@@ -241,8 +242,8 @@ namespace AquaLogic
         private int _spaT = -9999;
         public SocketData Update()
         {
-            byte[] kaBytes = new byte[] { 0x10, 0x02, 0x01, 0x01, 0x00, 0x14, 0x10, 0x03 };
-            byte[] frBytes = new byte[] { 0x00, 0xe0, 0x00, 0xe6, 0x18, 0x1e, 0xe0 };
+            byte[] kaBytes = new byte[] { 0x10, 0x02, 0x01, 0x01, 0x00, 0x14, 0x10, 0x03 }; // Keep Alive Sequence
+            byte[] frBytes = new byte[] { 0x00, 0xe0, 0x00, 0xe6, 0x18, 0x1e, 0xe0 }; // Frame indicator between 2 keep alive
             SocketData socketData = new();
 
             try
@@ -283,7 +284,7 @@ namespace AquaLogic
                     {
                         //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
                     }
-                    else if (bytes.SequenceEqual(kaBytes))
+                    else if (bytes.SequenceEqual(kaBytes)) //Keep Alive
                     {
                         //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
                     }
@@ -338,7 +339,8 @@ namespace AquaLogic
                         }
                         else
                         {
-                            System.Diagnostics.Debug.WriteLine(string.Format("{0}   {1}", "CRC Error", BitConverter.ToString(bytes)));
+                            //System.Diagnostics.Debug.WriteLine(string.Format("{0}   {1}", "CRC Error", BitConverter.ToString(bytes)));
+                            socketData.DisplayText = "CRC Error";
                         }
                     }
                 }

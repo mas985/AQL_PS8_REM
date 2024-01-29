@@ -1,6 +1,7 @@
 ﻿using AquaLogic;
 using System.ComponentModel;
 using System.Net;
+using static AquaLogic.SocketProcess;
 
 namespace AquaLogicPS8
 {
@@ -171,8 +172,7 @@ namespace AquaLogicPS8
                 BackgroundWorker_ProgressChanged);
             _backgroundWorker.RunWorkerAsync();
         }
-        private void BackgroundWorker_DoWork(object sender,
-             DoWorkEventArgs e)
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             const int toff = 5;
             SocketProcess socketProcess = new();
@@ -183,9 +183,10 @@ namespace AquaLogicPS8
 
                 if (!socketProcess.Connected || DateTime.Now > nTime)
                 {
-                    System.Diagnostics.Debug.WriteLine(string.Format("{0:HH:mm:ss} {1:HH:mm:ss} {2} {3}", DateTime.Now, nTime, socketProcess.Connected, "Reset Socket")); ;
+                    //System.Diagnostics.Debug.WriteLine(string.Format("{0:HH:mm:ss} {1:HH:mm:ss} {2} {3}", DateTime.Now, nTime, socketProcess.Connected, "Reset Socket")); ;
                     socketProcess.Connect(_ipAddr, _portNum);
                     nTime = DateTime.Now.AddSeconds(toff);
+                    _key = "";
                 }
                 else
                 {
@@ -212,23 +213,23 @@ namespace AquaLogicPS8
                             socketData.HasData = true;
                             socketData.DisplayText = "Remote Device Reset...";
                             _backgroundWorker.ReportProgress(0, socketData);
+                            nTime = DateTime.Now;
                         }
                         _key = "";
                     }
                 }
             }
         }
-        private void BackgroundWorker_ProgressChanged(object sender,
-            ProgressChangedEventArgs e)
+        private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             SocketProcess.SocketData socketData = (SocketProcess.SocketData)e.UserState;
+            
             if (socketData.HasData)
             {
                 UpdateDisplay(socketData);
             }
         }
-        private void BackgroundWorker_RunWorkerCompleted(
-        object sender, RunWorkerCompletedEventArgs e)
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
         }
     }
