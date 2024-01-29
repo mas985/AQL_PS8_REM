@@ -10,15 +10,15 @@
 
     <ContentPage Title="AquaLogic" BackgroundColor="Black" Appearing="OnTabAppearing" >
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="400">
+            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="420">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="180"/>
                     <RowDefinition Height="420"/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="TextDisplay" FontSize="30" MinimumHeightRequest="90" HorizontalTextAlignment="Center" />
-
+                <Label x:Name="TextDisplay" FontSize="30" HorizontalTextAlignment="Center" />
+                
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -81,7 +81,7 @@
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="560" MaximumWidthRequest="400">
+            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="420">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -137,7 +137,7 @@
 
     <ContentPage Title="Settings" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="400">
+            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="420">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

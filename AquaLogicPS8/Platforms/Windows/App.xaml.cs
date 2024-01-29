@@ -34,7 +34,7 @@ namespace AquaLogicPS8.WinUI
                 AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
                 // set a specific window size
-                appWindow.Resize(new SizeInt32(410, 810));
+                appWindow.Resize(new SizeInt32(420, 820));
                 appWindow.Title = "AquaLogic PS8";
                 //appWindow.SetIcon("/pool.ico");
 

@@ -13,36 +13,43 @@
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black" />
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="MinimumHeightRequest" Value="20" />
+                <!--<Setter Property="MinimumHeightRequest" Value="50" />-->
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="5" />
+                <!--<Setter Property="Padding" Value="10" />-->
             </Style>
 
             <Style TargetType="Border">
                 <Setter Property="Stroke" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black"/>
                 <Setter Property="StrokeThickness" Value="2" />
-                 <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
             </Style>
             
             <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black"/>
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="MinimumHeightRequest" Value="20" />
+                <Setter Property="MaxLength" Value="15" />
+                 <!--<Setter Property="MinimumHeightRequest" Value="50" />-->
+                <!--<Setter Property="MinimumWidthRequest" Value="220" />-->
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-             </Style>
+                <Setter Property="Margin" Value="5" />
+                <!--<Setter Property="Padding" Value="10" />-->
+            </Style>
 
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="LightGray" />
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="MinimumHeightRequest" Value="50" />
+                <!--<Setter Property="MinimumHeightRequest" Value="50" />-->
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="10" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>
