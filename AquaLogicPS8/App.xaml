@@ -3,44 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AquaLogicPS8"
              x:Class="AquaLogicPS8.App">
-    
+  
     <Application.Resources>
         <ResourceDictionary>
 
             <Style TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black" />
-                <Setter Property="FontSize" Value="20" />
-                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Margin" Value="5" />
-             </Style>
+            </Style>
 
             <Style TargetType="Border">
+                <Setter Property="Margin" Value="5" />
                 <Setter Property="Stroke" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black"/>
                 <Setter Property="StrokeThickness" Value="2" />
-                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 5,5,5,5" />
             </Style>
             
             <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="IsSpellCheckEnabled" Value="False" />
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black"/>
-                <Setter Property="FontSize" Value="20" />
-                 <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Margin" Value="5" />
-             </Style>
+            </Style>
 
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="LightGray" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="50" />
                 <Setter Property="Margin" Value="5" />
-                <Setter Property="Padding" Value="10" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="LightGray" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

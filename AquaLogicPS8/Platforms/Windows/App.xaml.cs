@@ -1,6 +1,5 @@
 ﻿using Microsoft.UI.Windowing;
 using Microsoft.UI;
-using Microsoft.UI.Xaml;
 using Windows.Graphics;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -34,7 +33,7 @@ namespace AquaLogicPS8.WinUI
                 AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
                 // set a specific window size
-                appWindow.Resize(new SizeInt32(420, 820));
+                appWindow.Resize(new SizeInt32(420, 840));
                 appWindow.Title = "AquaLogic PS8";
                 //appWindow.SetIcon("/pool.ico");
 

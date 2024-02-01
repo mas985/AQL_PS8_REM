@@ -1,7 +1,6 @@
 ﻿using AquaLogic;
 using System.ComponentModel;
 using System.Net;
-using static AquaLogic.SocketProcess;
 
 namespace AquaLogicPS8
 {
@@ -11,30 +10,20 @@ namespace AquaLogicPS8
         {
             InitializeComponent();
 
-#if WINDOWS
-            App_Version.Text = AppInfo.VersionString;
-#else
-            App_Version.Text = AppInfo.VersionString + "." + AppInfo.BuildString;
-#endif
+            SizeDisplay();
 
             LoadSettings();
 
             InitializeBackgroundWorker();
         }
-
-        //public string Valve3_Text { get; set; }
-
-        protected void OnDisappearing_Settings(object sender, EventArgs e)
-        {
-            UpdateIPPort();
-            SaveSettings();
-        }
         protected void OnDisappearing_Labels(object sender, EventArgs e)
         {
             SaveSettings();
         }
-        protected void OnTabAppearing(object sender, EventArgs e)
+        protected void OnDisappearing_Settings(object sender, EventArgs e)
         {
+            UpdateIPPort();
+            SaveSettings();
         }
         //protected void OnUnfocused_Entry(object sender, EventArgs e)
         //{
@@ -49,10 +38,41 @@ namespace AquaLogicPS8
             _key = button.StyleId;
             if (_key == "Reset")
             {
-                TextDisplay.Text = "Remote Device Reset...";
+                //TextDisplay.Text = "Remote Device Reset...";
                 TabPage.CurrentPage = TabPage.Children[0];
             }
         }
+        public void SizeDisplay()
+        {
+            // Make panel display as large as possible
+
+#if WINDOWS
+            App_Version.Text = AppInfo.VersionString;
+            double dispHeight = 840;
+            double dispWidth = 420;
+#else
+
+            App_Version.Text = AppInfo.VersionString + "." + AppInfo.BuildString;
+            double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+            double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
+#endif
+
+            if (dispHeight / dispWidth < 2 && dispWidth > 480) // Tablets
+            {
+                dispWidth = dispHeight / 2;
+                GRID1.WidthRequest = dispWidth - GRID1.Margin.HorizontalThickness;
+                GRID2.WidthRequest = dispWidth - GRID2.Margin.HorizontalThickness;
+                GRID3.WidthRequest = dispWidth - GRID3.Margin.HorizontalThickness;
+            }
+
+            double tdWidth = dispWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness;
+            double tdHeight = Math.Max(TextDisplay.FontSize * 3, Math.Min(tdWidth / 10 * 3, dispHeight * 0.88 - GRID1.Margin.VerticalThickness -
+              (Aux1.HeightRequest + Aux1.Margin.VerticalThickness) * 10 - TextDisplay.Margin.VerticalThickness - 5));
+
+            TextDisplay.HeightRequest = tdHeight;
+            TextDisplay.FontSize = tdHeight / 3;
+        }
+
         string _ipAddr;
         int _portNum;
         int _logInt;
@@ -88,6 +108,7 @@ namespace AquaLogicPS8
             PortNum.Text = Preferences.Get(PortNum.StyleId, "8899");
 
             UpdateIPPort();
+
         }
         public void SaveSettings()
         {
@@ -108,7 +129,7 @@ namespace AquaLogicPS8
 
         private readonly string _logPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AquaLogic.csv");
         private DateTime _lastLog = DateTime.Now;
-        private void UpdateDisplay(SocketProcess.SocketData socketData)
+         private void UpdateDisplay(SocketProcess.SocketData socketData)
         {
             try
             {
@@ -158,22 +179,26 @@ namespace AquaLogicPS8
         readonly BackgroundWorker _backgroundWorker = new();
         private void InitializeBackgroundWorker()
         {
-            TextDisplay.Text = "Connecting...";
+            if (!_backgroundWorker.IsBusy) 
+            { 
+                TextDisplay.Text = "Connecting...";
 
-            _backgroundWorker.WorkerReportsProgress = true;
-            _backgroundWorker.WorkerSupportsCancellation = true;
-            _backgroundWorker.DoWork +=
-                new DoWorkEventHandler(BackgroundWorker_DoWork);
-            _backgroundWorker.RunWorkerCompleted +=
-                    new RunWorkerCompletedEventHandler(
-                BackgroundWorker_RunWorkerCompleted);
-            _backgroundWorker.ProgressChanged +=
-                    new ProgressChangedEventHandler(
-                BackgroundWorker_ProgressChanged);
-            _backgroundWorker.RunWorkerAsync();
+                _backgroundWorker.WorkerReportsProgress = true;
+                _backgroundWorker.WorkerSupportsCancellation = true;
+                _backgroundWorker.DoWork +=
+                    new DoWorkEventHandler(BackgroundWorker_DoWork);
+                _backgroundWorker.RunWorkerCompleted +=
+                        new RunWorkerCompletedEventHandler(
+                    BackgroundWorker_RunWorkerCompleted);
+                _backgroundWorker.ProgressChanged +=
+                        new ProgressChangedEventHandler(
+                    BackgroundWorker_ProgressChanged);
+                _backgroundWorker.RunWorkerAsync();
+            }
         }
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+ 
             const int toff = 5;
             SocketProcess socketProcess = new();
             DateTime nTime = DateTime.Now.AddSeconds(toff);
@@ -183,7 +208,7 @@ namespace AquaLogicPS8
 
                 if (!socketProcess.Connected || DateTime.Now > nTime)
                 {
-                    //System.Diagnostics.Debug.WriteLine(string.Format("{0:HH:mm:ss} {1:HH:mm:ss} {2} {3}", DateTime.Now, nTime, socketProcess.Connected, "Reset Socket")); ;
+                    //System.Diagnostics.Debug.WriteLine(string.Format("{0:HH:mm:ss} {1:HH:mm:ss} {2} {3}", DateTime.Now, nTime, socketProcess.Connected, "Reset Socket"));
                     socketProcess.Connect(_ipAddr, _portNum);
                     nTime = DateTime.Now.AddSeconds(toff);
                     _key = "";

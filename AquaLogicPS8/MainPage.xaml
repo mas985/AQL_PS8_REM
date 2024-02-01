@@ -8,17 +8,19 @@
             UnselectedTabColor="Darkgray"
             BarBackgroundColor="Black">
 
-    <ContentPage Title="AquaLogic" BackgroundColor="Black" Appearing="OnTabAppearing" >
+    <ContentPage Title="Keypad" BackgroundColor="Black">
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="420">
+            <Grid x:Name="GRID1" Margin="10" VerticalOptions="Start">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="180"/>
-                    <RowDefinition Height="420"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="TextDisplay" FontSize="30" HorizontalTextAlignment="Center" />
-                
+                <Border Grid.Row="0" Grid.Column="0">
+                    <Label x:Name="TextDisplay" Margin="0" HorizontalTextAlignment="Center"/>
+                </Border>
+
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -38,8 +40,8 @@
                         <Button x:Name="MinusBtn" Text="-" FontSize="30" Clicked="Button_Click" Grid.Row="2"/>
                     </Grid>
 
-                    <Button x:Name="LeftBtn" Text="&lt;" FontSize="40" MinimumHeightRequest="170" Clicked="Button_Click" />
-                    <Button x:Name="RightBtn" Text="&gt;" FontSize="40" MinimumHeightRequest="170" Clicked="Button_Click" Grid.Column="2"/>
+                    <Button x:Name="LeftBtn" Text="&lt;" FontSize="40" HeightRequest="170" Clicked="Button_Click" />
+                    <Button x:Name="RightBtn" Text="&gt;" FontSize="40" HeightRequest="170" Clicked="Button_Click" Grid.Column="2"/>
                 </Grid>
 
                 <Grid Grid.Row="2">
@@ -81,7 +83,7 @@
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="420">
+            <Grid x:Name="GRID2" Margin="10" VerticalOptions="Start">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -108,28 +110,28 @@
                 <Label x:Name="Label7" Text="Valve4 Label:" Grid.Row="7"/>
 
                 <Border Grid.Row="0" Grid.Column="1">
-                    <Entry x:Name="Aux1_Edit"/>
+                    <Entry x:Name="Aux1_Edit" Text="Aux1"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="1">
-                    <Entry x:Name="Aux2_Edit"/>
+                    <Entry x:Name="Aux2_Edit" Text="Aux2"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="1">
-                    <Entry x:Name="Aux3_Edit"/>
+                    <Entry x:Name="Aux3_Edit" Text="Aux3"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="1">
-                    <Entry x:Name="Aux4_Edit"/>
+                    <Entry x:Name="Aux4_Edit" Text="Aux4"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="1">
-                    <Entry x:Name="Aux5_Edit"/>
+                    <Entry x:Name="Aux5_Edit" Text="Aux5"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="1">
-                    <Entry x:Name="Aux6_Edit"/>
+                    <Entry x:Name="Aux6_Edit" Text="Aux6"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="1">
-                    <Entry x:Name="Valve3_Edit"/>
+                    <Entry x:Name="Valve3_Edit" Text="Valve3"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="1">
-                    <Entry x:Name="Valve4_Edit"/>
+                    <Entry x:Name="Valve4_Edit" Text="Valve4"/>
                 </Border>
             </Grid>
         </ScrollView>
@@ -137,14 +139,13 @@
 
     <ContentPage Title="Settings" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
         <ScrollView>
-            <Grid Margin="10" VerticalOptions="Start" MaximumHeightRequest="700" MaximumWidthRequest="420">
+            <Grid x:Name="GRID3" Margin="10" VerticalOptions="Start" >
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -169,24 +170,22 @@
                 <Label x:Name="Label10" Text="IP Address:" Grid.Row="0"/>
                 <Label x:Name="Label11" Text="Port Number:" Grid.Row="1"/>
                 <Label x:Name="Label12" Text="Log Interval:" Grid.Row="2"/>
- 
+
                 <Label x:Name="Label13" Text="" Grid.Row="3"/>
 
                 <Label x:Name="Label14" Text="Service Mode:" Grid.Row="4"/>
                 <Button x:Name="Service" Text="Service" Clicked="Button_Click" Grid.Row="4" Grid.Column="1"/>
 
-                <Label x:Name="Label15" Text="" Grid.Row="5"/>
+                <Label x:Name="Label15" Text="Remote Device:" Grid.Row="5"/>
+                <Button x:Name="Reset" Text="Reset" Clicked="Button_Click" Grid.Row="5" Grid.Column="1"/>
 
-                <Label x:Name="Label16" Text="Remote Device:" Grid.Row="6"/>
-                <Button x:Name="Reset" Text="Reset" Clicked="Button_Click" Grid.Row="6" Grid.Column="1"/>
+                <Label x:Name="Label16" Text="" Grid.Row="6"/>
 
-                <Label x:Name="Label17" Text="" Grid.Row="7"/>
+                <Label x:Name="Label17" Text="Version:" Grid.Row="7"/>
+                <Label x:Name="App_Version" Text="0.0.0.0" HorizontalTextAlignment="Center" Grid.Row="7" Grid.Column="1"/>
 
-                <Label x:Name="Label18" Text="Version:" Grid.Row="8"/>
-                <Label x:Name="App_Version" Text="0.0.0.0" HorizontalTextAlignment="Center" Grid.Row="8" Grid.Column="1"/>
-
-                <Label x:Name="Label19" Text="Developer:" Grid.Row="9"/>
-                <Label x:Name="Developer" Text="MAS Consulting" HorizontalTextAlignment="Center" Grid.Row="9" Grid.Column="1"/>
+                <Label x:Name="Label18" Text="Developer:" Grid.Row="8"/>
+                <Label x:Name="Developer" Text="MAS Consulting" HorizontalTextAlignment="Center" Grid.Row="8" Grid.Column="1"/>
             </Grid>
         </ScrollView>
     </ContentPage>

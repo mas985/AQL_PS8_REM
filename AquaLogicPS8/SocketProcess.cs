@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.IO;
+﻿using System.Net.Sockets;
 using System.Net.NetworkInformation;
 using System.Net;
-using static AquaLogic.SocketProcess;
 
 namespace AquaLogic
 {
@@ -242,13 +237,13 @@ namespace AquaLogic
         private int _spaT = -9999;
         public SocketData Update()
         {
-            byte[] kaBytes = new byte[] { 0x10, 0x02, 0x01, 0x01, 0x00, 0x14, 0x10, 0x03 }; // Keep Alive Sequence
-            byte[] frBytes = new byte[] { 0x00, 0xe0, 0x00, 0xe6, 0x18, 0x1e, 0xe0 }; // Frame indicator between 2 keep alive
             SocketData socketData = new();
-
             try
             {
+                byte[] kaBytes = new byte[] { 0x10, 0x02, 0x01, 0x01, 0x00, 0x14, 0x10, 0x03 }; // Keep Alive Sequence
+                byte[] frBytes = new byte[] { 0x00, 0xe0, 0x00, 0xe6, 0x18, 0x1e, 0xe0 };       // Frame indicator between 2 keep alive
                 List<byte> recData = new();
+                long nCRC = 0;
                 while (_tcpClient.Connected && _tcpClient.Available > 6)
                 {
                     byte pByte = 0;
@@ -280,7 +275,7 @@ namespace AquaLogic
 
                     // process segment
 
-                    if (bytes.SequenceEqual(frBytes))
+                    if (bytes.SequenceEqual(frBytes)) //Frame
                     {
                         //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
                     }
@@ -311,7 +306,7 @@ namespace AquaLogic
                             }
                             else if (bytes[2] == 0x01 && bytes[3] == 0x03) // Display
                             {
-                                socketData.DisplayText = Byte2string(bytes, 4, bytes.Length - 9);
+                                socketData.DisplayText = Byte2string(bytes, 4, bytes.Length - 9).Replace("  "," ");
                                 socketData.HasData = true;
                                 if (socketData.DisplayText.Contains("Air Temp"))
                                 {
@@ -336,11 +331,17 @@ namespace AquaLogic
                             {
                                 //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
                             }
+                            nCRC = 0;
                         }
                         else
                         {
+                            nCRC++;
+                            if (nCRC > 10)
+                            {
+                                socketData.DisplayText = "CRC Error...";
+                                socketData.HasData = true;
+                            }
                             //System.Diagnostics.Debug.WriteLine(string.Format("{0}   {1}", "CRC Error", BitConverter.ToString(bytes)));
-                            socketData.DisplayText = "CRC Error";
                         }
                     }
                 }
@@ -348,6 +349,8 @@ namespace AquaLogic
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
+                socketData.DisplayText = "Socket Error...";
+                socketData.HasData = true;
             }
             return socketData;
         }
