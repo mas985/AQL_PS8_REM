@@ -29,9 +29,13 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="HeightRequest" Value="50" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="IsSpellCheckEnabled" Value="False" />
                 <Setter Property="TextColor" Value="LightGray" />
+                <Setter Property="PlaceholderColor" Value="LightSalmon" />
+                <Setter Property="Placeholder" Value="Enter Value" />
                 <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="IsSpellCheckEnabled" Value="False" />
+                <Setter Property="IsTextPredictionEnabled" Value="False" />
+                <Setter Property="Keyboard" Value="Plain" />
             </Style>
 
             <Style TargetType="Button">

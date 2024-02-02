@@ -18,6 +18,7 @@ namespace AquaLogicPS8
         }
         protected void OnDisappearing_Labels(object sender, EventArgs e)
         {
+            ValidateLabels();          
             SaveSettings();
         }
         protected void OnDisappearing_Settings(object sender, EventArgs e)
@@ -47,16 +48,13 @@ namespace AquaLogicPS8
             // Make panel display as large as possible
 
 #if WINDOWS
-            App_Version.Text = AppInfo.VersionString;
             double dispHeight = 840;
             double dispWidth = 420;
 #else
-
-            App_Version.Text = AppInfo.VersionString + "." + AppInfo.BuildString;
             double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
             double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
 #endif
-
+            App_Version.Text = AppInfo.VersionString;
             if (dispHeight / dispWidth < 2 && dispWidth > 480) // Tablets
             {
                 dispWidth = dispHeight / 2;
@@ -92,6 +90,17 @@ namespace AquaLogicPS8
 
             _ = int.TryParse(LogInt.Text, out _logInt);
             LogInt.Text = _logInt.ToString();
+        }
+        public void ValidateLabels()
+        {
+            if (Aux1_Edit.Text.Length == 0) { Aux1_Edit.Text = "Aux1"; }
+            if (Aux2_Edit.Text.Length == 0) { Aux2_Edit.Text = "Aux2"; }
+            if (Aux3_Edit.Text.Length == 0) { Aux3_Edit.Text = "Aux3"; }
+            if (Aux4_Edit.Text.Length == 0) { Aux4_Edit.Text = "Aux4"; }
+            if (Aux5_Edit.Text.Length == 0) { Aux5_Edit.Text = "Aux5"; }
+            if (Aux6_Edit.Text.Length == 0) { Aux6_Edit.Text = "Aux6"; }
+            if (Valve3_Edit.Text.Length == 0) { Valve3_Edit.Text = "Valve3"; }
+            if (Valve4_Edit.Text.Length == 0) { Valve4_Edit.Text = "Valve4"; }
         }
         public void LoadSettings()
         {
