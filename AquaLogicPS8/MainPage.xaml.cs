@@ -47,16 +47,13 @@ namespace AquaLogicPS8
             // Make panel display as large as possible
 
 #if WINDOWS
-            App_Version.Text = AppInfo.VersionString;
             double dispHeight = 840;
             double dispWidth = 420;
 #else
-
-            App_Version.Text = AppInfo.VersionString + "." + AppInfo.BuildString;
             double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
             double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
 #endif
-
+            App_Version.Text = AppInfo.VersionString;
             if (dispHeight / dispWidth < 2 && dispWidth > 480) // Tablets
             {
                 dispWidth = dispHeight / 2;
