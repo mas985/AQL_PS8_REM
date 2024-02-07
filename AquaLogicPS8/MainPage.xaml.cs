@@ -64,11 +64,11 @@ namespace AquaLogicPS8
             }
 
             double tdWidth = dispWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness;
-            double tdHeight = Math.Max(TextDisplay.FontSize * 3, Math.Min(tdWidth / 10 * 3, dispHeight * 0.88 - GRID1.Margin.VerticalThickness -
-              (Aux1.HeightRequest + Aux1.Margin.VerticalThickness) * 10 - TextDisplay.Margin.VerticalThickness - 5));
+            double tdHeight = Math.Max(TextDisplay.FontSize * 3, dispHeight * 0.85 - GRID1.Margin.VerticalThickness -
+              (Aux1.HeightRequest + Aux1.Margin.VerticalThickness) * 10 - TextDisplay.Margin.VerticalThickness - 5);
 
             TextDisplay.HeightRequest = tdHeight;
-            TextDisplay.FontSize = tdHeight / 3;
+            TextDisplay.FontSize = Math.Min(tdWidth / 12, tdHeight / 3);
         }
 
         string _ipAddr;
