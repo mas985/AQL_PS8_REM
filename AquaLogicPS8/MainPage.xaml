@@ -10,15 +10,15 @@
 
     <ContentPage Title="Keypad" BackgroundColor="Black">
         <ScrollView>
-            <Grid x:Name="GRID1" Margin="10" VerticalOptions="Start">
+            <Grid x:Name="GRID1" Margin="8" VerticalOptions="Start">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" Grid.Column="0">
-                    <Label x:Name="TextDisplay" Margin="0" HorizontalTextAlignment="Center"/>
+                <Border x:Name="TextDisplayBorder" Grid.Row="0" Grid.Column="0">
+                    <Label x:Name="TextDisplay" FontSize="26" Margin="0" HorizontalTextAlignment="Center"/>
                 </Border>
 
                 <Grid Grid.Row="1">
@@ -40,8 +40,8 @@
                         <Button x:Name="MinusBtn" Text="-" FontSize="30" Clicked="Button_Click" Grid.Row="2"/>
                     </Grid>
 
-                    <Button x:Name="LeftBtn" Text="&lt;" FontSize="40" HeightRequest="170" Clicked="Button_Click" />
-                    <Button x:Name="RightBtn" Text="&gt;" FontSize="40" HeightRequest="170" Clicked="Button_Click" Grid.Column="2"/>
+                    <Button x:Name="LeftBtn" Text="&lt;" FontSize="40" HeightRequest="160" Clicked="Button_Click" />
+                    <Button x:Name="RightBtn" Text="&gt;" FontSize="40" HeightRequest="160" Clicked="Button_Click" Grid.Column="2"/>
                 </Grid>
 
                 <Grid Grid.Row="2">
@@ -83,7 +83,7 @@
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
         <ScrollView>
-            <Grid x:Name="GRID2" Margin="10" VerticalOptions="Start">
+            <Grid x:Name="GRID2" Margin="8" VerticalOptions="Start">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -139,7 +139,7 @@
 
     <ContentPage Title="Settings" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
         <ScrollView>
-            <Grid x:Name="GRID3" Margin="10" VerticalOptions="Start" >
+            <Grid x:Name="GRID3" Margin="8" VerticalOptions="Start" >
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
