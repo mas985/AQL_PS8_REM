@@ -1,5 +1,6 @@
 ﻿using AquaLogic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Net;
 
 namespace AquaLogicPS8
@@ -48,11 +49,12 @@ namespace AquaLogicPS8
             // Make panel display as large as possible
 
 #if WINDOWS
-            double dispHeight = 760;
+            double dispHeight = 800;
             double dispWidth = 400;
 #else
             double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
             double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
+            TextDisplayBorder.Margin = TextDisplayBorder.StrokeThickness / 2;
 #endif
             App_Version.Text = AppInfo.VersionString;
             if (dispHeight / dispWidth < 2 && dispWidth > 480) // Tablets
@@ -63,12 +65,16 @@ namespace AquaLogicPS8
                 GRID3.WidthRequest = dispWidth - GRID3.Margin.HorizontalThickness;
             }
 
-            double tdWidth = dispWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness;
-            double tdHeight = Math.Min(tdWidth / 12 * 3, Math.Max(TextDisplay.FontSize * 3, dispHeight * 0.85 - GRID1.Margin.VerticalThickness -
-              (Aux1.HeightRequest + Aux1.Margin.VerticalThickness) * 10 - TextDisplayBorder.Margin.VerticalThickness));
+            double tdWidth = dispWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness - 
+                TextDisplayBorder.Margin.HorizontalThickness - TextDisplayBorder.StrokeThickness * 2;
+
+            double btHeight = Aux1.HeightRequest + Aux1.Margin.VerticalThickness;
+            double tdHeight = Math.Min(btHeight * 3, Math.Max(btHeight * 2, dispHeight * 0.87 -
+                GRID1.Margin.VerticalThickness - btHeight * 10)) -
+                TextDisplay.Margin.VerticalThickness - TextDisplayBorder.Margin.VerticalThickness - TextDisplayBorder.StrokeThickness * 2;
 
             TextDisplay.HeightRequest = tdHeight;
-            TextDisplay.FontSize = Math.Min(tdWidth / 12, tdHeight / 3);
+            TextDisplay.FontSize = Math.Min(tdWidth / 11, tdHeight / 3);
         }
 
         string _ipAddr;
