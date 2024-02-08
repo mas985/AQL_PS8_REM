@@ -18,7 +18,7 @@
                 </Grid.RowDefinitions>
 
                 <Border x:Name="TextDisplayBorder" Grid.Row="0" Grid.Column="0">
-                    <Label x:Name="TextDisplay" FontSize="26" Margin="0" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="TextDisplay" Margin="0" HorizontalTextAlignment="Center"/>
                 </Border>
 
                 <Grid Grid.Row="1">

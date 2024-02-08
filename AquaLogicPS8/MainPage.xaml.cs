@@ -48,7 +48,7 @@ namespace AquaLogicPS8
             // Make panel display as large as possible
 
 #if WINDOWS
-            double dispHeight = 760;
+            double dispHeight = 800;
             double dispWidth = 400;
 #else
             double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
@@ -62,13 +62,13 @@ namespace AquaLogicPS8
                 GRID2.WidthRequest = dispWidth - GRID2.Margin.HorizontalThickness;
                 GRID3.WidthRequest = dispWidth - GRID3.Margin.HorizontalThickness;
             }
-
             double tdWidth = dispWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness;
-            double tdHeight = Math.Min(tdWidth / 12 * 3, Math.Max(TextDisplay.FontSize * 3, dispHeight * 0.85 - GRID1.Margin.VerticalThickness -
+            double tdHeight = Math.Min(tdWidth / 12 * 4, Math.Max(TextDisplay.FontSize * 4, dispHeight * 0.87 - GRID1.Margin.VerticalThickness -
               (Aux1.HeightRequest + Aux1.Margin.VerticalThickness) * 10 - TextDisplayBorder.Margin.VerticalThickness));
 
             TextDisplay.HeightRequest = tdHeight;
             TextDisplay.FontSize = Math.Min(tdWidth / 12, tdHeight / 3);
+
         }
 
         string _ipAddr;
