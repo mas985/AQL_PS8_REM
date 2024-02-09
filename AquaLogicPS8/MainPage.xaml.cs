@@ -68,10 +68,9 @@ namespace AquaLogicPS8
             double tdWidth = dispWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness - 
                 TextDisplayBorder.Margin.HorizontalThickness - TextDisplayBorder.StrokeThickness * 2;
 
-            double btHeight = Aux1.HeightRequest + Aux1.Margin.VerticalThickness;
-            double tdHeight = Math.Min(btHeight * 3, Math.Max(btHeight * 2, dispHeight * 0.87 -
-                GRID1.Margin.VerticalThickness - btHeight * 10)) -
-                TextDisplay.Margin.VerticalThickness - TextDisplayBorder.Margin.VerticalThickness - TextDisplayBorder.StrokeThickness * 2;
+            double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(TextDisplay.FontSize * 3, dispHeight * 0.85 -
+                GRID1.Margin.VerticalThickness - (Aux1.HeightRequest + Aux1.Margin.VerticalThickness) * 10 -
+                TextDisplay.Margin.VerticalThickness - TextDisplayBorder.Margin.VerticalThickness - TextDisplayBorder.StrokeThickness * 2));
 
             TextDisplay.HeightRequest = tdHeight;
             TextDisplay.FontSize = Math.Min(tdWidth / 11, tdHeight / 3);
