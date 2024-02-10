@@ -43,7 +43,7 @@ namespace AquaLogicPS8.WinUI
 
                     // these only have effect if XAML isn't responsible for drawing the titlebar.
                     p.IsMaximizable = false;
-                    p.IsMinimizable = false;
+                    p.IsMinimizable = true;
                 }
             });
         }

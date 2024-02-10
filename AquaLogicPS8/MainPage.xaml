@@ -6,7 +6,8 @@
             Title="AquaLogic PS8"
             SelectedTabColor="Lightgray"
             UnselectedTabColor="Darkgray"
-            BarBackgroundColor="Black">
+            BarBackgroundColor="Black"
+            Disappearing="OnDisappearing_TabbedPage">
 
     <ContentPage Title="Keypad" BackgroundColor="Black">
         <ScrollView>

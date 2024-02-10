@@ -17,9 +17,15 @@ namespace AquaLogicPS8
 
             InitializeBackgroundWorker();
         }
+        protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
+        {
+#if ANDROID
+            Application.Current.Quit(); // Called when changing system fonts which crashes application
+#endif
+        }
         protected void OnDisappearing_Labels(object sender, EventArgs e)
         {
-            ValidateLabels();          
+            ValidateLabels();
             SaveSettings();
         }
         protected void OnDisappearing_Settings(object sender, EventArgs e)
