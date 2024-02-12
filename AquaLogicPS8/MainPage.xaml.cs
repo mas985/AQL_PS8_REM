@@ -60,8 +60,11 @@ namespace AquaLogicPS8
 #else
             double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
             double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
-            TextDisplayBorder.Margin = TextDisplayBorder.StrokeThickness / 2;
 #endif
+#if ANDROID
+            TextDisplayBorder.Margin = TextDisplayBorder.StrokeThickness / 2; // Maui bug
+#endif
+
             App_Version.Text = AppInfo.VersionString;
             if (dispHeight / dispWidth < 2 && dispWidth > 480) // Tablets
             {
