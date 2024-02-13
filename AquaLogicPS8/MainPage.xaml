@@ -9,7 +9,7 @@
             BarBackgroundColor="Black"
             Disappearing="OnDisappearing_TabbedPage">
 
-    <ContentPage Title="Keypad" BackgroundColor="Black">
+    <ContentPage Title="Keypad" BackgroundColor="Black" NavigationPage.HasNavigationBar="False">
         <ScrollView>
             <Grid x:Name="GRID1" Margin="8" VerticalOptions="Start">
                 <Grid.RowDefinitions>

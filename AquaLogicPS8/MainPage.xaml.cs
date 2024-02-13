@@ -55,30 +55,30 @@ namespace AquaLogicPS8
             // Make panel display as large as possible
 
 #if WINDOWS
-            double dispHeight = 800;
-            double dispWidth = 400;
+            double pageWidth = 400;
+            double pageHeight = 720; // Title + Tabs
 #else
-            double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
-            double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
-#endif
+           double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
+           double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density * 0.84; // Top + Tabs + Nav (~16%)
 #if ANDROID
-            TextDisplayBorder.Margin = TextDisplayBorder.StrokeThickness / 2; // Maui bug
+           TextDisplayBorder.Margin = TextDisplayBorder.StrokeThickness / 2; // Maui bug
+#endif
 #endif
 
             App_Version.Text = AppInfo.VersionString;
-            if (dispHeight / dispWidth < 2 && dispWidth > 480) // Tablets
+            if (pageHeight / pageWidth < 2 && pageWidth > 480) // Tablets
             {
-                dispWidth = dispHeight / 2;
-                GRID1.WidthRequest = dispWidth - GRID1.Margin.HorizontalThickness;
-                GRID2.WidthRequest = dispWidth - GRID2.Margin.HorizontalThickness;
-                GRID3.WidthRequest = dispWidth - GRID3.Margin.HorizontalThickness;
+                pageWidth = pageHeight / 2;
+                GRID1.WidthRequest = pageWidth - GRID1.Margin.HorizontalThickness;
+                GRID2.WidthRequest = pageWidth - GRID2.Margin.HorizontalThickness;
+                GRID3.WidthRequest = pageWidth - GRID3.Margin.HorizontalThickness;
             }
 
-            double tdWidth = dispWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness - 
+            double tdWidth = pageWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness - 
                 TextDisplayBorder.Margin.HorizontalThickness - TextDisplayBorder.StrokeThickness * 2;
 
-            double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(TextDisplay.FontSize * 3, dispHeight * 0.85 -
-                GRID1.Margin.VerticalThickness - (Aux1.HeightRequest + Aux1.Margin.VerticalThickness) * 10 -
+            double tdHeight = Math.Min(tdWidth / 11 * 4, Math.Max(TextDisplay.FontSize * 4,
+                pageHeight - GRID1.Margin.VerticalThickness - (Aux1.HeightRequest + Aux1.Margin.VerticalThickness) * 10 -
                 TextDisplay.Margin.VerticalThickness - TextDisplayBorder.Margin.VerticalThickness - TextDisplayBorder.StrokeThickness * 2));
 
             TextDisplay.HeightRequest = tdHeight;

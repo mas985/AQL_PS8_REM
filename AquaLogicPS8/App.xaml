@@ -12,6 +12,7 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="HeightRequest" Value="48" />
                 <Setter Property="Margin" Value="4" />
+                <Setter Property="Padding" Value="0" />                
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black" />
@@ -19,15 +20,17 @@
 
             <Style TargetType="Border">
                 <Setter Property="Margin" Value="4" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="StrokeThickness" Value="4" />
                 <Setter Property="Stroke" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black"/>
-                <Setter Property="StrokeThickness" Value="4" />
                 <Setter Property="StrokeShape" Value="RoundRectangle 4,4,4,4" />
             </Style>
             
             <Style TargetType="Entry">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="Margin" Value="0" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="PlaceholderColor" Value="LightSalmon" />
