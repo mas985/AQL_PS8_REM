@@ -2,7 +2,7 @@
 using System.Net.NetworkInformation;
 using System.Net;
 
-namespace AquaLogic
+namespace AQL_SOCKET
 {
     class SocketProcess
     {

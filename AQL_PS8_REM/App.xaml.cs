@@ -1,4 +1,4 @@
-﻿namespace AquaLogicPS8
+﻿namespace AQL_PS8
 {
     public partial class App : Application
     {

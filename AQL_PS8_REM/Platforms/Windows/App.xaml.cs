@@ -5,7 +5,7 @@ using Windows.Graphics;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace AquaLogicPS8.WinUI
+namespace AQL_PS8.WinUI
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -34,7 +34,7 @@ namespace AquaLogicPS8.WinUI
 
                 // set a specific window size
                 appWindow.Resize(new SizeInt32(400, 800));
-                appWindow.Title = "AquaLogic PS8";
+                appWindow.Title = "AQL-PS-8 Remote Emulator";
                 //appWindow.SetIcon("/pool.ico");
 
                 if (appWindow.Presenter is OverlappedPresenter p)

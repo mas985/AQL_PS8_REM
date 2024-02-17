@@ -1,9 +1,8 @@
-﻿using AquaLogic;
+﻿using AQL_SOCKET;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Net;
 
-namespace AquaLogicPS8
+namespace AQL_PS8
 {
     public partial class MainPage : TabbedPage
     {
@@ -150,7 +149,7 @@ namespace AquaLogicPS8
 
         // UI Update
 
-        private readonly string _logPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AquaLogic.csv");
+        private readonly string _logPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AQL_PS8_LOG.csv");
         private DateTime _lastLog = DateTime.Now;
          private void UpdateDisplay(SocketProcess.SocketData socketData)
         {

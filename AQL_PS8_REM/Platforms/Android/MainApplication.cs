@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace AquaLogicPS8
+namespace AQL_PS8
 {
     [Application]
     public class MainApplication : MauiApplication
