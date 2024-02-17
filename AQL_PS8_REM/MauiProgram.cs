@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace AQL_PS8
+namespace AQL_PS8_REM
 {
     public static class MauiProgram
     {

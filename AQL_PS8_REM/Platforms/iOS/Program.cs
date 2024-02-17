@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace AQL_PS8
+namespace AQL_PS8_REM
 {
     public class Program
     {

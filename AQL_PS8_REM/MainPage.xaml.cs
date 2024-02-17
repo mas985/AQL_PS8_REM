@@ -1,8 +1,8 @@
-﻿using AQL_SOCKET;
+﻿using AQL_PS8_SKT;
 using System.ComponentModel;
 using System.Net;
 
-namespace AQL_PS8
+namespace AQL_PS8_REM
 {
     public partial class MainPage : TabbedPage
     {
@@ -55,7 +55,7 @@ namespace AQL_PS8
 
 #if WINDOWS
             double pageWidth = 400;
-            double pageHeight = 720; // Title + Tabs
+            double pageHeight = 710; // Title + Tabs
 #else
            double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
            double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density * 0.84; // Top + Tabs + Nav (~16%)

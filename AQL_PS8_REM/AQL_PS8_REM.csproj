@@ -6,13 +6,13 @@
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
-		<RootNamespace>AQL_PS8</RootNamespace>
+		<RootNamespace>AQL_PS8_REM</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>AQL-PS-8</ApplicationTitle>
+		<!--<ApplicationTitle>AQL-PS-8 REM</ApplicationTitle>-->
 
 		<!-- App Identifier -->
 		<ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
@@ -26,13 +26,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-		<Title>AQL-PS-8</Title>
-		<Authors>Mark Schulz</Authors>
-		<Company>MAS Consulting</Company>
-		<Description>AQL-PS-8</Description>
-		<Copyright>MAS Consulting 2022-2024</Copyright>
-		<PackageIcon></PackageIcon>
-		<PlatformTarget>AnyCPU</PlatformTarget>
+
 		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
 		<PackageCertificateThumbprint>0319DE792E65EFD7A20CBB2D582E8B0FDB04F8DD</PackageCertificateThumbprint>
@@ -43,60 +37,59 @@
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 		<DefaultLanguage>en-us</DefaultLanguage>
 		<AppInstallerUri>G:\My Drive\PoolTools\AquaLogic\win</AppInstallerUri>
-		<NeutralLanguage>en-US</NeutralLanguage>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 REM</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
-	  <ApplicationTitle>AQL-PS-8 Remote Emulator</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 REM</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
-	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 REM</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>43</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationTitle>AQL-PS-8 Remote Emulator</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 REM</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
-	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 REM</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
-	  <ApplicationTitle>AQL-PS-8 Remote Emulator</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 REM</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
-	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 REM</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>43</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationTitle>AQL-PS-8 Remote Emulator</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 REM</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>

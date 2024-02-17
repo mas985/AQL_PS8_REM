@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="AQL_PS8.MainPage"
+            x:Class="AQL_PS8_REM.MainPage"
             x:Name="TabPage"
-            Title="AQL-PS-8"
             SelectedTabColor="Lightgray"
             UnselectedTabColor="Darkgray"
             BarBackgroundColor="Black"

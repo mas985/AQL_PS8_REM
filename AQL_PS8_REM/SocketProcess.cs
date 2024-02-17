@@ -2,7 +2,7 @@
 using System.Net.NetworkInformation;
 using System.Net;
 
-namespace AQL_SOCKET
+namespace AQL_PS8_SKT
 {
     class SocketProcess
     {

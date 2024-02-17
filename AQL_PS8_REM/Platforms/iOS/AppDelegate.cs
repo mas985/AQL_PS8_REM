@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace AQL_PS8
+namespace AQL_PS8_REM
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate
