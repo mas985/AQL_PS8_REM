@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace AquaLogicPS8
+namespace AQL_PS8
 {
     public class Program
     {

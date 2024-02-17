@@ -6,13 +6,13 @@
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
-		<RootNamespace>AquaLogicPS8</RootNamespace>
+		<RootNamespace>AQL_PS8</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>AquaLogicPS8</ApplicationTitle>
+		<ApplicationTitle>AQL-PS-8</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
@@ -26,12 +26,12 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-		<Title>AquaLogic PS8</Title>
+		<Title>AQL-PS-8</Title>
 		<Authors>Mark Schulz</Authors>
 		<Company>MAS Consulting</Company>
-		<Description>AquaLogic PS8 Remote Emulator</Description>
-		<Copyright>MAS Consulting 2023</Copyright>
-		<PackageIcon>pool128.png</PackageIcon>
+		<Description>AQL-PS-8</Description>
+		<Copyright>MAS Consulting 2022-2024</Copyright>
+		<PackageIcon></PackageIcon>
 		<PlatformTarget>AnyCPU</PlatformTarget>
 		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
@@ -47,59 +47,59 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.6</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 Remote Emulator</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.6</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.6</ApplicationDisplayVersion>
-	  <ApplicationVersion>42</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
+	  <ApplicationVersion>43</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
+	  <ApplicationTitle>AQL-PS-8 Remote Emulator</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.6</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.6</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>AQL-PS-8 Remote Emulator</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.6</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
+	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.6</ApplicationDisplayVersion>
-	  <ApplicationVersion>42</ApplicationVersion>
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
+	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
+	  <ApplicationVersion>43</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>AQL-PS-8 Remote Emulator</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.6</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.7</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
-	  <ApplicationTitle>AquaLogic PS8</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
@@ -122,11 +122,6 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-
-		<None Update="Resources\AppIcon\pool128.png">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -135,8 +130,10 @@
 
 	<ItemGroup>
 	  <Folder Include="Properties\PublishProfiles\" />
+	  <Folder Include="Resources\Images\" />
+	  <Folder Include="Resources\Splash\" />
 	</ItemGroup>
 
-	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionAquaLogicPS8HideInfoBar="True" /></VisualStudio></ProjectExtensions>
+	<!--<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionAquaLogicPS8HideInfoBar="True" /></VisualStudio></ProjectExtensions>-->
 
 </Project>

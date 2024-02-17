@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace AquaLogicPS8
+namespace AQL_PS8
 {
     public static class MauiProgram
     {

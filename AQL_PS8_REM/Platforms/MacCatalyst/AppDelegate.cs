@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace AquaLogicPS8
+namespace AQL_PS8
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate
