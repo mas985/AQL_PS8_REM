@@ -108,10 +108,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\wifi.png" Color="Black" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\wireless.svg" Color="Black" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\AppIcon\wifi.png" BaseSize="256,256" Color="Black" />
+		<MauiSplashScreen Include="Resources\AppIcon\wireless.svg" BaseSize="256,256" Color="Black" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
