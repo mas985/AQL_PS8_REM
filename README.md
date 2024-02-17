@@ -1,6 +1,4 @@
-# AquaLogicPS8
-
-AquaLogic PS8 Remote Emulator
+# AQL-PS-8 Remoter Emulator
 
 A Visual Studio cross platform project for the emulation of the PS8 remote. This software is designed to work specifically with this device (EW11):
 - http://www.hi-flying.com/elfin-ew1x-rs232-rs485-to-wi-fi
