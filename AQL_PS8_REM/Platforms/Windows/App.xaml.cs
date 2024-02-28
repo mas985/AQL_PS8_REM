@@ -34,7 +34,7 @@ namespace AQL_PS8_REM.WinUI
 
                 // set a specific window size
                 appWindow.Resize(new SizeInt32(400, 800));
-                appWindow.Title = "AQL-PS-8 Remote Emulator"; 
+                appWindow.Title = "AQL-PS-8 Remote"; 
                 //appWindow.SetIcon("/pool.ico");
 
                 if (appWindow.Presenter is OverlappedPresenter p)
