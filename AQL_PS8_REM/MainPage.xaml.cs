@@ -57,10 +57,10 @@ namespace AQL_PS8_REM
             double pageWidth = 400;
             double pageHeight = 710; // Title + Tabs
 #else
-           double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
-           double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density * 0.84; // Top + Tabs + Nav (~16%)
+            double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
+            double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density * 0.84; // Top + Tabs + Nav (~16%)
 #if ANDROID
-           TextDisplayBorder.Margin = TextDisplayBorder.StrokeThickness / 2; // Maui bug
+            TextDisplayBorder.Margin = 0; // TextDisplayBorder.StrokeThickness / 4; // Maui bug
 #endif
 #endif
 

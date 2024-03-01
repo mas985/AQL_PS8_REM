@@ -50,6 +50,7 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="LightGray" />
+                <Setter Property="CornerRadius" Value="4" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>
