@@ -36,7 +36,7 @@
 		<GenerateTestArtifacts>True</GenerateTestArtifacts>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 		<DefaultLanguage>en-us</DefaultLanguage>
-		<AppInstallerUri>G:\My Drive\Pool Tools\AQL-PS-8 Remote Emulator\win\</AppInstallerUri>
+		<AppInstallerUri>G:\My Drive\Pool Tools\AQL-PS-8 Remote Emulator\Windows Installer\</AppInstallerUri>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">

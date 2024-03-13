@@ -52,7 +52,7 @@ namespace AQL_PS8_REM
                 TabPage.CurrentPage = TabPage.Children[0];
             }
         }
-        private async void Doc_Click(object sender, EventArgs args)
+        private async void QSG_Click(object sender, EventArgs args)
         {
             try
             {
