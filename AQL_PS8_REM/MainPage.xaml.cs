@@ -1,6 +1,7 @@
 ﻿using AQL_PS8_SKT;
 using System.ComponentModel;
 using System.Net;
+using System.Windows.Input;
 
 namespace AQL_PS8_REM
 {
@@ -15,6 +16,8 @@ namespace AQL_PS8_REM
             LoadSettings();
 
             InitializeBackgroundWorker();
+
+            BindingContext = this;
         }
         protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
         {
@@ -47,6 +50,18 @@ namespace AQL_PS8_REM
             {
                 //TextDisplay.Text = "Remote Device Reset...";
                 TabPage.CurrentPage = TabPage.Children[0];
+            }
+        }
+        private async void Doc_Click(object sender, EventArgs args)
+        {
+            try
+            {
+                Uri uri = new("https://docs.google.com/document/d/e/2PACX-1vSZmb9Bgn7S6KE8wlt1QiTWcziZFddjOOrk9HZb4LZOsaj4Rq5_vAn2Eb_FxFr8IvB3aYE6TfNOxuuz/pub");
+                await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception)
+            {
+                // An unexpected error occurred. No browser may be installed on the device.
             }
         }
         public void SizeDisplay()
