@@ -73,7 +73,7 @@ namespace AQL_PS8_REM
             double pageHeight = 710; // Title + Tabs
 #else
             double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
-            double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density * 0.84; // Top + Tabs + Nav (~16%)
+            double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density - 24 - 48 - 48; // Top + Tabs + Nav
 #if ANDROID
             TextDisplayBorder.Margin = 0; // TextDisplayBorder.StrokeThickness / 4; // Maui bug
 #endif
@@ -92,11 +92,16 @@ namespace AQL_PS8_REM
                 TextDisplayBorder.Margin.HorizontalThickness - TextDisplayBorder.StrokeThickness * 2;
 
             double tdHeight = Math.Min(tdWidth / 11 * 4, Math.Max(TextDisplay.FontSize * 4,
-                pageHeight - GRID1.Margin.VerticalThickness - (Aux1.HeightRequest + Aux1.Margin.VerticalThickness) * 10 -
+                pageHeight - GRID1.Margin.VerticalThickness - (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
                 TextDisplay.Margin.VerticalThickness - TextDisplayBorder.Margin.VerticalThickness - TextDisplayBorder.StrokeThickness * 2));
 
             TextDisplay.HeightRequest = tdHeight;
             TextDisplay.FontSize = Math.Min(tdWidth / 11, tdHeight / 3);
+
+            // Set left/right button height
+
+            LeftBtn.HeightRequest = MenuBtn.MinimumHeightRequest * 3 + MenuBtn.Margin.VerticalThickness * 2;
+            RightBtn.HeightRequest = MenuBtn.MinimumHeightRequest * 3 + MenuBtn.Margin.VerticalThickness * 2;
         }
 
         string _ipAddr;
