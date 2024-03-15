@@ -11,15 +11,18 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="MinimumHeightRequest" Value="48" />
+                <Setter Property="HeightRequest" Value="48" />
                 <Setter Property="Margin" Value="4" />
-                <Setter Property="Padding" Value="0" />                
+                <Setter Property="Padding" Value="{OnPlatform '0', WinUI='0,10,0,10'}" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black" />
+                <!--<Setter Property="BackgroundColor" Value="DarkGray"/>-->
             </Style>
 
             <Style TargetType="Border">
-                <Setter Property="Margin" Value="4" />
+                <Setter Property="Margin" Value="{OnPlatform '4', Android='2,4,2,4'}" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="StrokeThickness" Value="4" />
                 <Setter Property="Stroke" Value="LightGray" />
@@ -32,10 +35,12 @@
                 <Setter Property="MinimumHeightRequest" Value="48" />
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="PlaceholderColor" Value="LightSalmon" />
                 <Setter Property="Placeholder" Value="Enter Value" />
                 <Setter Property="BackgroundColor" Value="Black"/>
+                <!--<Setter Property="BackgroundColor" Value="DarkGray"/>-->
                 <Setter Property="IsSpellCheckEnabled" Value="False" />
                 <Setter Property="IsTextPredictionEnabled" Value="False" />
                 <Setter Property="Keyboard" Value="Plain" />

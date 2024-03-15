@@ -70,13 +70,13 @@ namespace AQL_PS8_REM
 
 #if WINDOWS
             double pageWidth = 400;
-            double pageHeight = 710; // Title + Tabs
+            double pageHeight = 848;
 #else
             double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
-            double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density - 24 - 48 - 48; // Top + Tabs + Nav
-#if ANDROID
-            TextDisplayBorder.Margin = 0; // TextDisplayBorder.StrokeThickness / 4; // Maui bug
-#endif
+            double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+//#if ANDROID
+//            TextDisplayBorder.Margin = 0; // TextDisplayBorder.StrokeThickness / 4; // Maui bug
+//#endif
 #endif
 
             App_Version.Text = AppInfo.VersionString;
@@ -91,8 +91,8 @@ namespace AQL_PS8_REM
             double tdWidth = pageWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness - 
                 TextDisplayBorder.Margin.HorizontalThickness - TextDisplayBorder.StrokeThickness * 2;
 
-            double tdHeight = Math.Min(tdWidth / 11 * 4, Math.Max(TextDisplay.FontSize * 4,
-                pageHeight - GRID1.Margin.VerticalThickness - (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
+            double tdHeight = Math.Min(tdWidth / 11 * 40, Math.Max(TextDisplay.FontSize * 1,
+                pageHeight * 0.84 - GRID1.Margin.VerticalThickness - (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
                 TextDisplay.Margin.VerticalThickness - TextDisplayBorder.Margin.VerticalThickness - TextDisplayBorder.StrokeThickness * 2));
 
             TextDisplay.HeightRequest = tdHeight;
