@@ -240,7 +240,6 @@ namespace AQL_PS8_REM
         }
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
- 
             const int toff = 5;
             SocketProcess socketProcess = new();
             DateTime nTime = DateTime.Now.AddSeconds(toff);

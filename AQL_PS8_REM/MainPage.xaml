@@ -189,7 +189,8 @@
                 <Label x:Name="Developer" Text="MAS Consulting" Grid.Row="8" Grid.Column="1"/>
                 
                 <Label x:Name="Label19" Text="Instructions:" Grid.Row="9"/>
-                <Button x:Name="QSG" Text="Click Here" BackgroundColor="black" TextColor="LightBlue" FontAttributes="Bold, Italic"
+                <Button x:Name="QSG" Text="Click Here" BackgroundColor="black" TextColor="PowderBlue" 
+                        FontAttributes="Bold, Italic"
                         HorizontalOptions="Start" Clicked="QSG_Click" Grid.Row="9" Grid.Column="1"/>
             </Grid>
         </ScrollView>

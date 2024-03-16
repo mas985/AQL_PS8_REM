@@ -22,7 +22,7 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">12.7</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">28.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">27.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
@@ -42,56 +42,56 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.8</ApplicationDisplayVersion>
-	  <ApplicationVersion>45</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.1.9</ApplicationDisplayVersion>
+	  <ApplicationVersion>46</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.8</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.9</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.8</ApplicationDisplayVersion>
-	  <ApplicationVersion>45</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.1.9</ApplicationDisplayVersion>
+	  <ApplicationVersion>46</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.8</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.9</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.8</ApplicationDisplayVersion>
-	  <ApplicationVersion>45</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.1.9</ApplicationDisplayVersion>
+	  <ApplicationVersion>46</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.8</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.9</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.8</ApplicationDisplayVersion>
-	  <ApplicationVersion>45</ApplicationVersion>
+	  <ApplicationDisplayVersion>1.1.9</ApplicationDisplayVersion>
+	  <ApplicationVersion>46</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.1.8</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.1.9</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
@@ -126,6 +126,8 @@
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="Resources\Splash\" />
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionAQL_PS8_REMHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 	<!--<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionAquaLogicPS8HideInfoBar="True" /></VisualStudio></ProjectExtensions>-->
 
