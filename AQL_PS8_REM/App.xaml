@@ -10,8 +10,8 @@
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="Margin" Value="4,14,4,14" />
-                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="4" />
+                <Setter Property="Padding" Value="0,10,0,10" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
