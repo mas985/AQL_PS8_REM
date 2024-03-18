@@ -83,7 +83,7 @@ namespace AQL_PS8_REM
             }
             double tdWidth = Math.Min(pageWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
          
-            double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(60,
+            double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(Aux1.FontSize * 3,
                 pageHeight * 0.84 - GRID1.Margin.VerticalThickness - (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
                 TextDisplay.Margin.VerticalThickness));
 

@@ -10,14 +10,14 @@
 
     <ContentPage Title="Keypad" BackgroundColor="Black" NavigationPage.HasNavigationBar="False">
         <ScrollView>
-            <Grid x:Name="GRID1" Margin="8" VerticalOptions="Start" MaximumWidthRequest="480">
+            <Grid x:Name="GRID1" Margin="12,4,12,4" VerticalOptions="Start" MaximumWidthRequest="432">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="TextDisplay" Margin="0" Padding="0" HorizontalTextAlignment="Center"/>
+                <Label x:Name="TextDisplay" Padding="0" HorizontalTextAlignment="Center"/>
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -81,7 +81,7 @@
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
         <ScrollView>
-            <Grid x:Name="GRID2" Margin="8" VerticalOptions="Start" MaximumWidthRequest="480">
+            <Grid x:Name="GRID2" Margin="12" VerticalOptions="Start" MaximumWidthRequest="432">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -121,7 +121,7 @@
 
     <ContentPage Title="Settings" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
         <ScrollView>
-            <Grid x:Name="GRID3" Margin="8" VerticalOptions="Start" MaximumWidthRequest="480">
+            <Grid x:Name="GRID3" Margin="12" VerticalOptions="Start" MaximumWidthRequest="432">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
