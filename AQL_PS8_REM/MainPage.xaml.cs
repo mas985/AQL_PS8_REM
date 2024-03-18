@@ -17,6 +17,8 @@ namespace AQL_PS8_REM
 
             InitializeBackgroundWorker();
 
+            App_Version.Text = AppInfo.VersionString;
+
             BindingContext = this;
         }
         protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
@@ -74,26 +76,16 @@ namespace AQL_PS8_REM
 #else
             double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
             double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
-//#if ANDROID
-//            TextDisplayBorder.Margin = 0; // TextDisplayBorder.StrokeThickness / 4; // Maui bug
-//#endif
 #endif
-
-            App_Version.Text = AppInfo.VersionString;
-            if (pageHeight / pageWidth < 2 && pageWidth > 480) // Tablets
+            if (pageHeight < pageWidth)
             {
-                pageWidth = pageHeight / 2;
-                GRID1.WidthRequest = pageWidth - GRID1.Margin.HorizontalThickness;
-                GRID2.WidthRequest = pageWidth - GRID2.Margin.HorizontalThickness;
-                GRID3.WidthRequest = pageWidth - GRID3.Margin.HorizontalThickness;
+                (pageWidth,pageHeight) = (pageHeight,pageWidth);
             }
-
-            double tdWidth = pageWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness - 
-                TextDisplayBorder.Margin.HorizontalThickness - TextDisplayBorder.StrokeThickness * 2;
-
-            double tdHeight = Math.Min(tdWidth / 11 * 40, Math.Max(TextDisplay.FontSize * 1,
+            double tdWidth = Math.Min(pageWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
+         
+            double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(60,
                 pageHeight * 0.84 - GRID1.Margin.VerticalThickness - (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
-                TextDisplay.Margin.VerticalThickness - TextDisplayBorder.Margin.VerticalThickness - TextDisplayBorder.StrokeThickness * 2));
+                TextDisplay.Margin.VerticalThickness));
 
             TextDisplay.HeightRequest = tdHeight;
             TextDisplay.FontSize = Math.Min(tdWidth / 11, tdHeight / 3);

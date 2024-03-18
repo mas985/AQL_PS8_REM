@@ -37,9 +37,9 @@
         <uap:SplashScreen Image="$placeholder$.png" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="portrait"/>
-          <uap:Rotation Preference="landscape"/>
           <uap:Rotation Preference="landscapeFlipped"/>
-          <uap:Rotation Preference="portraitFlipped"/></uap:InitialRotationPreference>
+          <uap:Rotation Preference="portraitFlipped"/>
+          <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>

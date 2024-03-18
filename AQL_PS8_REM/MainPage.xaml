@@ -4,22 +4,20 @@
             x:Class="AQL_PS8_REM.MainPage"
             x:Name="TabPage"
             SelectedTabColor="Lightgray"
-            UnselectedTabColor="Darkgray"
+            UnselectedTabColor="Dimgray"
             BarBackgroundColor="Black"
             Disappearing="OnDisappearing_TabbedPage">
 
     <ContentPage Title="Keypad" BackgroundColor="Black" NavigationPage.HasNavigationBar="False">
         <ScrollView>
-            <Grid x:Name="GRID1" Margin="8" VerticalOptions="Start">
+            <Grid x:Name="GRID1" Margin="8" VerticalOptions="Start" MaximumWidthRequest="480">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Border x:Name="TextDisplayBorder" Grid.Row="0" Grid.Column="0">
-                    <Label x:Name="TextDisplay" Margin="0" Padding="0" HorizontalTextAlignment="Center"/>
-                </Border>
+                <Label x:Name="TextDisplay" Margin="0" Padding="0" HorizontalTextAlignment="Center"/>
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -83,7 +81,7 @@
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
         <ScrollView>
-            <Grid x:Name="GRID2" Margin="8" VerticalOptions="Start">
+            <Grid x:Name="GRID2" Margin="8" VerticalOptions="Start" MaximumWidthRequest="480">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -109,37 +107,21 @@
                 <Label x:Name="Label6" Text="Valve3 Label:" Grid.Row="6"/>
                 <Label x:Name="Label7" Text="Valve4 Label:" Grid.Row="7"/>
 
-                <Border Grid.Row="0" Grid.Column="1">
-                    <Entry x:Name="Aux1_Edit" Text="Aux1"/>
-                </Border>
-                <Border Grid.Row="1" Grid.Column="1">
-                    <Entry x:Name="Aux2_Edit" Text="Aux2"/>
-                </Border>
-                <Border Grid.Row="2" Grid.Column="1">
-                    <Entry x:Name="Aux3_Edit" Text="Aux3"/>
-                </Border>
-                <Border Grid.Row="3" Grid.Column="1">
-                    <Entry x:Name="Aux4_Edit" Text="Aux4"/>
-                </Border>
-                <Border Grid.Row="4" Grid.Column="1">
-                    <Entry x:Name="Aux5_Edit" Text="Aux5"/>
-                </Border>
-                <Border Grid.Row="5" Grid.Column="1">
-                    <Entry x:Name="Aux6_Edit" Text="Aux6"/>
-                </Border>
-                <Border Grid.Row="6" Grid.Column="1">
-                    <Entry x:Name="Valve3_Edit" Text="Valve3"/>
-                </Border>
-                <Border Grid.Row="7" Grid.Column="1">
-                    <Entry x:Name="Valve4_Edit" Text="Valve4"/>
-                </Border>
-            </Grid>
+                <Entry x:Name="Aux1_Edit" Text="Aux1" Grid.Row="0" Grid.Column="1"/>
+                <Entry x:Name="Aux2_Edit" Text="Aux2" Grid.Row="1" Grid.Column="1"/>
+                <Entry x:Name="Aux3_Edit" Text="Aux3" Grid.Row="2" Grid.Column="1"/>
+                <Entry x:Name="Aux4_Edit" Text="Aux4" Grid.Row="3" Grid.Column="1"/>
+                <Entry x:Name="Aux5_Edit" Text="Aux5" Grid.Row="4" Grid.Column="1"/>
+                <Entry x:Name="Aux6_Edit" Text="Aux6" Grid.Row="5" Grid.Column="1"/>
+                <Entry x:Name="Valve3_Edit" Text="Valve3" Grid.Row="6" Grid.Column="1"/>
+                <Entry x:Name="Valve4_Edit" Text="Valve4" Grid.Row="7" Grid.Column="1"/>
+             </Grid>
         </ScrollView>
     </ContentPage>
 
     <ContentPage Title="Settings" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
         <ScrollView>
-            <Grid x:Name="GRID3" Margin="8" VerticalOptions="Start" >
+            <Grid x:Name="GRID3" Margin="8" VerticalOptions="Start" MaximumWidthRequest="480">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -158,15 +140,15 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" Grid.Column="1">
-                    <Entry x:Name="IPaddr" MaxLength="15"/>
-                </Border>
-                <Border Grid.Row="1" Grid.Column="1">
-                    <Entry x:Name="PortNum" MaxLength="5"/>
-                </Border>
-                <Border Grid.Row="2" Grid.Column="1">
-                    <Entry x:Name="LogInt"/>
-                </Border>
+                <!--<Border Grid.Row="0" Grid.Column="1">-->
+                <Entry x:Name="IPaddr" MaxLength="15" Grid.Row="0" Grid.Column="1"/>
+                <!--</Border>-->
+                <!--<Border Grid.Row="1" Grid.Column="1">-->
+                <Entry x:Name="PortNum" MaxLength="5" Grid.Row="1" Grid.Column="1"/>
+                <!--</Border>-->
+                <!--<Border Grid.Row="2" Grid.Column="1">-->
+                <Entry x:Name="LogInt" Grid.Row="2" Grid.Column="1"/>
+                <!--</Border>-->
 
                 <Label x:Name="Label10" Text="IP Address:" Grid.Row="0"/>
                 <Label x:Name="Label11" Text="Port Number:" Grid.Row="1"/>
