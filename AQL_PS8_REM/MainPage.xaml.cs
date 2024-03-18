@@ -74,9 +74,6 @@ namespace AQL_PS8_REM
 #else
             double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
             double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
-//#if ANDROID
-//            TextDisplayBorder.Margin = 0; // TextDisplayBorder.StrokeThickness / 4; // Maui bug
-//#endif
 #endif
 
             App_Version.Text = AppInfo.VersionString;
@@ -88,12 +85,11 @@ namespace AQL_PS8_REM
                 GRID3.WidthRequest = pageWidth - GRID3.Margin.HorizontalThickness;
             }
 
-            double tdWidth = pageWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness - 
-                TextDisplayBorder.Margin.HorizontalThickness - TextDisplayBorder.StrokeThickness * 2;
-
-            double tdHeight = Math.Min(tdWidth / 11 * 40, Math.Max(TextDisplay.FontSize * 1,
+            double tdWidth = pageWidth - GRID1.Margin.HorizontalThickness - TextDisplay.Margin.HorizontalThickness;
+         
+            double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(TextDisplay.FontSize * 3,
                 pageHeight * 0.84 - GRID1.Margin.VerticalThickness - (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
-                TextDisplay.Margin.VerticalThickness - TextDisplayBorder.Margin.VerticalThickness - TextDisplayBorder.StrokeThickness * 2));
+                TextDisplay.Margin.VerticalThickness));
 
             TextDisplay.HeightRequest = tdHeight;
             TextDisplay.FontSize = Math.Min(tdWidth / 11, tdHeight / 3);

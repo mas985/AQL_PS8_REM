@@ -10,6 +10,7 @@
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HeightRequest" Value="48" />
                 <Setter Property="MinimumHeightRequest" Value="48" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="Padding" Value="{OnPlatform '0', WinUI='0,10,0,10'}"/>
@@ -17,29 +18,20 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black" />
-                <!--<Setter Property="BackgroundColor" Value="DarkGray"/>-->
-            </Style>
-
-            <Style TargetType="Border">
-                <Setter Property="Margin" Value="{OnPlatform '4', Android='2'}" />
-                <Setter Property="Padding" Value="0" />
-                <Setter Property="StrokeThickness" Value="4" />
-                <Setter Property="Stroke" Value="LightGray" />
-                <Setter Property="BackgroundColor" Value="Black"/>
-                <Setter Property="StrokeShape" Value="RoundRectangle 4,4,4,4" />
+                <!--<Setter Property="BackgroundColor" Value="#202020"/>-->
             </Style>
             
             <Style TargetType="Entry">
                 <Setter Property="FontSize" Value="20" />
+                <Setter Property="HeightRequest" Value="48" />
                 <Setter Property="MinimumHeightRequest" Value="48" />
-                <Setter Property="Margin" Value="0" />
+                <Setter Property="Margin" Value="4" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
+                <Setter Property="BackgroundColor" Value="#202020"/>
                 <Setter Property="PlaceholderColor" Value="LightSalmon" />
                 <Setter Property="Placeholder" Value="Enter Value" />
-                <Setter Property="BackgroundColor" Value="Black"/>
-                <!--<Setter Property="BackgroundColor" Value="DarkGray"/>-->
                 <Setter Property="IsSpellCheckEnabled" Value="False" />
                 <Setter Property="IsTextPredictionEnabled" Value="False" />
                 <Setter Property="Keyboard" Value="Plain" />
@@ -48,13 +40,14 @@
             <Style TargetType="Button">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HeightRequest" Value="48" />
                 <Setter Property="MinimumHeightRequest" Value="48" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="LightGray" />
-                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="CornerRadius" Value="0" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>
