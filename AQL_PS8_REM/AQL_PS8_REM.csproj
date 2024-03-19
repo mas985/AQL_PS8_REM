@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-ios;net7.0-android33.0;net7.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net8.0-maccatalyst;net8.0-ios;net8.0-android34.0</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -39,64 +39,60 @@
 		<AppInstallerUri>G:\My Drive\Pool Tools\AQL-PS-8 Remote Emulator\Windows Installer\</AppInstallerUri>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
+	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>48</ApplicationVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
+	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>48</ApplicationVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
+	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>48</ApplicationVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
+	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
+	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>48</ApplicationVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
+	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>48</ApplicationVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
+	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>48</ApplicationVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
+	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>0</ApplicationVersion>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-	  <ProvisioningType>manual</ProvisioningType>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -118,17 +114,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<Folder Include="Properties\PublishProfiles\" />
+		<Folder Include="Resources\Images\" />
+		<Folder Include="Resources\Splash\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Properties\PublishProfiles\" />
-	  <Folder Include="Resources\Images\" />
-	  <Folder Include="Resources\Splash\" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionAQL_PS8_REMHideInfoBar="True" /></VisualStudio></ProjectExtensions>
-
-	<!--<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionAquaLogicPS8HideInfoBar="True" /></VisualStudio></ProjectExtensions>-->
 
 </Project>

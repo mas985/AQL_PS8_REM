@@ -4,5 +4,37 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:maui="using:Microsoft.Maui"
     xmlns:local="using:AQL_PS8_REM.WinUI">
+    
+    <!--<maui:MauiWinUIApplication.Resources>
+
+        <DataTemplate x:Key="MauiAppTitleBarTemplate">
+
+            <Grid >
+                <Border
+
+                  Canvas.ZIndex="1"
+
+                  VerticalAlignment="Stretch"
+
+                  Background="Black"
+                    
+                  Margin="0,0,0,0">
+                     
+                    <TextBlock
+
+                      Foreground="LightGray"                       
+
+                      VerticalAlignment="Center"
+
+                      HorizontalAlignment="Left"
+
+                      Text="    AQL-PS-8 Remote"
+
+                      FontWeight="Bold"/>
+
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </maui:MauiWinUIApplication.Resources>-->
 
 </maui:MauiWinUIApplication>

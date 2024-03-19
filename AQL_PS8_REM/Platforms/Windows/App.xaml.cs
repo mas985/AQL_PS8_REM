@@ -1,6 +1,7 @@
 ﻿using Microsoft.UI.Windowing;
 using Microsoft.UI;
 using Windows.Graphics;
+using Microsoft.Maui.Platform;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -18,7 +19,8 @@ namespace AQL_PS8_REM.WinUI
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
+            this.InitializeComponent();        
+
             Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, view) =>
             {
                 var mauiWindow = handler.VirtualView;
@@ -31,10 +33,13 @@ namespace AQL_PS8_REM.WinUI
                 IntPtr windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(nativeWindow);
                 WindowId windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(windowHandle);
                 AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-
+ 
                 // set a specific window size
-                appWindow.Resize(new SizeInt32(400, 800));
-                appWindow.Title = "AQL-PS-8 Remote"; 
+                appWindow.Resize(new SizeInt32(400, 770));
+                //appWindow.Title = "AQL-PS-8 Remote";
+                //appWindow.TitleBar.ForegroundColor = Microsoft.UI.Colors.Black;
+                //appWindow.TitleBar.BackgroundColor = Microsoft.UI.Colors.LightGray;
+         
                 //appWindow.SetIcon("/pool.ico");
 
                 if (appWindow.Presenter is OverlappedPresenter p)

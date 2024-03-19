@@ -72,7 +72,7 @@ namespace AQL_PS8_REM
 
 #if WINDOWS
             double pageWidth = 400;
-            double pageHeight = 848;
+            double pageHeight = 800;
 #else
             double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
             double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;

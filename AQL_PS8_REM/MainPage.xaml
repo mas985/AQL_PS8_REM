@@ -4,9 +4,12 @@
             x:Class="AQL_PS8_REM.MainPage"
             x:Name="TabPage"
             SelectedTabColor="Lightgray"
-            UnselectedTabColor="Dimgray"
+            UnselectedTabColor="Gray"
             BarBackgroundColor="Black"
             Disappearing="OnDisappearing_TabbedPage">
+    
+    <!--xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom"-->
 
     <ContentPage Title="Keypad" BackgroundColor="Black" NavigationPage.HasNavigationBar="False">
         <ScrollView>
