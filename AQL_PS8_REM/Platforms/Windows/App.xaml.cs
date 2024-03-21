@@ -19,7 +19,8 @@ namespace AQL_PS8_REM.WinUI
         /// </summary>
         public App()
         {
-            this.InitializeComponent();        
+            this.InitializeComponent();
+
 
             Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, view) =>
             {
@@ -37,9 +38,13 @@ namespace AQL_PS8_REM.WinUI
                 // set a specific window size
                 appWindow.Resize(new SizeInt32(400, 770));
                 //appWindow.Title = "AQL-PS-8 Remote";
-                //appWindow.TitleBar.ForegroundColor = Microsoft.UI.Colors.Black;
-                //appWindow.TitleBar.BackgroundColor = Microsoft.UI.Colors.LightGray;
-         
+                ////appWindow.TitleBar.ForegroundColor = Microsoft.UI.Colors.LightGray;
+                ////appWindow.TitleBar.BackgroundColor = Microsoft.UI.Colors.Black;
+                //appWindow.TitleBar.ButtonForegroundColor = Microsoft.UI.Colors.LightGray;
+                //appWindow.TitleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Black;
+                //appWindow.TitleBar.InactiveForegroundColor = Microsoft.UI.Colors.LightGray;
+                //appWindow.TitleBar.InactiveBackgroundColor = Microsoft.UI.Colors.Black;
+
                 //appWindow.SetIcon("/pool.ico");
 
                 if (appWindow.Presenter is OverlappedPresenter p)

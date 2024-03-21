@@ -12,13 +12,15 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<!--<ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>-->
+		<ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
 		<ApplicationIdGuid>1e4b4c7a-ab28-4968-95da-ef4aba251537</ApplicationIdGuid>
 
 		<!-- Versions -->
+	    <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
+	    <ApplicationVersion>49</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">12.7</SupportedOSPlatformVersion>
@@ -43,21 +45,21 @@
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationVersion>48</ApplicationVersion>
+	  <ApplicationVersion>49</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationVersion>48</ApplicationVersion>
+	  <ApplicationVersion>49</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationVersion>48</ApplicationVersion>
+	  <ApplicationVersion>49</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
@@ -71,21 +73,21 @@
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationVersion>48</ApplicationVersion>
+	  <ApplicationVersion>49</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationVersion>48</ApplicationVersion>
+	  <ApplicationVersion>49</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8 Remote</ApplicationTitle>
 	  <ApplicationDisplayVersion>1.2.1</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationVersion>48</ApplicationVersion>
+	  <ApplicationVersion>49</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
