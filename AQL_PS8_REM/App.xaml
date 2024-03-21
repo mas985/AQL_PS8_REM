@@ -18,7 +18,6 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="BackgroundColor" Value="Black" />
-                <!--<Setter Property="BackgroundColor" Value="#202020"/>-->
             </Style>
             
             <Style TargetType="Entry">
@@ -29,7 +28,7 @@
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
-                <Setter Property="BackgroundColor" Value="#202020"/>
+                <Setter Property="BackgroundColor" Value="#222222"/>
                 <Setter Property="PlaceholderColor" Value="LightSalmon" />
                 <Setter Property="Placeholder" Value="Enter Value" />
                 <Setter Property="IsSpellCheckEnabled" Value="False" />

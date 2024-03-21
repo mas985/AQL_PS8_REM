@@ -2,7 +2,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using System;
 
-namespace AquaLogicPS8
+namespace AQL_PS8_REM
 {
     internal class Program : MauiApplication
     {
