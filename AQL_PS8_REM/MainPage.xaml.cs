@@ -72,10 +72,12 @@ namespace AQL_PS8_REM
 
 #if WINDOWS
             double pageWidth = 400;
-            double pageHeight = 800;
+            double pageHeight = 900;
 #else
             double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
             double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+            LogLabel.Text = "";
+            LogCheck.IsVisible = false;
 #endif
             if (pageHeight < pageWidth)
             {
@@ -83,12 +85,13 @@ namespace AQL_PS8_REM
             }
             double tdWidth = Math.Min(pageWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
          
-            double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(Aux1.FontSize * 3,
-                pageHeight * 0.84 - GRID1.Margin.VerticalThickness - (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
-                TextDisplay.Margin.VerticalThickness));
+            //double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(Aux1.FontSize * 3, 
+            //    pageHeight * 0.84 - GRID1.Margin.VerticalThickness -
+            //    (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
+            //    TextDisplay.Margin.VerticalThickness));
 
-            TextDisplay.HeightRequest = tdHeight;
-            TextDisplay.FontSize = Math.Min(tdWidth / 11, tdHeight / 3);
+            TextDisplay.HeightRequest = tdWidth / 11 * 3; // tdHeight;
+            TextDisplay.FontSize = tdWidth / 11; // Math.Min(tdWidth / 11, tdHeight / 3);
 
             // Set left/right button height
 
@@ -98,7 +101,6 @@ namespace AQL_PS8_REM
 
         string _ipAddr;
         int _portNum;
-        int _logInt;
         private void UpdateIPPort()
         {
             if (IPAddress.TryParse(IPaddr.Text, out IPAddress ipAddress))
@@ -113,8 +115,6 @@ namespace AQL_PS8_REM
             }
             else { PortNum.Text = _portNum.ToString(); }
 
-            _ = int.TryParse(LogInt.Text, out _logInt);
-            LogInt.Text = _logInt.ToString();
         }
         public void ValidateLabels()
         {
@@ -161,9 +161,7 @@ namespace AQL_PS8_REM
 
         // UI Update
 
-        private readonly string _logPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AQL_PS8_LOG.csv");
-        private DateTime _lastLog = DateTime.Now;
-         private void UpdateDisplay(SocketProcess.SocketData socketData)
+          private void UpdateDisplay(SocketProcess.SocketData socketData)
         {
             try
             {
@@ -191,11 +189,20 @@ namespace AQL_PS8_REM
                     SetStatus(Service, socketData.Status, socketData.Blink, SocketProcess.States.SERVICE);
                 }
 
-                if (socketData.LogText != null && _logInt > 0 && DateTime.Now >= _lastLog.AddMinutes(_logInt))
+#if WINDOWS
+                if (LogCheck.IsChecked && socketData.LogText != null)
                 {
-                    _lastLog = DateTime.Now;
-                    SocketProcess.WriteTextFile(_logPath, socketData.LogText);
+                    string fPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AQL_PS8_LOG.csv");
+                    if (!File.Exists(fPath)) // Write header
+                    {
+                        File.WriteAllText(fPath, "Time,Air T,Pool T,Spa T\n");
+                    }
+                    using StreamWriter file = new(fPath, append: true);
+                    file.WriteLine(DateTime.Now.ToString() + "," + socketData.LogText);
+
                 }
+#endif
+
             }
             catch (Exception e)
             {
@@ -232,18 +239,17 @@ namespace AQL_PS8_REM
         }
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            const int toff = 5;
+            int nCnt = 0;
             SocketProcess socketProcess = new();
-            DateTime nTime = DateTime.Now.AddSeconds(toff);
             while (!_backgroundWorker.CancellationPending)
             {
                 Thread.Sleep(100);
 
-                if (!socketProcess.Connected || DateTime.Now > nTime)
+                if (!socketProcess.Connected || nCnt > 50)
                 {
                     //System.Diagnostics.Debug.WriteLine(string.Format("{0:HH:mm:ss} {1:HH:mm:ss} {2} {3}", DateTime.Now, nTime, socketProcess.Connected, "Reset Socket"));
                     socketProcess.Connect(_ipAddr, _portNum);
-                    nTime = DateTime.Now.AddSeconds(toff);
+                    nCnt = 0;
                     _key = "";
                 }
                 else
@@ -253,8 +259,12 @@ namespace AQL_PS8_REM
                     if (socketData.HasData)
                     {
                         _backgroundWorker.ReportProgress(0, socketData);
-                        nTime = DateTime.Now.AddSeconds(toff);
+                        nCnt = 0;
                         //System.Diagnostics.Debug.WriteLine(string.Format("{0:HH:mm:ss} {1}", nTime, "Read Data"));
+                    }
+                    else
+                    {
+                        nCnt++;
                     }
 
                     if (_key != "")
@@ -267,11 +277,10 @@ namespace AQL_PS8_REM
                         }
                         else if (_key == "Reset")
                         {
-                            System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", DateTime.Now, "Reset Device"));
+                            //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", DateTime.Now, "Reset Device"));
                             socketData.HasData = true;
                             socketData.DisplayText = "Remote Device Reset...";
                             _backgroundWorker.ReportProgress(0, socketData);
-                            nTime = DateTime.Now;
                         }
                         _key = "";
                     }

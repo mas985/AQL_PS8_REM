@@ -1,6 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Net.NetworkInformation;
 using System.Net;
+using static AQL_PS8_SKT.SocketProcess;
 
 namespace AQL_PS8_SKT
 {
@@ -235,6 +236,9 @@ namespace AQL_PS8_SKT
         private int _airT;
         private int _poolT = -9999;
         private int _spaT = -9999;
+        private int _airPT = -9999;
+        private int _poolPT = -9999;
+        private int _spaPT = -9999;
         public SocketData Update()
         {
             SocketData socketData = new();
@@ -311,7 +315,17 @@ namespace AQL_PS8_SKT
                                 if (socketData.DisplayText.Contains("Air Temp"))
                                 {
                                     _airT = GetTemp(socketData.DisplayText);
-                                    socketData.LogText = DateTime.Now.ToString() + "," + _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString(); // Update only after air T
+                                    if (_airT != _airPT || _poolT != _poolPT || _spaT != _spaPT) // Log only changes
+                                    {
+                                        socketData.LogText = _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString();
+                                        _airPT = _airT;
+                                        _poolPT = _poolT;
+                                        _spaPT = _spaT;
+                                    }
+                                    else
+                                    {
+                                        socketData.LogText = null;
+                                    }
                                 }
                                 else if (socketData.DisplayText.Contains("Pool Temp"))
                                 {
@@ -321,7 +335,7 @@ namespace AQL_PS8_SKT
                                 {
                                     _spaT = GetTemp(socketData.DisplayText);
                                 }
-                                _menu_locked = socketData.DisplayText.Contains("Menu-Locked");
+                                 _menu_locked = socketData.DisplayText.Contains("Menu-Locked");
                             }
                             else if (bytes[2] == 0x00 && bytes[3] == 0x02)
                             {
@@ -417,16 +431,6 @@ namespace AQL_PS8_SKT
             {
                 return -1;
             }
-        }
-
-        public static void WriteTextFile(string fPath, string line)
-        {
-            if (!File.Exists(fPath))
-            {
-                File.WriteAllText(fPath, "Time,Air T,Pool T,Spa T\n");
-            }
-            using StreamWriter file = new(fPath, append: true);
-            file.WriteLine(line);
         }
     }
 }
