@@ -1,6 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Net.NetworkInformation;
 using System.Net;
+using static AQL_PS8_SKT.SocketProcess;
 
 namespace AQL_PS8_SKT
 {
@@ -191,7 +192,7 @@ namespace AQL_PS8_SKT
             {
                 if (_tcpClient.Connected)
                 {
-                    List<byte> queData = new();
+                    List<byte> queData = [];
 
                     Keys bKey = GetKey(key);
 
@@ -201,8 +202,8 @@ namespace AQL_PS8_SKT
 
                     queData.Add(_WIRED_LOCAL_KEY_EVENT);
                     byte[] aBytes = BitConverter.GetBytes((int)bKey);
-                    queData.AddRange(aBytes.ToList());
-                    queData.AddRange(aBytes.ToList());
+                    queData.AddRange([.. aBytes]);
+                    queData.AddRange([.. aBytes]);
 
                     short crc = 0;
                     foreach (byte aB in queData) { crc += aB; }
@@ -216,11 +217,11 @@ namespace AQL_PS8_SKT
                     queData.Add(_FRAME_DLE);
                     queData.Add(_FRAME_ETX);
 
-                    System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}", key, BitConverter.ToString(queData.ToArray())));
+                    System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}", key, BitConverter.ToString([.. queData])));
 
                     // Send key
 
-                    _tcpClient.GetStream().Write(queData.ToArray(), 0, queData.Count);
+                    _tcpClient.GetStream().Write([.. queData], 0, queData.Count);
                 }
             }
             catch (Exception e)
@@ -235,14 +236,17 @@ namespace AQL_PS8_SKT
         private int _airT;
         private int _poolT = -9999;
         private int _spaT = -9999;
+        private int _airPT = -9999;
+        private int _poolPT = -9999;
+        private int _spaPT = -9999;
         public SocketData Update()
         {
             SocketData socketData = new();
             try
             {
-                byte[] kaBytes = new byte[] { 0x10, 0x02, 0x01, 0x01, 0x00, 0x14, 0x10, 0x03 }; // Keep Alive Sequence
-                byte[] frBytes = new byte[] { 0x00, 0xe0, 0x00, 0xe6, 0x18, 0x1e, 0xe0 };       // Frame indicator between 2 keep alive
-                List<byte> recData = new();
+                byte[] kaBytes = [0x10, 0x02, 0x01, 0x01, 0x00, 0x14, 0x10, 0x03]; // Keep Alive Sequence
+                byte[] frBytes = [0x00, 0xe0, 0x00, 0xe6, 0x18, 0x1e, 0xe0];       // Frame indicator between 2 keep alive
+                List<byte> recData = [];
                 long nCRC = 0;
                 while (_tcpClient.Connected && _tcpClient.Available > 6)
                 {
@@ -269,7 +273,7 @@ namespace AQL_PS8_SKT
                             break;
                         }
                     }
-                    byte[] bytes = recData.ToArray();
+                    byte[] bytes = [.. recData];
 
                     //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
 
@@ -311,7 +315,17 @@ namespace AQL_PS8_SKT
                                 if (socketData.DisplayText.Contains("Air Temp"))
                                 {
                                     _airT = GetTemp(socketData.DisplayText);
-                                    socketData.LogText = DateTime.Now.ToString() + "," + _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString(); // Update only after air T
+                                    if (_airT != _airPT || _poolT != _poolPT || _spaT != _spaPT) // Log only changes
+                                    {
+                                        socketData.LogText = _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString();
+                                        _airPT = _airT;
+                                        _poolPT = _poolT;
+                                        _spaPT = _spaT;
+                                    }
+                                    else
+                                    {
+                                        socketData.LogText = null;
+                                    }
                                 }
                                 else if (socketData.DisplayText.Contains("Pool Temp"))
                                 {
@@ -321,7 +335,7 @@ namespace AQL_PS8_SKT
                                 {
                                     _spaT = GetTemp(socketData.DisplayText);
                                 }
-                                _menu_locked = socketData.DisplayText.Contains("Menu-Locked");
+                                 _menu_locked = socketData.DisplayText.Contains("Menu-Locked");
                             }
                             else if (bytes[2] == 0x00 && bytes[3] == 0x02)
                             {
@@ -399,34 +413,24 @@ namespace AQL_PS8_SKT
             return str.Replace("_", "°").Trim();
         }
 
-        public static long PingUART(string ipAddr)
-        {
-            Ping pingSender = new();
-            IPAddress ipAddress = IPAddress.Parse(ipAddr);
-            PingReply reply = pingSender.Send(ipAddress);
-            if (reply.Status == IPStatus.Success)
-            {
-                //System.Diagnostics.Debug.WriteLine("Address: {0}", reply.Address.ToString());
-                //System.Diagnostics.Debug.WriteLine("RoundTrip time: {0}", reply.RoundtripTime);
-                //System.Diagnostics.Debug.WriteLine("Time to live: {0}", reply.Options.Ttl);
-                //System.Diagnostics.Debug.WriteLine("Don't fragment: {0}", reply.Options.DontFragment);
-                //System.Diagnostics.Debug.WriteLine("Buffer size: {0}", reply.Buffer.Length);
-                return reply.RoundtripTime;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-
-        public static void WriteTextFile(string fPath, string line)
-        {
-            if (!File.Exists(fPath))
-            {
-                File.WriteAllText(fPath, "Time,Air T,Pool T,Spa T\n");
-            }
-            using StreamWriter file = new(fPath, append: true);
-            file.WriteLine(line);
-        }
+        //public static long PingUART(string ipAddr)
+        //{
+        //    Ping pingSender = new();
+        //    IPAddress ipAddress = IPAddress.Parse(ipAddr);
+        //    PingReply reply = pingSender.Send(ipAddress);
+        //    if (reply.Status == IPStatus.Success)
+        //    {
+        //        //System.Diagnostics.Debug.WriteLine("Address: {0}", reply.Address.ToString());
+        //        //System.Diagnostics.Debug.WriteLine("RoundTrip time: {0}", reply.RoundtripTime);
+        //        //System.Diagnostics.Debug.WriteLine("Time to live: {0}", reply.Options.Ttl);
+        //        //System.Diagnostics.Debug.WriteLine("Don't fragment: {0}", reply.Options.DontFragment);
+        //        //System.Diagnostics.Debug.WriteLine("Buffer size: {0}", reply.Buffer.Length);
+        //        return reply.RoundtripTime;
+        //    }
+        //    else
+        //    {
+        //        return -1;
+        //    }
+        //}
     }
 }

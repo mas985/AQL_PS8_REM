@@ -12,7 +12,7 @@
             android:TabbedPage.ToolbarPlacement="Bottom"-->
 
     <ContentPage Title="Keypad" BackgroundColor="Black" NavigationPage.HasNavigationBar="False">
-        <ScrollView>
+        <ScrollView VerticalOptions="FillAndExpand">
             <Grid x:Name="GRID1" Margin="12,4,12,4" VerticalOptions="Start" MaximumWidthRequest="432">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -83,7 +83,7 @@
     </ContentPage>
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
-        <ScrollView>
+        <ScrollView VerticalOptions="FillAndExpand">
             <Grid x:Name="GRID2" Margin="12" VerticalOptions="Start" MaximumWidthRequest="432">
 
                 <Grid.ColumnDefinitions>
@@ -123,7 +123,7 @@
     </ContentPage>
 
     <ContentPage Title="Settings" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
-        <ScrollView>
+        <ScrollView VerticalOptions="FillAndExpand">
             <Grid x:Name="GRID3" Margin="12" VerticalOptions="Start" MaximumWidthRequest="432">
 
                 <Grid.ColumnDefinitions>
@@ -141,42 +141,40 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <!--<Border Grid.Row="0" Grid.Column="1">-->
-                <Entry x:Name="IPaddr" MaxLength="15" Grid.Row="0" Grid.Column="1"/>
-                <!--</Border>-->
-                <!--<Border Grid.Row="1" Grid.Column="1">-->
-                <Entry x:Name="PortNum" MaxLength="5" Grid.Row="1" Grid.Column="1"/>
-                <!--</Border>-->
-                <!--<Border Grid.Row="2" Grid.Column="1">-->
-                <Entry x:Name="LogInt" Grid.Row="2" Grid.Column="1"/>
-                <!--</Border>-->
-
                 <Label x:Name="Label10" Text="IP Address:" Grid.Row="0"/>
-                <Label x:Name="Label11" Text="Port Number:" Grid.Row="1"/>
-                <Label x:Name="Label12" Text="Log Interval:" Grid.Row="2"/>
-
-                <Label x:Name="Label13" Text="" Grid.Row="3"/>
-
-                <Label x:Name="Label14" Text="Service Mode:" Grid.Row="4"/>
-                <Button x:Name="Service" Text="Service" Clicked="Button_Click" Grid.Row="4" Grid.Column="1"/>
-
-                <Label x:Name="Label15" Text="Remote Device:" Grid.Row="5"/>
-                <Button x:Name="Reset" Text="Reset" Clicked="Button_Click" Grid.Row="5" Grid.Column="1"/>
-
-                <Label x:Name="Label16" Text="" Grid.Row="6"/>
-
-                <Label x:Name="Label17" Text="Version:" Grid.Row="7"/>
-                <Label x:Name="App_Version" Text="0.0.0.0" Grid.Row="7" Grid.Column="1"/>
-
-                <Label x:Name="Label18" Text="Developer:" Grid.Row="8"/>
-                <Label x:Name="Developer" Text="MAS Consulting" Grid.Row="8" Grid.Column="1"/>
+                <Entry x:Name="IPaddr" MaxLength="15" Grid.Row="0" Grid.Column="1"/>
                 
-                <Label x:Name="Label19" Text="Instructions:" Grid.Row="9"/>
+                <Label x:Name="Label11" Text="Port Number:" Grid.Row="1"/>
+                <Entry x:Name="PortNum" MaxLength="5" Grid.Row="1" Grid.Column="1"/>
+
+                <Label x:Name="Label12" Text="" Grid.Row="2"/>
+
+                <Label x:Name="Label13" Text="Service Mode:" Grid.Row="3"/>
+                <Button x:Name="Service" Text="Service" Clicked="Button_Click" Grid.Row="3" Grid.Column="1"/>
+
+                <Label x:Name="Label14" Text="Remote Device:" Grid.Row="4"/>
+                <Button x:Name="Reset" Text="Reset" Clicked="Button_Click" Grid.Row="4" Grid.Column="1"/>
+
+                <Label x:Name="Label15" Text="" Grid.Row="5"/>
+
+                <Label x:Name="Label16" Text="Version:" Grid.Row="6"/>
+                <Label x:Name="App_Version" Text="0.0.0.0" Grid.Row="6" Grid.Column="1"/>
+
+                <Label x:Name="Label17" Text="Developer:" Grid.Row="7"/>
+                <Label x:Name="Developer" Text="MAS Consulting" Grid.Row="7" Grid.Column="1"/>
+                
+                <Label x:Name="Label18" Text="Instructions:" Grid.Row="8"/>
                 <Button x:Name="QSG" Text="Click Here" BackgroundColor="Black" TextColor="PowderBlue" 
                         FontAttributes="Bold, Italic"
-                        HorizontalOptions="Start" Clicked="QSG_Click" Grid.Row="9" Grid.Column="1"/>
+                        HorizontalOptions="Start" Clicked="QSG_Click" Grid.Row="8" Grid.Column="1"/>
+
+                <Label x:Name="Label19" Text="" Grid.Row="9"/>
+
+                <Label x:Name="LogLabel" Text="Log Temperature:" Grid.Row="10"/>
+                <CheckBox x:Name="LogCheck" Color="Gray" Grid.Row="10" Grid.Column="1"/>
             </Grid>
         </ScrollView>
     </ContentPage>
