@@ -6,7 +6,6 @@
   
     <Application.Resources>
         <ResourceDictionary>
-            
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAutoScalingEnabled" Value="False" />

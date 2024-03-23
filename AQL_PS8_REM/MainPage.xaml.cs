@@ -7,11 +7,11 @@ namespace AQL_PS8_REM
 {
     public partial class MainPage : TabbedPage
     {
+        public static int WINUI_height { get; set; }
+        public static int WINUI_width { get; set; }
         public MainPage()
         {
             InitializeComponent();
-
-            SizeDisplay();
 
             LoadSettings();
 
@@ -21,10 +21,44 @@ namespace AQL_PS8_REM
 
             BindingContext = this;
         }
+        protected void OnAppearing_TabbedPage(object sender, EventArgs e)
+        {
+#if WINDOWS
+            WINUI_width = 428;
+            WINUI_height = 780;
+
+            double pageWidth = WINUI_width;
+            double pageHeight = WINUI_height;
+#else
+            double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
+            double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+            LogLabel.Text = "";
+            LogCheck.IsVisible = false;
+#endif
+
+            if (pageHeight < pageWidth)
+            {
+                (pageWidth, pageHeight) = (pageHeight, pageWidth);
+            }
+            double tdWidth = Math.Min(pageWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
+
+            //double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(Aux1.FontSize * 3, 
+            //    pageHeight * 0.84 - GRID1.Margin.VerticalThickness -
+            //    (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
+            //    TextDisplay.Margin.VerticalThickness));
+
+            TextDisplay.HeightRequest = tdWidth / 11 * 3; // tdHeight;
+            TextDisplay.FontSize = tdWidth / 11; // Math.Min(tdWidth / 11, tdHeight / 3);
+
+            // Set left/right button height
+
+            LeftBtn.HeightRequest = MenuBtn.MinimumHeightRequest * 3 + MenuBtn.Margin.VerticalThickness * 2;
+            RightBtn.HeightRequest = MenuBtn.MinimumHeightRequest * 3 + MenuBtn.Margin.VerticalThickness * 2;
+        }
         protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
         {
 #if ANDROID
-            Application.Current.Quit(); // Called when changing system fonts which crashes application
+            //Application.Current.Quit(); // Called when changing system fonts which crashes application
 #endif
         }
         protected void OnDisappearing_Labels(object sender, EventArgs e)
@@ -66,39 +100,7 @@ namespace AQL_PS8_REM
                 // An unexpected error occurred. No browser may be installed on the device.
             }
         }
-        public void SizeDisplay()
-        {
-            // Make panel display as large as possible
-
-#if WINDOWS
-            double pageWidth = 400;
-            double pageHeight = 900;
-#else
-            double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
-            double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
-            LogLabel.Text = "";
-            LogCheck.IsVisible = false;
-#endif
-            if (pageHeight < pageWidth)
-            {
-                (pageWidth,pageHeight) = (pageHeight,pageWidth);
-            }
-            double tdWidth = Math.Min(pageWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
-         
-            //double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(Aux1.FontSize * 3, 
-            //    pageHeight * 0.84 - GRID1.Margin.VerticalThickness -
-            //    (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
-            //    TextDisplay.Margin.VerticalThickness));
-
-            TextDisplay.HeightRequest = tdWidth / 11 * 3; // tdHeight;
-            TextDisplay.FontSize = tdWidth / 11; // Math.Min(tdWidth / 11, tdHeight / 3);
-
-            // Set left/right button height
-
-            LeftBtn.HeightRequest = MenuBtn.MinimumHeightRequest * 3 + MenuBtn.Margin.VerticalThickness * 2;
-            RightBtn.HeightRequest = MenuBtn.MinimumHeightRequest * 3 + MenuBtn.Margin.VerticalThickness * 2;
-        }
-
+ 
         string _ipAddr;
         int _portNum;
         private void UpdateIPPort()
