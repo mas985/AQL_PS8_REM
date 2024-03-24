@@ -42,8 +42,8 @@
                         <Button x:Name="MinusBtn" Text="-" FontSize="30" Clicked="Button_Click" Grid.Row="2"/>
                     </Grid>
 
-                    <Button x:Name="LeftBtn" Text="&lt;" FontSize="40" Clicked="Button_Click" />
-                    <Button x:Name="RightBtn" Text="&gt;" FontSize="40" Clicked="Button_Click" Grid.Column="2"/>
+                    <Button x:Name="LeftBtn" Text="&lt;" FontSize="40" HeightRequest="160" Clicked="Button_Click" />
+                    <Button x:Name="RightBtn" Text="&gt;" FontSize="40" HeightRequest="160" Clicked="Button_Click" Grid.Column="2"/>
                 </Grid>
 
                 <Grid Grid.Row="2">

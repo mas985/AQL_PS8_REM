@@ -10,7 +10,7 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAutoScalingEnabled" Value="False" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="HeightRequest" Value="48" />
+                <!--<Setter Property="HeightRequest" Value="48" />-->
                 <Setter Property="MinimumHeightRequest" Value="48" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="Padding" Value="{OnPlatform '0', WinUI='0,10,0,10'}"/>
@@ -22,7 +22,7 @@
             <Style TargetType="Entry">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAutoScalingEnabled" Value="False" />
-                <Setter Property="HeightRequest" Value="48" />
+                <!--<Setter Property="HeightRequest" Value="48" />-->
                 <Setter Property="MinimumHeightRequest" Value="48" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -40,7 +40,7 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAutoScalingEnabled" Value="False" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="HeightRequest" Value="48" />
+                <!--<Setter Property="HeightRequest" Value="48" />-->
                 <Setter Property="MinimumHeightRequest" Value="48" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="Padding" Value="0" />

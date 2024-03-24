@@ -41,19 +41,8 @@ namespace AQL_PS8_REM
                 (pageWidth, pageHeight) = (pageHeight, pageWidth);
             }
             double tdWidth = Math.Min(pageWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
-
-            //double tdHeight = Math.Min(tdWidth / 11 * 3, Math.Max(Aux1.FontSize * 3, 
-            //    pageHeight * 0.84 - GRID1.Margin.VerticalThickness -
-            //    (Aux1.MinimumHeightRequest + Aux1.Margin.VerticalThickness) * 10 -
-            //    TextDisplay.Margin.VerticalThickness));
-
-            TextDisplay.HeightRequest = tdWidth / 11 * 3; // tdHeight;
-            TextDisplay.FontSize = tdWidth / 11; // Math.Min(tdWidth / 11, tdHeight / 3);
-
-            // Set left/right button height
-
-            LeftBtn.HeightRequest = MenuBtn.MinimumHeightRequest * 3 + MenuBtn.Margin.VerticalThickness * 2;
-            RightBtn.HeightRequest = MenuBtn.MinimumHeightRequest * 3 + MenuBtn.Margin.VerticalThickness * 2;
+            TextDisplay.FontSize = tdWidth / 11;
+            TextDisplay.HeightRequest = TextDisplay.FontSize * 2.5;
         }
         protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
         {
