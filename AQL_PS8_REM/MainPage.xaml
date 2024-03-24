@@ -123,7 +123,7 @@
         </ScrollView>
     </ContentPage>
 
-    <ContentPage Title="Setup" BackgroundColor="Black" Disappearing="OnDisappearing_Settings">
+    <ContentPage Title="Setup" BackgroundColor="Black" Disappearing="OnDisappearing_Setup">
         <ScrollView VerticalOptions="FillAndExpand">
             <Grid x:Name="GRID3" Margin="12" VerticalOptions="Start" MaximumWidthRequest="428">
 
@@ -168,9 +168,9 @@
                 <Label x:Name="Developer" Text="MAS Consulting" Grid.Row="7" Grid.Column="1"/>
                 
                 <Label x:Name="Label18" Text="Instructions:" Grid.Row="8"/>
-                <Button x:Name="QSG" Text="Click Here" BackgroundColor="Black" TextColor="PowderBlue" 
+                <Button x:Name="Info" Text="Click Here" BackgroundColor="Black" TextColor="PowderBlue" 
                         FontAttributes="Bold, Italic"
-                        HorizontalOptions="Start" Clicked="QSG_Click" Grid.Row="8" Grid.Column="1"/>
+                        HorizontalOptions="Start" Clicked="Info_Click" Grid.Row="8" Grid.Column="1"/>
 
                 <Label x:Name="Label19" Text="" Grid.Row="9"/>
 

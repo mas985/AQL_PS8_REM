@@ -66,7 +66,7 @@ namespace AQL_PS8_REM
             ValidateLabels();
             SaveSettings();
         }
-        protected void OnDisappearing_Settings(object sender, EventArgs e)
+        protected void OnDisappearing_Setup(object sender, EventArgs e)
         {
             UpdateIPPort();
             SaveSettings();
@@ -88,7 +88,7 @@ namespace AQL_PS8_REM
                 TabPage.CurrentPage = TabPage.Children[0];
             }
         }
-        private async void QSG_Click(object sender, EventArgs args)
+        private async void Info_Click(object sender, EventArgs args)
         {
             try
             {
@@ -202,7 +202,6 @@ namespace AQL_PS8_REM
                     }
                     using StreamWriter file = new(fPath, append: true);
                     file.WriteLine(DateTime.Now.ToString() + "," + socketData.LogText);
-
                 }
 #endif
 
