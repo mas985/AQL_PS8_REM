@@ -1,14 +1,16 @@
 ﻿using AQL_PS8_SKT;
+using Microsoft.Maui.Controls;
 using System.ComponentModel;
 using System.Net;
+using System.Resources;
 using System.Windows.Input;
 
 namespace AQL_PS8_REM
 {
     public partial class MainPage : TabbedPage
     {
-        public static int WINUI_height { get; set; }
-        public static int WINUI_width { get; set; }
+        public static int Disp_height { get; set; }
+        public static int Disp_width { get; set; }
         public MainPage()
         {
             InitializeComponent();
@@ -24,31 +26,28 @@ namespace AQL_PS8_REM
         protected void OnAppearing_TabbedPage(object sender, EventArgs e)
         {
 #if WINDOWS
-            WINUI_width = 428;
-            WINUI_height = 780;
+            Disp_width = 428;
+            Disp_height = 790;
 
-            double pageWidth = WINUI_width;
-            double pageHeight = WINUI_height;
+            double dispWidth = Disp_width;
+            double dispHeight = Disp_height;
 #else
-            double pageWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
-            double pageHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+            double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
+            double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
             LogLabel.Text = "";
             LogCheck.IsVisible = false;
 #endif
 
-            if (pageHeight < pageWidth)
+            if (dispHeight < dispWidth)
             {
-                (pageWidth, pageHeight) = (pageHeight, pageWidth);
+                (dispWidth, dispHeight) = (dispHeight, dispWidth);
             }
-            double tdWidth = Math.Min(pageWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
+            double tdWidth = Math.Min(dispWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
             TextDisplay.FontSize = tdWidth / 11;
-            TextDisplay.HeightRequest = TextDisplay.FontSize * 2.5;
-        }
-        protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
+            TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
+         }
+         protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
         {
-#if ANDROID
-            //Application.Current.Quit(); // Called when changing system fonts which crashes application
-#endif
         }
         protected void OnDisappearing_Labels(object sender, EventArgs e)
         {
@@ -151,8 +150,7 @@ namespace AQL_PS8_REM
         }
 
         // UI Update
-
-          private void UpdateDisplay(SocketProcess.SocketData socketData)
+        private void UpdateDisplay(SocketProcess.SocketData socketData)
         {
             try
             {
@@ -160,6 +158,7 @@ namespace AQL_PS8_REM
                 {
                     TextDisplay.Text = socketData.DisplayText;
                     //TextDisplay.Text = "Wednesday [12]:45[A]";
+                    TextDisplay.MinimumHeightRequest = Math.Max(TextDisplay.Height, TextDisplay.MinimumHeightRequest);
                 }
 
                 if (socketData.Status != 0)

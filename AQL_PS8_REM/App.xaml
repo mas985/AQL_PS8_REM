@@ -8,10 +8,8 @@
         <ResourceDictionary>
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontAutoScalingEnabled" Value="False" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <!--<Setter Property="HeightRequest" Value="48" />-->
-                <Setter Property="MinimumHeightRequest" Value="48" />
+                <Setter Property="MinimumHeightRequest" Value="49" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="Padding" Value="{OnPlatform '0', WinUI='0,10,0,10'}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -21,9 +19,7 @@
             
             <Style TargetType="Entry">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontAutoScalingEnabled" Value="False" />
-                <!--<Setter Property="HeightRequest" Value="48" />-->
-                <Setter Property="MinimumHeightRequest" Value="48" />
+                <Setter Property="MinimumHeightRequest" Value="49" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
@@ -38,10 +34,8 @@
 
             <Style TargetType="Button">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontAutoScalingEnabled" Value="False" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <!--<Setter Property="HeightRequest" Value="48" />-->
-                <Setter Property="MinimumHeightRequest" Value="48" />
+                <Setter Property="MinimumHeightRequest" Value="49" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="VerticalOptions" Value="Center" />
