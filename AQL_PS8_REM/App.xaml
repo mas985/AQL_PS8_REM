@@ -7,7 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
-                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontSize"  Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="MinimumHeightRequest" Value="49" />
                 <Setter Property="Margin" Value="4" />
@@ -38,10 +38,11 @@
                 <Setter Property="MinimumHeightRequest" Value="49" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Fill" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="LightGray" />
                 <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

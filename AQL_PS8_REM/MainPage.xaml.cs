@@ -158,7 +158,6 @@ namespace AQL_PS8_REM
                 {
                     TextDisplay.Text = socketData.DisplayText;
                     //TextDisplay.Text = "Wednesday [12]:45[A]";
-                    TextDisplay.MinimumHeightRequest = Math.Max(TextDisplay.Height, TextDisplay.MinimumHeightRequest);
                 }
 
                 if (socketData.Status != 0)

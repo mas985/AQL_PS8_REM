@@ -6,7 +6,6 @@
             SelectedTabColor="Lightgray"
             UnselectedTabColor="Gray"
             BarBackgroundColor="Black"
-             
             Appearing="OnAppearing_TabbedPage"
             Disappearing="OnDisappearing_TabbedPage">
     
@@ -14,7 +13,7 @@
             android:TabbedPage.ToolbarPlacement="Bottom"-->
 
     <ContentPage Title="Keypad" BackgroundColor="Black">
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView>
             <Grid x:Name="GRID1" Margin="12,4,12,4" VerticalOptions="Start" MaximumWidthRequest="428">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -22,7 +21,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="TextDisplay" Padding="0" HorizontalTextAlignment="Center"/>
+                <Label x:Name="TextDisplay" Padding="0" FontAutoScalingEnabled="False" HorizontalTextAlignment="Center"/>
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -85,7 +84,7 @@
     </ContentPage>
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView>
             <Grid x:Name="GRID2" Margin="12" VerticalOptions="Start" MaximumWidthRequest="428">
 
                 <Grid.ColumnDefinitions>
@@ -125,7 +124,7 @@
     </ContentPage>
 
     <ContentPage Title="Setup" BackgroundColor="Black" Disappearing="OnDisappearing_Setup">
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView>
             <Grid x:Name="GRID3" Margin="12" VerticalOptions="Start" MaximumWidthRequest="428">
 
                 <Grid.ColumnDefinitions>
