@@ -59,12 +59,6 @@ namespace AQL_PS8_REM
             UpdateIPPort();
             SaveSettings();
         }
-        //protected void OnUnfocused_Entry(object sender, EventArgs e)
-        //{
-        //    Entry entry= (Entry)sender;
-        //    if (!entry.StyleClass.Contains("_Edit")) { GetSettings(); }
-        //    System.Diagnostics.Debug.WriteLine("Unfocused Event"); // Not Triggered
-        //}
         string _key = "";
         protected void Button_Click(object sender, EventArgs args)
         {
