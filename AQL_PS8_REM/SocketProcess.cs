@@ -311,8 +311,6 @@ namespace AQL_PS8_SKT
                             else if (bytes[2] == 0x01 && bytes[3] == 0x03) // Display
                             {
                                 string disp = Byte2string(bytes, 4, bytes.Length - 9).Replace("  "," ");
-                                //disp = disp.Replace("Chlorinator","SWCG");
-                                socketData.HasData = true;
                                 if (disp.Contains("Air Temp"))
                                 {
                                      _airT = GetTemp(disp);
@@ -339,8 +337,11 @@ namespace AQL_PS8_SKT
                                     _spaT = GetTemp(disp);
                                     disp = disp.Replace(" Temp ", " Temp\n");
                                 }
+                                else if (!disp.Contains('\n')) { disp += '\n'; }
+                                _menu_locked = disp.Contains("Menu-Locked");
+
                                 socketData.DisplayText = disp;
-                                 _menu_locked = socketData.DisplayText.Contains("Menu-Locked");
+                                socketData.HasData = true;
                             }
                             else if (bytes[2] == 0x00 && bytes[3] == 0x02)
                             {

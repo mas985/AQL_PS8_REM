@@ -1,17 +1,12 @@
 ﻿using AQL_PS8_SKT;
-using Microsoft.Maui.Controls;
 using System.ComponentModel;
 using System.Net;
-using System.Resources;
-using System.Windows.Input;
 
 namespace AQL_PS8_REM
 {
     public partial class MainPage : TabbedPage
     {
-        public static int Disp_height { get; set; }
-        public static int Disp_width { get; set; }
-        public MainPage()
+         public MainPage()
         {
             InitializeComponent();
 
@@ -25,7 +20,7 @@ namespace AQL_PS8_REM
         }
         protected void OnAppearing_TabbedPage(object sender, EventArgs e)
         {
-            SetMainDisplaySize();
+            FormatTextDisplay();
         }
         protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
         {
@@ -63,16 +58,12 @@ namespace AQL_PS8_REM
                 // An unexpected error occurred. No browser may be installed on the device.
             }
         }
-        //private double _defTDHgt;
-        //private double _defTDFont;
-        private void SetMainDisplaySize()
+        private void FormatTextDisplay()
         {
 #if WINDOWS
-            Disp_width = 428;
-            Disp_height = 790;
 
-            double dispWidth = Disp_width;
-            double dispHeight = Disp_height;
+            double dispWidth = 428;
+            double dispHeight = 790;
 #else
             double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
             double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
@@ -85,10 +76,10 @@ namespace AQL_PS8_REM
                 (dispWidth, dispHeight) = (dispHeight, dispWidth);
             }
             double tdWidth = Math.Min(dispWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
+
+            //TextDisplay.FontAutoScalingEnabled = false;
             TextDisplay.FontSize = tdWidth / 11;
             TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
-            //_defTDFont = TextDisplay.FontSize;
-            //_defTDHgt= TextDisplay.MinimumHeightRequest;
         }
         string _ipAddr;
         int _portNum;
