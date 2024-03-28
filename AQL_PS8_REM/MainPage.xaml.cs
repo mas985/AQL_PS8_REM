@@ -25,28 +25,9 @@ namespace AQL_PS8_REM
         }
         protected void OnAppearing_TabbedPage(object sender, EventArgs e)
         {
-#if WINDOWS
-            Disp_width = 428;
-            Disp_height = 790;
-
-            double dispWidth = Disp_width;
-            double dispHeight = Disp_height;
-#else
-            double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
-            double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
-            LogLabel.Text = "";
-            LogCheck.IsVisible = false;
-#endif
-
-            if (dispHeight < dispWidth)
-            {
-                (dispWidth, dispHeight) = (dispHeight, dispWidth);
-            }
-            double tdWidth = Math.Min(dispWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
-            TextDisplay.FontSize = tdWidth / 11;
-            TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
-         }
-         protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
+            SetMainDisplaySize();
+        }
+        protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
         {
         }
         protected void OnDisappearing_Labels(object sender, EventArgs e)
@@ -82,7 +63,33 @@ namespace AQL_PS8_REM
                 // An unexpected error occurred. No browser may be installed on the device.
             }
         }
- 
+        //private double _defTDHgt;
+        //private double _defTDFont;
+        private void SetMainDisplaySize()
+        {
+#if WINDOWS
+            Disp_width = 428;
+            Disp_height = 790;
+
+            double dispWidth = Disp_width;
+            double dispHeight = Disp_height;
+#else
+            double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
+            double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+            LogLabel.Text = "";
+            LogCheck.IsVisible = false;
+#endif
+
+            if (dispHeight < dispWidth)
+            {
+                (dispWidth, dispHeight) = (dispHeight, dispWidth);
+            }
+            double tdWidth = Math.Min(dispWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
+            TextDisplay.FontSize = tdWidth / 11;
+            TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
+            //_defTDFont = TextDisplay.FontSize;
+            //_defTDHgt= TextDisplay.MinimumHeightRequest;
+        }
         string _ipAddr;
         int _portNum;
         private void UpdateIPPort()
@@ -172,7 +179,6 @@ namespace AQL_PS8_REM
                     SetStatus(Aux6, socketData.Status, socketData.Blink, SocketProcess.States.AUX_6);
                     SetStatus(Service, socketData.Status, socketData.Blink, SocketProcess.States.SERVICE);
                 }
-
 #if WINDOWS
                 if (LogCheck.IsChecked && socketData.LogText != null)
                 {
@@ -185,7 +191,6 @@ namespace AQL_PS8_REM
                     file.WriteLine(DateTime.Now.ToString() + "," + socketData.LogText);
                 }
 #endif
-
             }
             catch (Exception e)
             {

@@ -21,7 +21,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="TextDisplay" Padding="0" FontAutoScalingEnabled="False" HorizontalTextAlignment="Center"/>
+                <Label x:Name="TextDisplay" Padding="0" HorizontalTextAlignment="Center"/>
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>

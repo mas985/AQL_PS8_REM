@@ -310,11 +310,12 @@ namespace AQL_PS8_SKT
                             }
                             else if (bytes[2] == 0x01 && bytes[3] == 0x03) // Display
                             {
-                                socketData.DisplayText = Byte2string(bytes, 4, bytes.Length - 9).Replace("  "," ");
+                                string disp = Byte2string(bytes, 4, bytes.Length - 9).Replace("  "," ");
+                                //disp = disp.Replace("Chlorinator","SWCG");
                                 socketData.HasData = true;
-                                if (socketData.DisplayText.Contains("Air Temp"))
+                                if (disp.Contains("Air Temp"))
                                 {
-                                    _airT = GetTemp(socketData.DisplayText);
+                                     _airT = GetTemp(disp);
                                     if (_airT != _airPT || _poolT != _poolPT || _spaT != _spaPT) // Log only changes
                                     {
                                         socketData.LogText = _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString();
@@ -326,15 +327,19 @@ namespace AQL_PS8_SKT
                                     {
                                         socketData.LogText = null;
                                     }
+                                    disp = disp.Replace(" Temp ", " Temp\n");
                                 }
-                                else if (socketData.DisplayText.Contains("Pool Temp"))
+                                else if (disp.Contains("Pool Temp"))
                                 {
-                                    _poolT = GetTemp(socketData.DisplayText);
+                                    _poolT = GetTemp(disp);
+                                    disp = disp.Replace(" Temp ", " Temp\n");
                                 }
-                                else if (socketData.DisplayText.Contains("Spa Temp"))
+                                else if (disp.Contains("Spa Temp"))
                                 {
-                                    _spaT = GetTemp(socketData.DisplayText);
+                                    _spaT = GetTemp(disp);
+                                    disp = disp.Replace(" Temp ", " Temp\n");
                                 }
+                                socketData.DisplayText = disp;
                                  _menu_locked = socketData.DisplayText.Contains("Menu-Locked");
                             }
                             else if (bytes[2] == 0x00 && bytes[3] == 0x02)
