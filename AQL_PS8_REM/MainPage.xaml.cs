@@ -22,12 +22,6 @@ namespace AQL_PS8_REM
         {
             FormatTextDisplay();
         }
-        protected void OnAppearing_TabbedPage(object sender, EventArgs e)
-        {
-        }
-        protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
-        {
-        }
         protected void OnDisappearing_Labels(object sender, EventArgs e)
         {
             ValidateLabels();
@@ -64,14 +58,12 @@ namespace AQL_PS8_REM
         private void FormatTextDisplay()
         {
 #if WINDOWS
-            double dispWidth = 428;
-            double dispHeight = 790;
+            TextDisplay.FontSize = 36;
 #else
             double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
             double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
             LogLabel.Text = "";
             LogCheck.IsVisible = false;
-#endif
 
             if (dispHeight < dispWidth)
             {
@@ -80,8 +72,9 @@ namespace AQL_PS8_REM
             double tdWidth = Math.Min(dispWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
 
             //TextDisplay.FontAutoScalingEnabled = false;
-            TextDisplay.FontSize = tdWidth / 12;
-            //TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
+            TextDisplay.FontSize = tdWidth / 11;
+#endif
+            TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
         }
         string _ipAddr;
         int _portNum;
@@ -148,6 +141,7 @@ namespace AQL_PS8_REM
         {
             try
             {
+                //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1} {2} {3}", Aux1.FontSize, Aux1.Height, TextDisplay.FontSize, TextDisplay.Height));;
                 if (socketData.DisplayText != null)
                 {
                     TextDisplay.Text = socketData.DisplayText;

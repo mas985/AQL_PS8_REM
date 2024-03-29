@@ -1,7 +1,6 @@
 ﻿using Microsoft.UI.Windowing;
 using Microsoft.UI;
 using Windows.Graphics;
-using Microsoft.Maui.Platform;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -35,7 +34,7 @@ namespace AQL_PS8_REM.WinUI
                 AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
  
                 // set a specific window size
-                appWindow.Resize(new SizeInt32(428, 740));
+                appWindow.Resize(new SizeInt32(420, 740));
                 //appWindow.Title = "AQL-PS-8 Remote";
                 ////appWindow.TitleBar.ForegroundColor = Microsoft.UI.Colors.LightGray;
                 ////appWindow.TitleBar.BackgroundColor = Microsoft.UI.Colors.Black;

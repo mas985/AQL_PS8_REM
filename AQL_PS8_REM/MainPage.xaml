@@ -6,8 +6,6 @@
             SelectedTabColor="Lightgray"
             UnselectedTabColor="Gray"
             BarBackgroundColor="Black"
-            Appearing="OnAppearing_TabbedPage"
-            Disappearing="OnDisappearing_TabbedPage"
             Loaded="OnLoaded_TabbedPage">
     
     <!--xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"

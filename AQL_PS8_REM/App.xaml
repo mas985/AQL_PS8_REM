@@ -9,7 +9,7 @@
             <Style TargetType="Label">
                 <Setter Property="FontSize"  Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="MinimumHeightRequest" Value="{OnPlatform '45', Android='49'}" />
+                <Setter Property="MinimumHeightRequest" Value="{OnPlatform '44.1', Android='48.1'}" />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="Padding" Value="{OnPlatform '0', WinUI='0,10,0,10'}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -19,7 +19,7 @@
             
             <Style TargetType="Entry">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="MinimumHeightRequest" Value="{OnPlatform '45', Android='49'}"  />
+                <Setter Property="MinimumHeightRequest" Value="{OnPlatform '44.1', Android='48.1'}"  />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
@@ -35,7 +35,7 @@
             <Style TargetType="Button">
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="MinimumHeightRequest" Value="{OnPlatform '45', Android='49'}"  />
+                <Setter Property="MinimumHeightRequest" Value="{OnPlatform '44.1', Android='48.1'}"  />
                 <Setter Property="Margin" Value="4" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="VerticalOptions" Value="Fill" />
