@@ -21,7 +21,6 @@ namespace AQL_PS8_REM.WinUI
         {
             this.InitializeComponent();
 
-
             Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, view) =>
             {
                 var mauiWindow = handler.VirtualView;
@@ -36,7 +35,7 @@ namespace AQL_PS8_REM.WinUI
                 AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
  
                 // set a specific window size
-                appWindow.Resize(new SizeInt32(428, 790));
+                appWindow.Resize(new SizeInt32(428, 740));
                 //appWindow.Title = "AQL-PS-8 Remote";
                 ////appWindow.TitleBar.ForegroundColor = Microsoft.UI.Colors.LightGray;
                 ////appWindow.TitleBar.BackgroundColor = Microsoft.UI.Colors.Black;

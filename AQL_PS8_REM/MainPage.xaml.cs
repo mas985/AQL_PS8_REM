@@ -18,9 +18,12 @@ namespace AQL_PS8_REM
 
             BindingContext = this;
         }
-        protected void OnAppearing_TabbedPage(object sender, EventArgs e)
+        protected void OnLoaded_TabbedPage(object sender, EventArgs e)
         {
             FormatTextDisplay();
+        }
+        protected void OnAppearing_TabbedPage(object sender, EventArgs e)
+        {
         }
         protected void OnDisappearing_TabbedPage(object sender, EventArgs e)
         {
@@ -61,7 +64,6 @@ namespace AQL_PS8_REM
         private void FormatTextDisplay()
         {
 #if WINDOWS
-
             double dispWidth = 428;
             double dispHeight = 790;
 #else
@@ -78,8 +80,8 @@ namespace AQL_PS8_REM
             double tdWidth = Math.Min(dispWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
 
             //TextDisplay.FontAutoScalingEnabled = false;
-            TextDisplay.FontSize = tdWidth / 11;
-            TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
+            TextDisplay.FontSize = tdWidth / 12;
+            //TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
         }
         string _ipAddr;
         int _portNum;

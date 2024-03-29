@@ -7,14 +7,15 @@
             UnselectedTabColor="Gray"
             BarBackgroundColor="Black"
             Appearing="OnAppearing_TabbedPage"
-            Disappearing="OnDisappearing_TabbedPage">
+            Disappearing="OnDisappearing_TabbedPage"
+            Loaded="OnLoaded_TabbedPage">
     
     <!--xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
             android:TabbedPage.ToolbarPlacement="Bottom"-->
 
     <ContentPage Title="Keypad" BackgroundColor="Black">
         <ScrollView>
-            <Grid x:Name="GRID1" Margin="12,4,12,4" VerticalOptions="Start" MaximumWidthRequest="428">
+            <Grid x:Name="GRID1" Margin="4" MaximumWidthRequest="428">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -85,7 +86,7 @@
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
         <ScrollView>
-            <Grid x:Name="GRID2" Margin="12" VerticalOptions="Start" MaximumWidthRequest="428">
+            <Grid x:Name="GRID2" Margin="4" MaximumWidthRequest="428">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -125,7 +126,7 @@
 
     <ContentPage Title="Setup" BackgroundColor="Black" Disappearing="OnDisappearing_Setup">
         <ScrollView>
-            <Grid x:Name="GRID3" Margin="12" VerticalOptions="Start" MaximumWidthRequest="428">
+            <Grid x:Name="GRID3" Margin="4" MaximumWidthRequest="428">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
