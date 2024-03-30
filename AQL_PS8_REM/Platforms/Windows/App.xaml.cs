@@ -34,10 +34,10 @@ namespace AQL_PS8_REM.WinUI
                 AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
  
                 // set a specific window size
-                appWindow.Resize(new SizeInt32(420, 740));
+                appWindow.Resize(new SizeInt32(420, 780));
                 //appWindow.Title = "AQL-PS-8 Remote";
-                ////appWindow.TitleBar.ForegroundColor = Microsoft.UI.Colors.LightGray;
-                ////appWindow.TitleBar.BackgroundColor = Microsoft.UI.Colors.Black;
+                //appWindow.TitleBar.ForegroundColor = Microsoft.UI.Colors.Black;
+                //appWindow.TitleBar.BackgroundColor = Microsoft.UI.Colors.Black;
                 //appWindow.TitleBar.ButtonForegroundColor = Microsoft.UI.Colors.LightGray;
                 //appWindow.TitleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Black;
                 //appWindow.TitleBar.InactiveForegroundColor = Microsoft.UI.Colors.LightGray;
