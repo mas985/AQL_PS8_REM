@@ -101,10 +101,14 @@
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
 	  <ProvisioningType>manual</ProvisioningType>
-	  <CodesignKey>iPhone Developer</CodesignKey>
-	  <CodesignProvision></CodesignProvision>
+	  <CodesignKey>Apple Distribution: Palm Beach Diabetes and Endocrine Specialists, P.A (QS3Z4H5M55)</CodesignKey>
+	  <CodesignProvision>App Store Profile - MAS</CodesignProvision>
 	</PropertyGroup>
-
+	
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+		<BundleResource Include="Platforms\iOS\PrivacyInfo.xcprivacy" LogicalName="PrivacyInfo.xcprivacy" />
+	</ItemGroup>
+	
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\wireless.svg" Color="Black" />
