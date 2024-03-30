@@ -12,8 +12,9 @@
             android:TabbedPage.ToolbarPlacement="Bottom"-->
 
     <ContentPage Title="Keypad" BackgroundColor="Black">
-        <ScrollView>
+        <ScrollView VerticalOptions="Start">
             <Grid x:Name="GRID1" Margin="4" MaximumWidthRequest="428">
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -83,8 +84,8 @@
     </ContentPage>
 
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
-        <ScrollView>
-            <Grid x:Name="GRID2" Margin="4" MaximumWidthRequest="428">
+        <ScrollView VerticalOptions="Start">
+            <Grid Margin="4" MaximumWidthRequest="428">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -123,8 +124,8 @@
     </ContentPage>
 
     <ContentPage Title="Setup" BackgroundColor="Black" Disappearing="OnDisappearing_Setup">
-        <ScrollView>
-            <Grid x:Name="GRID3" Margin="4" MaximumWidthRequest="428">
+        <ScrollView VerticalOptions="Start">
+            <Grid Margin="4" MaximumWidthRequest="428">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
