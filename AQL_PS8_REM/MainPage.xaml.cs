@@ -58,7 +58,7 @@ namespace AQL_PS8_REM
         private void FormatTextDisplay()
         {
 #if WINDOWS
-            TextDisplay.FontSize = 36;
+            TextDisplay.FontSize = 34;
 #else
             double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
             double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
@@ -70,11 +70,10 @@ namespace AQL_PS8_REM
                 (dispWidth, dispHeight) = (dispHeight, dispWidth);
             }
             double tdWidth = Math.Min(dispWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
-
-            //TextDisplay.FontAutoScalingEnabled = false;
             TextDisplay.FontSize = tdWidth / 11;
 #endif
             TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
+            TextDisplay.FontAutoScalingEnabled = false;
         }
         string _ipAddr;
         int _portNum;
@@ -145,7 +144,6 @@ namespace AQL_PS8_REM
                 if (socketData.DisplayText != null)
                 {
                     TextDisplay.Text = socketData.DisplayText;
-                    //TextDisplay.Text = "Wednesday [12]:45[A]";
                 }
 
                 if (socketData.Status != 0)
@@ -254,7 +252,7 @@ namespace AQL_PS8_REM
                         {
                             //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", DateTime.Now, "Reset Device"));
                             socketData.HasData = true;
-                            socketData.DisplayText = "Remote Device Reset...";
+                            socketData.DisplayText = "Remote Reset...";
                             _backgroundWorker.ReportProgress(0, socketData);
                         }
                         _key = "";

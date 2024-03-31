@@ -217,7 +217,7 @@ namespace AQL_PS8_SKT
                     queData.Add(_FRAME_DLE);
                     queData.Add(_FRAME_ETX);
 
-                    System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}", key, BitConverter.ToString([.. queData])));
+                    //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}", key, BitConverter.ToString([.. queData])));
 
                     // Send key
 
@@ -275,8 +275,6 @@ namespace AQL_PS8_SKT
                     }
                     byte[] bytes = [.. recData];
 
-                    //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
-
                     // process segment
 
                     if (bytes.SequenceEqual(frBytes)) //Frame
@@ -310,7 +308,8 @@ namespace AQL_PS8_SKT
                             }
                             else if (bytes[2] == 0x01 && bytes[3] == 0x03) // Display
                             {
-                                string disp = Byte2string(bytes, 4, bytes.Length - 9).Replace("  "," ");
+                                string disp = Byte2string(bytes, 4, bytes.Length - 9);
+                                //System.Diagnostics.Debug.WriteLine(string.Format("{0} :: {1}", BitConverter.ToString(bytes), disp));
                                 if (disp.Contains("Air Temp"))
                                 {
                                      _airT = GetTemp(disp);
@@ -337,7 +336,10 @@ namespace AQL_PS8_SKT
                                     _spaT = GetTemp(disp);
                                     disp = disp.Replace(" Temp ", " Temp\n");
                                 }
-                                else if (!disp.Contains('\n')) { disp += '\n'; }
+                                else if (disp.Contains("Display Light"))
+                                {
+                                    disp = disp.Replace("Display Light", "Display\nLight");
+                                }
                                 _menu_locked = disp.Contains("Menu-Locked");
 
                                 socketData.DisplayText = disp;
@@ -389,7 +391,7 @@ namespace AQL_PS8_SKT
             string tStr = "";
             string bStr = "";
             int isplt = istr + slen / 2;
-            for (int i = istr; i < istr + slen - 1; i++)
+            for (int i = istr; i < istr + slen; i++)
             {
                 if (bytes[i] == 0) { break; }
                 string cc = bytes[i] < 128 ? Convert.ToChar(bytes[i]).ToString() : Convert.ToChar(bytes[i] - 128).ToString();
@@ -416,7 +418,7 @@ namespace AQL_PS8_SKT
             }
             if (bStr.Contains('[') && !bStr.Contains(']')) { bStr += "]"; }
             string str = tStr.Trim() + "\n" + bStr.Trim();
-            return str.Replace("_", "°").Trim();
+            return str.Replace("_", "°").Replace(" :", ":").Replace("  ", " ").Replace("  ", " ").Replace("[ ", "[").Replace(" ]", "]").Trim();
         }
 
         //public static long PingUART(string ipAddr)
