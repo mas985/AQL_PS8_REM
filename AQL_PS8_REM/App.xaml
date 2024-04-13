@@ -15,6 +15,7 @@
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="LightGray" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
             </Style>
             
             <Style TargetType="Entry">
