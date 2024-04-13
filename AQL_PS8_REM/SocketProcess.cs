@@ -308,7 +308,7 @@ namespace AQL_PS8_SKT
                             }
                             else if (bytes[2] == 0x01 && bytes[3] == 0x03) // Display
                             {
-                                string disp = Byte2string(bytes, 4, bytes.Length - 9);
+                                string disp = Byte2string(bytes, 4, bytes.Length - 9); // 4 head + 20 line1 + 20 line2 + 5 trail bytes
                                 //System.Diagnostics.Debug.WriteLine(string.Format("{0} :: {1}", BitConverter.ToString(bytes), disp));
                                 if (disp.Contains("Air Temp"))
                                 {
@@ -418,7 +418,7 @@ namespace AQL_PS8_SKT
             }
             if (bStr.Contains('[') && !bStr.Contains(']')) { bStr += "]"; }
             string str = tStr.Trim() + "\n" + bStr.Trim();
-            return str.Replace("_", "°").Replace(" :", ":").Replace("  ", " ").Replace("  ", " ").Replace("[ ", "[").Replace(" ]", "]").Trim();
+            return str.Replace("  ", " ").Replace("  ", " ").Replace("_", "°").Replace(" :", ":").Replace("[ ", "[").Replace(" ]", "]").Trim();
         }
 
         //public static long PingUART(string ipAddr)
