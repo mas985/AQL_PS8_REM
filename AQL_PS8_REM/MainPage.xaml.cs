@@ -70,7 +70,7 @@ namespace AQL_PS8_REM
                 (dispWidth, dispHeight) = (dispHeight, dispWidth);
             }
             double tdWidth = Math.Min(dispWidth - GRID1.Margin.HorizontalThickness, GRID1.MaximumWidthRequest) - TextDisplay.Margin.HorizontalThickness;
-            TextDisplay.FontSize = tdWidth / 11;
+            TextDisplay.FontSize = tdWidth / 11; // 22 characters max line, 2:1 H:W ave ratio
 #endif
             TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
             TextDisplay.FontAutoScalingEnabled = false;
@@ -144,7 +144,8 @@ namespace AQL_PS8_REM
                 if (socketData.DisplayText != null)
                 {
                     TextDisplay.Text = socketData.DisplayText;
-                }
+                    //TextDisplay.Text = "Aux4 Group\nSuperChlr:[Unaffected]";
+                 }
 
                 if (socketData.Status != 0)
                 {
