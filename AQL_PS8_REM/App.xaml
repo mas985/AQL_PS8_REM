@@ -14,7 +14,7 @@
                 <Setter Property="Padding" Value="{OnPlatform '0', WinUI='0,10,0,10'}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="HorizontalOptions" Value="Fill" />
+                <!--<Setter Property="HorizontalOptions" Value="Fill" />-->
                 <Setter Property="TextColor" Value="LightGray" />
                 <Setter Property="LineBreakMode" Value="TailTruncation" />
             </Style>
