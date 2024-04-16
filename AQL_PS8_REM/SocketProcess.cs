@@ -360,7 +360,7 @@ namespace AQL_PS8_SKT
                             nCRC++;
                             if (nCRC > 10)
                             {
-                                socketData.DisplayText = "CRC Error...";
+                                socketData.DisplayText = "CRC Error";
                                 socketData.HasData = true;
                             }
                             //System.Diagnostics.Debug.WriteLine(string.Format("{0}   {1}", "CRC Error", BitConverter.ToString(bytes)));
@@ -371,7 +371,7 @@ namespace AQL_PS8_SKT
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
-                socketData.DisplayText = "Socket Error...";
+                socketData.DisplayText = "Socket Error";
                 socketData.HasData = true;
             }
             return socketData;

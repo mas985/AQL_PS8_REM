@@ -39,8 +39,7 @@ namespace AQL_PS8_REM
             _key = button.StyleId;
             if (_key == "Reset")
             {
-                //TextDisplay.Text = "Remote Device Reset...";
-                TabPage.CurrentPage = TabPage.Children[0];
+                 TabPage.CurrentPage = TabPage.Children[0];
             }
         }
         private async void Info_Click(object sender, EventArgs args)
@@ -196,7 +195,7 @@ namespace AQL_PS8_REM
         {
             if (!_backgroundWorker.IsBusy) 
             { 
-                TextDisplay.Text = "Connecting\nPlease Wait...";
+                TextDisplay.Text = "Connecting\nPlease Wait";
 
                 _backgroundWorker.WorkerReportsProgress = true;
                 _backgroundWorker.WorkerSupportsCancellation = true;
@@ -246,14 +245,14 @@ namespace AQL_PS8_REM
                         if (socketProcess.QueueKey(_key))
                         {
                             socketData.HasData = true;
-                            socketData.DisplayText = "Unlocking Menu\nPlease Wait...";
+                            socketData.DisplayText = "Unlocking Menu\nPlease Wait";
                             _backgroundWorker.ReportProgress(0, socketData);
                         }
                         else if (_key == "Reset")
                         {
                             //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", DateTime.Now, "Reset Device"));
                             socketData.HasData = true;
-                            socketData.DisplayText = "Connection Reset\nPlease Wait...";
+                            socketData.DisplayText = "Connection Reset\nPlease Wait";
                             _backgroundWorker.ReportProgress(0, socketData);
                         }
                         _key = "";

@@ -14,8 +14,9 @@
                 <Setter Property="Padding" Value="{OnPlatform '0', WinUI='0,10,0,10'}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
                 <Setter Property="TextColor" Value="LightGray" />
-                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
             </Style>
             
             <Style TargetType="Entry">
@@ -43,7 +44,7 @@
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="LightGray" />
                 <Setter Property="CornerRadius" Value="0" />
-                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>
