@@ -61,7 +61,12 @@ namespace AQL_PS8_REM
 #else
             double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
             double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+
             LogLabel.Text = "";
+            LogLabel.MinimumHeightRequest = 0;
+            LogLabel.HeightRequest = 0;
+
+            LogCheck.IsEnabled = false;
             LogCheck.IsVisible = false;
 
             if (dispHeight < dispWidth)
@@ -115,6 +120,7 @@ namespace AQL_PS8_REM
 
             IPaddr.Text = Preferences.Get(IPaddr.StyleId, "192.168.0.15");
             PortNum.Text = Preferences.Get(PortNum.StyleId, "8899");
+            P4Mode.IsChecked = Preferences.Get(P4Mode.StyleId, false);
 
             UpdateIPPort();
 
@@ -131,7 +137,8 @@ namespace AQL_PS8_REM
             Preferences.Set(Valve4_Edit.StyleId, Valve4_Edit.Text);
 
             Preferences.Set(IPaddr.StyleId, IPaddr.Text);
-            Preferences.Set(PortNum.StyleId, PortNum.Text);
+            Preferences.Set(PortNum.StyleId, PortNum.Text); 
+            Preferences.Set(P4Mode.StyleId, P4Mode.IsChecked);
         }
 
         // UI Update
@@ -195,7 +202,7 @@ namespace AQL_PS8_REM
         {
             if (!_backgroundWorker.IsBusy) 
             { 
-                TextDisplay.Text = "Connection Setup\n(Please Wait)";
+                TextDisplay.Text = "Connection Setup\n- Please Wait -";
 
                 _backgroundWorker.WorkerReportsProgress = true;
                 _backgroundWorker.WorkerSupportsCancellation = true;
@@ -242,17 +249,17 @@ namespace AQL_PS8_REM
 
                     if (_key != "")
                     {
-                        if (socketProcess.QueueKey(_key))
+                        if (socketProcess.QueueKey(_key, P4Mode.IsChecked))
                         {
                             socketData.HasData = true;
-                            socketData.DisplayText = "Unlocking Menu\n(Please Wait) -";
+                            socketData.DisplayText = "Unlocking Menu\n- Please Wait -";
                             _backgroundWorker.ReportProgress(0, socketData);
                         }
                         else if (_key == "Reset")
                         {
                             //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", DateTime.Now, "Reset Device"));
                             socketData.HasData = true;
-                            socketData.DisplayText = "Connection Reset\n(Please Wait)";
+                            socketData.DisplayText = "Connection Reset\n- Please Wait -";
                             _backgroundWorker.ReportProgress(0, socketData);
                         }
                         _key = "";
