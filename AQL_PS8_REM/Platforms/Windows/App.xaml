@@ -5,7 +5,7 @@
     xmlns:maui="using:Microsoft.Maui"
     xmlns:local="using:AQL_PS8_REM.WinUI">
     
-    <!--<maui:MauiWinUIApplication.Resources>
+    <maui:MauiWinUIApplication.Resources>
 
         <DataTemplate x:Key="MauiAppTitleBarTemplate">
 
@@ -15,26 +15,24 @@
                   Canvas.ZIndex="1"
 
                   VerticalAlignment="Stretch"
-
-                  Background="Black"
                     
-                  Margin="0,0,0,0">
-                     
+                  Margin="8,8,8,8">
+                    
                     <TextBlock
 
-                      Foreground="LightGray"                       
+                      Foreground="Gray"                       
 
                       VerticalAlignment="Center"
 
                       HorizontalAlignment="Left"
 
-                      Text="    AQL-PS-8 Remote"
+                      Text="AQL-PS-8 Remote Emulator"
 
                       FontWeight="Bold"/>
 
                 </Border>
             </Grid>
         </DataTemplate>
-    </maui:MauiWinUIApplication.Resources>-->
+    </maui:MauiWinUIApplication.Resources>
 
 </maui:MauiWinUIApplication>

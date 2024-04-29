@@ -168,60 +168,73 @@ namespace AQL_PS8_SKT
                 _ => 0,
             };
         }
-        public bool QueueKey(string key)
+        public bool QueueKey(string key, bool isP4)
         {
             if (_tcpClient.Connected)
             {
                 if (_menu_locked && key == "RightBtn")
                 {
-                    SendKey("LRBtn");
+                    SendKey("LRBtn", isP4);
                     return true;
                 }
                 else
                 {
-                    SendKey(key);
+                    SendKey(key, isP4);
                     return false;
                 }
             }
             return false;
         }
 
-        private void SendKey(string key)
+        private void SendKey(string key, bool isP4)
         {
             try
             {
                 if (_tcpClient.Connected)
                 {
-                    List<byte> queData = [];
-
                     Keys bKey = GetKey(key);
 
-                    queData.Add(_FRAME_DLE);
-                    queData.Add(_FRAME_STX);
-                    queData.Add(0x00);
+                    if (!isP4 || (int)bKey < 0xFFFF) {
+                        List<byte> queData = [];
 
-                    queData.Add(_WIRED_LOCAL_KEY_EVENT);
-                    byte[] aBytes = BitConverter.GetBytes((int)bKey);
-                    queData.AddRange([.. aBytes]);
-                    queData.AddRange([.. aBytes]);
+                        queData.Add(_FRAME_DLE);
+                        queData.Add(_FRAME_STX);
+                        queData.Add(0x00);
+                        queData.Add(_WIRED_LOCAL_KEY_EVENT);
 
-                    short crc = 0;
-                    foreach (byte aB in queData) { crc += aB; }
-                    queData.AddRange(BitConverter.GetBytes(crc).Reverse().ToArray());
+                        //byte[] aBytes = BitConverter.GetBytes((int)bKey); // Reversed bytes
 
-                    for (int i = queData.Count - 1; i > 1; i--)
-                    {
-                        if (queData[i] == 0x10) { queData.Insert(i + 1, 0x00); }
+                        byte[] aBytes;
+                        if (isP4)
+                        {
+                            aBytes = BitConverter.GetBytes((short)bKey);
+                        }
+                        else
+                        {
+                            aBytes = BitConverter.GetBytes((int)bKey);
+                        }
+
+                        queData.AddRange([.. aBytes]);
+                        queData.AddRange([.. aBytes]);
+
+                        short crc = 0;
+                        foreach (byte aB in queData) { crc += aB; }
+                        queData.AddRange(BitConverter.GetBytes(crc).Reverse().ToArray());
+
+                        for (int i = queData.Count - 1; i > 1; i--)
+                        {
+                            if (queData[i] == 0x10) { queData.Insert(i + 1, 0x00); }
+                        }
+
+                        queData.Add(_FRAME_DLE);
+                        queData.Add(_FRAME_ETX);
+
+                        //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}", key, BitConverter.ToString([.. queData])));
+
+                        // Send key
+
+                        _tcpClient.GetStream().Write([.. queData], 0, queData.Count);
                     }
-
-                    queData.Add(_FRAME_DLE);
-                    queData.Add(_FRAME_ETX);
-
-                    //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}", key, BitConverter.ToString([.. queData])));
-
-                    // Send key
-
-                    _tcpClient.GetStream().Write([.. queData], 0, queData.Count);
                 }
             }
             catch (Exception e)
