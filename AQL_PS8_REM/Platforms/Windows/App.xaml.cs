@@ -36,6 +36,9 @@ namespace AQL_PS8_REM.WinUI
                 // set a specific window size
                 appWindow.Resize(new SizeInt32(420, 780));
                 appWindow.Move(new PointInt32(0, 0));
+                appWindow.SetIcon("Resources\\AppIcon\\wireless16.png");
+                appWindow.TitleBar.IconShowOptions = IconShowOptions.ShowIconAndSystemMenu;
+               
                 //appWindow.Title = "AQL-PS-8 Remote";
                 //appWindow.TitleBar.ForegroundColor = Microsoft.UI.Colors.Black;
                 //appWindow.TitleBar.BackgroundColor = Microsoft.UI.Colors.Black;
@@ -43,8 +46,6 @@ namespace AQL_PS8_REM.WinUI
                 //appWindow.TitleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Black;
                 //appWindow.TitleBar.InactiveForegroundColor = Microsoft.UI.Colors.LightGray;
                 //appWindow.TitleBar.InactiveBackgroundColor = Microsoft.UI.Colors.Black;
-
-                //appWindow.SetIcon("/pool.ico");
 
                 if (appWindow.Presenter is OverlappedPresenter p)
                 {
