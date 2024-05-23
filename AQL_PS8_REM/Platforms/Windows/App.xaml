@@ -17,16 +17,18 @@
                   VerticalAlignment="Stretch"
                     
                   Margin="0,0,0,0">
-                    <StackPanel Orientation="Horizontal" Margin="8,0,0,0" x:Name="RootStackPanel">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0" x:Name="RootStackPanel">
                         <Image 
+                        Margin="8,0,0,0"
                         x:Name="TitleBarIcon"
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Center"
-                        Source="Resources\AppIcon\wireless16.png"
+                        Source="appiconLogo.png"
                         Visibility="Visible"
                         Width="16" 
                         Height="16"/>
                         <TextBlock 
+                        Margin="8,0,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Text="AQL-PS-8 Remote Emulator"
