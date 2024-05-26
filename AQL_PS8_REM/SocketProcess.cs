@@ -79,7 +79,6 @@ namespace AQL_PS8_SKT
             public string DisplayText { get; set; }
             public States Status { get; set; }
             public States Blink { get; set; }
-            public string LogText { get; set; }
             public bool HasData { get; set; }
         }
 
@@ -244,15 +243,12 @@ namespace AQL_PS8_SKT
 
         }
 
-        //private long _cTick;
-        //private long _lTick;
         private int _airT;
         private int _poolT = -9999;
         private int _spaT = -9999;
-        private int _airPT = -9999;
-        private int _poolPT = -9999;
-        private int _spaPT = -9999;
-        public SocketData Update()
+        private string _temp = "";
+        private string _pTemp = "";
+        public SocketData Update(bool logCheck)
         {
             SocketData socketData = new();
             try
@@ -269,8 +265,6 @@ namespace AQL_PS8_SKT
 
                     // read segment
 
-                    //_lTick = _cTick;
-                    //_cTick = DateTime.Now.Ticks;
                     while (_tcpClient.Available > 0)
                     {
                         pByte = aByte;
@@ -288,19 +282,25 @@ namespace AQL_PS8_SKT
                     }
                     byte[] bytes = [.. recData];
 
+//#if WINDOWS
+//                    if (logCheck)
+//                    {
+//                        WriteString("AQL_PS8_CODE.CSV", (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond).ToString() + "," + BitConverter.ToString(bytes), false);
+//                    }
+//#endif
                     // process segment
 
                     if (bytes.SequenceEqual(frBytes)) //Frame
                     {
-                        //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
+                        //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", "FRAME:", BitConverter.ToString(bytes)));
                     }
                     else if (bytes.SequenceEqual(kaBytes)) //Keep Alive
                     {
-                        //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
-                    }
+                        //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", "KEEP ALIVE:", BitConverter.ToString(bytes)));
+                     }
                     else if (bytes.Length > 6)
                     {
-                        //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
+                        //System.Diagnostics.Debug.WriteLine(string.Format("{0}", BitConverter.ToString(bytes)));
 
                         // Calculate CRC
 
@@ -325,19 +325,15 @@ namespace AQL_PS8_SKT
                                 //System.Diagnostics.Debug.WriteLine(string.Format("{0} :: {1}", BitConverter.ToString(bytes), disp));
                                 if (disp.Contains("Air Temp"))
                                 {
-                                     _airT = GetTemp(disp);
-                                    if (_airT != _airPT || _poolT != _poolPT || _spaT != _spaPT) // Log only changes
-                                    {
-                                        socketData.LogText = _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString();
-                                        _airPT = _airT;
-                                        _poolPT = _poolT;
-                                        _spaPT = _spaT;
-                                    }
-                                    else
-                                    {
-                                        socketData.LogText = null;
-                                    }
+                                    _airT = GetTemp(disp);
                                     disp = disp.Replace(" Temp ", " Temp\n");
+                                    
+                                    _pTemp = _temp;
+                                    _temp = _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString();
+                                    if (_pTemp != _temp && logCheck)
+                                    {
+                                        WriteString("AQL_PS8_TEMP.CSV", _temp, true);
+                                    }
                                 }
                                 else if (disp.Contains("Pool Temp"))
                                 {
@@ -358,13 +354,9 @@ namespace AQL_PS8_SKT
                                 socketData.DisplayText = disp;
                                 socketData.HasData = true;
                             }
-                            else if (bytes[2] == 0x00 && bytes[3] == 0x02)
-                            {
-                                //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
-                            }
                             else
                             {
-                                //System.Diagnostics.Debug.WriteLine(string.Format("{0,10}    {1}  {2}", (_cTick - _lTick) / 10000, loop, BitConverter.ToString(bytes)));
+                                //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", "OTHER:", BitConverter.ToString(bytes)));
                             }
                             nCRC = 0;
                         }
@@ -432,6 +424,19 @@ namespace AQL_PS8_SKT
             if (bStr.Contains('[') && !bStr.Contains(']')) { bStr += "]"; }
             string str = tStr.Trim() + "\n" + bStr.Trim();
             return str.Replace("  ", " ").Replace("  ", " ").Replace("_", "°").Replace(" :", ":").Replace("[ ", "[").Replace(" ]", "]").Trim();
+        }
+
+        private static void WriteString(string name, string str, bool head)
+        {
+#if WINDOWS
+            string fPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), name);
+            using StreamWriter file = new(fPath, append: true);
+            if (!File.Exists(fPath) && head) // Write header
+            {
+                file.WriteLine("Time,Air T,Pool T,Spa T");
+            }
+            file.WriteLine(DateTime.Now.ToString() + "," + str);
+#endif
         }
 
         //public static long PingUART(string ipAddr)

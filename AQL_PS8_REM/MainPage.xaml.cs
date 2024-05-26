@@ -171,18 +171,6 @@ namespace AQL_PS8_REM
                     SetStatus(Aux6, socketData.Status, socketData.Blink, SocketProcess.States.AUX_6);
                     SetStatus(Service, socketData.Status, socketData.Blink, SocketProcess.States.SERVICE);
                 }
-#if WINDOWS
-                if (LogCheck.IsChecked && socketData.LogText != null)
-                {
-                    string fPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AQL_PS8_LOG.csv");
-                    if (!File.Exists(fPath)) // Write header
-                    {
-                        File.WriteAllText(fPath, "Time,Air T,Pool T,Spa T\n");
-                    }
-                    using StreamWriter file = new(fPath, append: true);
-                    file.WriteLine(DateTime.Now.ToString() + "," + socketData.LogText);
-                }
-#endif
             }
             catch (Exception e)
             {
@@ -234,7 +222,7 @@ namespace AQL_PS8_REM
                 }
                 else
                 {
-                    SocketProcess.SocketData socketData = socketProcess.Update();
+                    SocketProcess.SocketData socketData = socketProcess.Update(LogCheck.IsChecked);
 
                     if (socketData.HasData)
                     {
