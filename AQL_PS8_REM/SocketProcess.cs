@@ -246,6 +246,7 @@ namespace AQL_PS8_SKT
         private int _airT;
         private int _poolT = -9999;
         private int _spaT = -9999;
+        private int _watts = -9999;
         private string _temp = "";
         private string _pTemp = "";
         public SocketData Update(bool logCheck)
@@ -313,7 +314,15 @@ namespace AQL_PS8_SKT
 
                         if (sCRC == crc)
                         {
-                            if (bytes[2] == 0x01 && bytes[3] == 0x02) // LEDs
+                            if (bytes[2] == 0x00 && bytes[3] == 0x0c) // VS Pump Status
+                            {
+                                _watts = ((((bytes[7] & 0xf0) >> 4) * 1000) +
+                                   (((bytes[7] & 0x0f)) * 100) +
+                                   (((bytes[8] & 0xf0) >> 4) * 10) +
+                                   (((bytes[8] & 0x0f))));
+                                //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1} {2} {3} {4}", "Power:", bytes[7], bytes[8], _watts, BitConverter.ToString(bytes)));
+                            }
+                            else if (bytes[2] == 0x01 && bytes[3] == 0x02) // LEDs
                             {
                                 socketData.Status = (States)BitConverter.ToInt32(bytes, 4);
                                 socketData.Blink = (States)BitConverter.ToInt32(bytes, 8);
@@ -348,6 +357,10 @@ namespace AQL_PS8_SKT
                                 else if (disp.Contains("Display Light"))
                                 {
                                     disp = disp.Replace("Display Light", "Display\nLight");
+                                }
+                                else if (disp.Contains("Speed") && !disp.Contains('[') && _watts > 0)
+                                {
+                                    disp += " - " + _watts.ToString() + "W";
                                 }
                                 _menu_locked = disp.Contains("Menu-Locked");
 
