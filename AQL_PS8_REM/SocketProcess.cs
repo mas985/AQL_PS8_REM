@@ -430,11 +430,11 @@ namespace AQL_PS8_SKT
         {
 #if WINDOWS
             string fPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), name);
-            using StreamWriter file = new(fPath, append: true);
             if (!File.Exists(fPath) && head) // Write header
             {
-                file.WriteLine("Time,Air T,Pool T,Spa T");
+                File.WriteAllText(fPath, "Time,Air T,Pool T,Spa T\n");
             }
+            using StreamWriter file = new(fPath, append: true);
             file.WriteLine(DateTime.Now.ToString() + "," + str);
 #endif
         }
