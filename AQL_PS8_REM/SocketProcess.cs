@@ -1,7 +1,5 @@
 ﻿using System.Net.Sockets;
-using System.Net.NetworkInformation;
 using System.Net;
-using static AQL_PS8_SKT.SocketProcess;
 
 namespace AQL_PS8_SKT
 {
@@ -102,7 +100,6 @@ namespace AQL_PS8_SKT
         //public SocketProcess()
         //{
         //}
-
         public void Connect(string ipAddr, int portNum)
         {
             try
@@ -243,12 +240,12 @@ namespace AQL_PS8_SKT
 
         }
 
-        private int _airT;
-        private int _poolT = -9999;
-        private int _spaT = -9999;
-        private int _watts = -9999;
-        private string _temp = "";
-        private string _pTemp = "";
+        private int _airT = -999;
+        private int _poolT = -999;
+        private int _spaT = -999;
+        private int _pmin = -999;
+        private int _watts = 0;
+
         public SocketData Update(bool logCheck)
         {
             SocketData socketData = new();
@@ -286,7 +283,7 @@ namespace AQL_PS8_SKT
 //#if WINDOWS
 //                    if (logCheck)
 //                    {
-//                        WriteString("AQL_PS8_CODE.CSV", (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond).ToString() + "," + BitConverter.ToString(bytes), false);
+//                        WriteString("AQL_PS8_CODE.CSV", BitConverter.ToString(bytes), false);
 //                    }
 //#endif
                     // process segment
@@ -316,33 +313,31 @@ namespace AQL_PS8_SKT
                         {
                             if (bytes[2] == 0x00 && bytes[3] == 0x0c) // VS Pump Status
                             {
-                                _watts = ((((bytes[7] & 0xf0) >> 4) * 1000) +
-                                   (((bytes[7] & 0x0f)) * 100) +
-                                   (((bytes[8] & 0xf0) >> 4) * 10) +
-                                   (((bytes[8] & 0x0f))));
-                                //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1} {2} {3} {4}", "Power:", bytes[7], bytes[8], _watts, BitConverter.ToString(bytes)));
+                                if (bytes[4] == 0 && bytes[5] == 0) // Primary filter pump only
+                                {
+                                    _watts = ((((bytes[7] & 0xf0) >> 4) * 1000) +
+                                      (((bytes[7] & 0x0f)) * 100) +
+                                      (((bytes[8] & 0xf0) >> 4) * 10) +
+                                      (((bytes[8] & 0x0f))));
+                                }
+                            }
+                            else if (bytes[2] == 0x0C && bytes[3] == 0x01) // Pump speed request
+                            { 
                             }
                             else if (bytes[2] == 0x01 && bytes[3] == 0x02) // LEDs
                             {
                                 socketData.Status = (States)BitConverter.ToInt32(bytes, 4);
                                 socketData.Blink = (States)BitConverter.ToInt32(bytes, 8);
-                                socketData.HasData = true;
+
                             }
                             else if (bytes[2] == 0x01 && bytes[3] == 0x03) // Display
                             {
                                 string disp = Byte2string(bytes, 4, bytes.Length - 9); // 4 head + 20 line1 + 20 line2 + 5 trail bytes
-                                //System.Diagnostics.Debug.WriteLine(string.Format("{0} :: {1}", BitConverter.ToString(bytes), disp));
+                                //System.Diagnostics.Debug.WriteLine(string.Format("{0} :: {2}", BitConverter.ToString(bytes), disp));
                                 if (disp.Contains("Air Temp"))
                                 {
                                     _airT = GetTemp(disp);
                                     disp = disp.Replace(" Temp ", " Temp\n");
-                                    
-                                    _pTemp = _temp;
-                                    _temp = _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString();
-                                    if (_pTemp != _temp && logCheck)
-                                    {
-                                        WriteString("AQL_PS8_TEMP.CSV", _temp, true);
-                                    }
                                 }
                                 else if (disp.Contains("Pool Temp"))
                                 {
@@ -358,9 +353,9 @@ namespace AQL_PS8_SKT
                                 {
                                     disp = disp.Replace("Display Light", "Display\nLight");
                                 }
-                                else if (disp.Contains("Speed") && !disp.Contains('[') && _watts > 0)
+                                else if (disp.Contains("Filter Speed") && _watts > 0)
                                 {
-                                    disp += " - " + _watts.ToString() + "W";
+                                    disp += " @ " + _watts.ToString() + "W";
                                 }
                                 _menu_locked = disp.Contains("Menu-Locked");
 
@@ -369,7 +364,7 @@ namespace AQL_PS8_SKT
                             }
                             else
                             {
-                                //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", "OTHER:", BitConverter.ToString(bytes)));
+                                System.Diagnostics.Debug.WriteLine(string.Format("{0}", BitConverter.ToString(bytes)));
                             }
                             nCRC = 0;
                         }
@@ -383,6 +378,18 @@ namespace AQL_PS8_SKT
                             }
                             //System.Diagnostics.Debug.WriteLine(string.Format("{0}   {1}", "CRC Error", BitConverter.ToString(bytes)));
                         }
+                    }
+                }
+
+                // Write Windows Log Data
+
+                if (logCheck && _airT > -999)
+                {
+                    int min = DateTime.Now.Minute;
+                    if (min != _pmin && _pmin >= 0)
+                    {
+                        _pmin = min;
+                        WriteString("AQL_PS8_TEMP.CSV", _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString(), true);
                     }
                 }
             }
@@ -399,7 +406,8 @@ namespace AQL_PS8_SKT
         {
             if (str.Contains("Temp"))
             {
-                _ = Int32.TryParse(str.AsSpan(str.Length - 4, 2), out int num);
+                string tmp = str.Split(' ').Last().Split('°').First();
+                _ = Int32.TryParse(tmp, out int num);
                 return num;
             }
             return 0;

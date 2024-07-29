@@ -56,18 +56,20 @@ namespace AQL_PS8_REM
         }
         private void FormatTextDisplay()
         {
+            TextDisplay.FontAutoScalingEnabled = false;
 #if WINDOWS
             TextDisplay.FontSize = 34;
-#else
-            double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
-            double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
 
+#else
             LogLabel.Text = "";
             LogLabel.MinimumHeightRequest = 0;
             LogLabel.HeightRequest = 0;
 
             LogCheck.IsEnabled = false;
             LogCheck.IsVisible = false;
+
+            double dispWidth = DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density;
+            double dispHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
 
             if (dispHeight < dispWidth)
             {
@@ -77,7 +79,6 @@ namespace AQL_PS8_REM
             TextDisplay.FontSize = tdWidth / 11; // 22 characters max line, 2:1 H:W ave ratio
 #endif
             TextDisplay.MinimumHeightRequest = TextDisplay.FontSize * 3;
-            TextDisplay.FontAutoScalingEnabled = false;
         }
         string _ipAddr;
         int _portNum;
@@ -137,7 +138,7 @@ namespace AQL_PS8_REM
             Preferences.Set(Valve4_Edit.StyleId, Valve4_Edit.Text);
 
             Preferences.Set(IPaddr.StyleId, IPaddr.Text);
-            Preferences.Set(PortNum.StyleId, PortNum.Text); 
+            Preferences.Set(PortNum.StyleId, PortNum.Text);
             Preferences.Set(P4Mode.StyleId, P4Mode.IsChecked);
         }
 
@@ -151,7 +152,7 @@ namespace AQL_PS8_REM
                 {
                     TextDisplay.Text = socketData.DisplayText;
                     //TextDisplay.Text = "Aux4 Group\nSuperChlr:[Unaffected]";
-                 }
+                }
 
                 if (socketData.Status != 0)
                 {
@@ -171,6 +172,7 @@ namespace AQL_PS8_REM
                     SetStatus(Aux6, socketData.Status, socketData.Blink, SocketProcess.States.AUX_6);
                     SetStatus(Service, socketData.Status, socketData.Blink, SocketProcess.States.SERVICE);
                 }
+
             }
             catch (Exception e)
             {
