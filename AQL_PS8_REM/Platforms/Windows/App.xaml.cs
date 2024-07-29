@@ -32,17 +32,23 @@ namespace AQL_PS8_REM.WinUI
                 IntPtr windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(nativeWindow);
                 WindowId windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(windowHandle);
                 AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
- 
+
                 // set a specific window size
-                appWindow.Resize(new SizeInt32(420, 780));
+                int dispWidth = Convert.ToInt32(DeviceDisplay.Current.MainDisplayInfo.Width);
+                int dispHeight = Convert.ToInt32(DeviceDisplay.Current.MainDisplayInfo.Height) - 80;
+
+                int newWidth = Math.Min(Convert.ToInt32(420 * DeviceDisplay.Current.MainDisplayInfo.Density), dispWidth);
+                int newHeight = Math.Min(Convert.ToInt32(780 * DeviceDisplay.Current.MainDisplayInfo.Density),dispHeight);
+                
+                appWindow.Resize(new SizeInt32(newWidth, newHeight));
                 appWindow.Move(new PointInt32(0, 0));
- 
+
                 if (appWindow.Presenter is OverlappedPresenter p)
                 {
-                    p.IsResizable = false;
+                    p.IsResizable = true;
 
                     // these only have effect if XAML isn't responsible for drawing the titlebar.
-                    p.IsMaximizable = false;
+                    p.IsMaximizable = true;
                     p.IsMinimizable = true;
                 }
             });

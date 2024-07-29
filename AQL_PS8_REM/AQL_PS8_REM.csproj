@@ -44,58 +44,58 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
-	  <ApplicationDisplayVersion>1.2.4</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.2.5</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationVersion>54</ApplicationVersion>
+	  <ApplicationVersion>55</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
-	  <ApplicationDisplayVersion>1.2.4</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.2.5</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationVersion>54</ApplicationVersion>
+	  <ApplicationVersion>55</ApplicationVersion>
 	  <MtouchDebug>True</MtouchDebug>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
-	  <ApplicationDisplayVersion>1.2.4</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.2.5</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationVersion>54</ApplicationVersion>
+	  <ApplicationVersion>55</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
-	  <ApplicationDisplayVersion>1.2.4</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.2.5</ApplicationDisplayVersion>
 	  <ApplicationId>MASConsulting.AQL-PS-8RemoteEmulator</ApplicationId>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
-	  <ApplicationDisplayVersion>1.2.4</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.2.5</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationVersion>54</ApplicationVersion>
+	  <ApplicationVersion>55</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
-	  <ApplicationDisplayVersion>1.2.4</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.2.5</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas-consulting.aql-ps8-rem</ApplicationId>
-	  <ApplicationVersion>54</ApplicationVersion>
+	  <ApplicationVersion>55</ApplicationVersion>
 	  <MtouchDebug>True</MtouchDebug>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
-	  <ApplicationDisplayVersion>1.2.4</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.2.5</ApplicationDisplayVersion>
 	  <ApplicationId>com.mas_consulting.aql_ps8_rem</ApplicationId>
-	  <ApplicationVersion>54</ApplicationVersion>
+	  <ApplicationVersion>55</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationTitle>AQL-PS-8</ApplicationTitle>
-	  <ApplicationDisplayVersion>1.2.4</ApplicationDisplayVersion>
+	  <ApplicationDisplayVersion>1.2.5</ApplicationDisplayVersion>
 	  <ApplicationId>MASConsulting.AQL-PS-8RemoteEmulator</ApplicationId>
 	  <ApplicationVersion>0</ApplicationVersion>
 	</PropertyGroup>
@@ -135,8 +135,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.70" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
