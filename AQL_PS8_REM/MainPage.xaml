@@ -160,10 +160,10 @@
                 <Entry x:Name="PortNum" MaxLength="5" Grid.Row="4" Grid.Column="1"/>
 
                 <Label x:Name="Label15" Text="P4 Mode:" Grid.Row="5"/>
-                <CheckBox x:Name="P4Mode" Color="DarkGray"  HorizontalOptions="Start" Grid.Row="5" Grid.Column="1"/>
+                <CheckBox x:Name="P4Mode" Grid.Row="5" Grid.Column="1"/>
 
                 <Label x:Name="LogLabel" Text="Log Temp:" Grid.Row="6"/>
-                <CheckBox x:Name="LogCheck" Color="DarkGray" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1"/>
+                <CheckBox x:Name="LogCheck" Grid.Row="6" Grid.Column="1"/>
 
                 <Label x:Name="Label17" MinimumHeightRequest="24" HeightRequest="24" Text="" Grid.Row="7"/>
 

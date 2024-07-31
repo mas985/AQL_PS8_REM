@@ -33,16 +33,8 @@ namespace AQL_PS8_REM.WinUI
                 WindowId windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(windowHandle);
                 AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
-                // set a specific window size
-                int dispWidth = Convert.ToInt32(DeviceDisplay.Current.MainDisplayInfo.Width);
-                int dispHeight = Convert.ToInt32(DeviceDisplay.Current.MainDisplayInfo.Height) - 80;
-
-                int newWidth = Math.Min(Convert.ToInt32(420 * DeviceDisplay.Current.MainDisplayInfo.Density), dispWidth);
-                int newHeight = Math.Min(Convert.ToInt32(780 * DeviceDisplay.Current.MainDisplayInfo.Density),dispHeight);
-                
-                appWindow.Resize(new SizeInt32(newWidth, newHeight));
-                appWindow.Move(new PointInt32(0, 0));
-
+                int newWidth = 420;
+                int newHeight =780;
                 if (appWindow.Presenter is OverlappedPresenter p)
                 {
                     p.IsResizable = true;
@@ -50,7 +42,16 @@ namespace AQL_PS8_REM.WinUI
                     // these only have effect if XAML isn't responsible for drawing the titlebar.
                     p.IsMaximizable = true;
                     p.IsMinimizable = true;
+                    
+                    p.Maximize();
+                    newWidth = Math.Min(Convert.ToInt32(newWidth * DeviceDisplay.Current.MainDisplayInfo.Density), appWindow.ClientSize.Width);
+                    newHeight = Math.Min(Convert.ToInt32(newHeight * DeviceDisplay.Current.MainDisplayInfo.Density), appWindow.ClientSize.Height);
+                    p.Restore();
                 }
+
+                appWindow.Resize(new SizeInt32(newWidth, newHeight));
+                appWindow.Move(new PointInt32(0, 0));
+
             });
         }
 
