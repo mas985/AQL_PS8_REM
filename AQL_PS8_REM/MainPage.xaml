@@ -83,7 +83,7 @@
         </ScrollView>
     </ContentPage>
 
-    <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels">
+    <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels" HideSoftInputOnTapped="True">
         <ScrollView>
             <Grid VerticalOptions="Start" Margin="4" MaximumWidthRequest="428">
 
@@ -123,7 +123,7 @@
         </ScrollView>
     </ContentPage>
 
-    <ContentPage Title="Setup" BackgroundColor="Black" Disappearing="OnDisappearing_Setup">
+    <ContentPage Title="Setup" BackgroundColor="Black" Disappearing="OnDisappearing_Setup" HideSoftInputOnTapped="True">
         <ScrollView>
             <Grid VerticalOptions="Start" Margin="4" MaximumWidthRequest="428">
 
