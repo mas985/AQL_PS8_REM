@@ -1,6 +1,7 @@
 ﻿using Microsoft.UI.Windowing;
 using Microsoft.UI;
 using Windows.Graphics;
+using Windows.Devices.PointOfService;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -24,8 +25,7 @@ namespace AQL_PS8_REM.WinUI
             {
                 var mauiWindow = handler.VirtualView;
                 var nativeWindow = handler.PlatformView;
-                nativeWindow.Activate();
-
+ 
                 // allow Windows to draw a native titlebar which respects IsMaximizable/IsMinimizable
                 nativeWindow.ExtendsContentIntoTitleBar = false;
 
@@ -33,8 +33,6 @@ namespace AQL_PS8_REM.WinUI
                 WindowId windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(windowHandle);
                 AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
-                int newWidth = 420;
-                int newHeight =780;
                 if (appWindow.Presenter is OverlappedPresenter p)
                 {
                     p.IsResizable = true;
@@ -42,16 +40,13 @@ namespace AQL_PS8_REM.WinUI
                     // these only have effect if XAML isn't responsible for drawing the titlebar.
                     p.IsMaximizable = true;
                     p.IsMinimizable = true;
-                    
-                    p.Maximize();
-                    newWidth = Math.Min(Convert.ToInt32(newWidth * DeviceDisplay.Current.MainDisplayInfo.Density), appWindow.ClientSize.Width);
-                    newHeight = Math.Min(Convert.ToInt32(newHeight * DeviceDisplay.Current.MainDisplayInfo.Density), appWindow.ClientSize.Height);
-                    p.Restore();
                 }
 
+                int newWidth = Convert.ToInt32(Math.Min(420 * DeviceDisplay.Current.MainDisplayInfo.Density, DeviceDisplay.Current.MainDisplayInfo.Width));
+                int newHeight = Convert.ToInt32(Math.Min(780 * DeviceDisplay.Current.MainDisplayInfo.Density, DeviceDisplay.Current.MainDisplayInfo.Height * 0.90));
                 appWindow.Resize(new SizeInt32(newWidth, newHeight));
                 appWindow.Move(new PointInt32(0, 0));
-
+ 
             });
         }
 
