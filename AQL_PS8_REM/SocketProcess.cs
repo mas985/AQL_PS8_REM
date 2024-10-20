@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Net;
 
-namespace AQL_PS8_SKT
+namespace AQL_PS8_REM
 {
     class SocketProcess
     {
@@ -74,12 +74,12 @@ namespace AQL_PS8_SKT
 
         public class SocketData
         {
-            public string DisplayText { get; set; }
             public States Status { get; set; }
             public States Blink { get; set; }
             public bool HasData { get; set; }
+            public string DisplayText { get; set; }
         }
-
+        public static string PumpWatts { get; set; } = "N/A";
         public bool Connected
         {
             get { return _tcpClient.Connected; }
@@ -240,13 +240,7 @@ namespace AQL_PS8_SKT
 
         }
 
-        private int _airT = -999;
-        private int _poolT = -999;
-        private int _spaT = -999;
-        private int _pmin = -999;
-        private int _watts = 0;
-
-        public SocketData Update(bool logCheck)
+        public SocketData Update()
         {
             SocketData socketData = new();
             try
@@ -315,10 +309,10 @@ namespace AQL_PS8_SKT
                             {
                                 if (bytes[4] == 0 && bytes[5] == 0) // Primary filter pump only
                                 {
-                                    _watts = ((((bytes[7] & 0xf0) >> 4) * 1000) +
+                                    PumpWatts = ((((bytes[7] & 0xf0) >> 4) * 1000) +
                                       (((bytes[7] & 0x0f)) * 100) +
                                       (((bytes[8] & 0xf0) >> 4) * 10) +
-                                      (((bytes[8] & 0x0f))));
+                                      (((bytes[8] & 0x0f)))).ToString() + "W";
                                 }
                             }
                             else if (bytes[2] == 0x0C && bytes[3] == 0x01) // Pump speed request
@@ -334,30 +328,8 @@ namespace AQL_PS8_SKT
                             {
                                 string disp = Byte2string(bytes, 4, bytes.Length - 9); // 4 head + 20 line1 + 20 line2 + 5 trail bytes
                                 //System.Diagnostics.Debug.WriteLine(string.Format("{0} :: {2}", BitConverter.ToString(bytes), disp));
-                                if (disp.Contains("Air Temp"))
-                                {
-                                    _airT = GetTemp(disp);
-                                    disp = disp.Replace(" Temp ", " Temp\n");
-                                }
-                                else if (disp.Contains("Pool Temp"))
-                                {
-                                    _poolT = GetTemp(disp);
-                                    disp = disp.Replace(" Temp ", " Temp\n");
-                                }
-                                else if (disp.Contains("Spa Temp"))
-                                {
-                                    _spaT = GetTemp(disp);
-                                    disp = disp.Replace(" Temp ", " Temp\n");
-                                }
-                                else if (disp.Contains("Display Light"))
-                                {
-                                    disp = disp.Replace("Display Light", "Display\nLight");
-                                }
-                                else if (disp.Contains("Filter Speed") && _watts > 0)
-                                {
-                                    disp += " @ " + _watts.ToString() + "W";
-                                }
-                                _menu_locked = disp.Contains("Menu-Locked");
+
+                                 _menu_locked = disp.Contains("Menu-Locked");
 
                                 socketData.DisplayText = disp;
                                 socketData.HasData = true;
@@ -380,18 +352,6 @@ namespace AQL_PS8_SKT
                         }
                     }
                 }
-
-                // Write Windows Log Data
-
-                if (logCheck && _airT > -999)
-                {
-                    int min = DateTime.Now.Minute;
-                    if (min != _pmin && _pmin >= 0)
-                    {
-                        _pmin = min;
-                        WriteString("AQL_PS8_TEMP.CSV", _airT.ToString() + "," + _poolT.ToString() + "," + _spaT.ToString(), true);
-                    }
-                }
             }
             catch (Exception e)
             {
@@ -402,16 +362,6 @@ namespace AQL_PS8_SKT
             return socketData;
         }
 
-        private static int GetTemp(string str)
-        {
-            if (str.Contains("Temp"))
-            {
-                string tmp = str.Split(' ').Last().Split('°').First();
-                _ = Int32.TryParse(tmp, out int num);
-                return num;
-            }
-            return 0;
-        }
         private static string Byte2string(byte[] bytes, int istr, int slen)
         {
             string tStr = "";
@@ -445,19 +395,6 @@ namespace AQL_PS8_SKT
             if (bStr.Contains('[') && !bStr.Contains(']')) { bStr += "]"; }
             string str = tStr.Trim() + "\n" + bStr.Trim();
             return str.Replace("  ", " ").Replace("  ", " ").Replace("_", "°").Replace(" :", ":").Replace("[ ", "[").Replace(" ]", "]").Trim();
-        }
-
-        private static void WriteString(string name, string str, bool head)
-        {
-#if WINDOWS
-            string fPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), name);
-            if (!File.Exists(fPath) && head) // Write header
-            {
-                File.WriteAllText(fPath, "Time,Air T,Pool T,Spa T\n");
-            }
-            using StreamWriter file = new(fPath, append: true);
-            file.WriteLine(DateTime.Now.ToString() + "," + str);
-#endif
         }
 
         //public static long PingUART(string ipAddr)

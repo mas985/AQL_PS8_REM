@@ -83,6 +83,46 @@
         </ScrollView>
     </ContentPage>
 
+    <ContentPage Title="Status" BackgroundColor="Black">
+        <ScrollView>
+            <Grid VerticalOptions="Start" Margin="4" MaximumWidthRequest="428">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="Label00" Text="Air Temperature:" Grid.Row="0"/>
+                <Label x:Name="Label01" Text="Pool Temperature:" Grid.Row="1"/>
+                <Label x:Name="Label02" Text="Spa Temperature:" Grid.Row="2"/>
+                <Label x:Name="Label03" Text="Salt Level:" Grid.Row="3"/>
+                <Label x:Name="Label04" Text="Pool Chlorinator:" Grid.Row="4"/>
+                <Label x:Name="Label05" Text="Spa Chlorinator:" Grid.Row="5"/>
+                <Label x:Name="Label06" Text="Filter Pump Speed:" Grid.Row="6"/>
+                <Label x:Name="Label07" Text="Filter Pump Power:" Grid.Row="7"/>
+
+                <Label x:Name="AirTemp" Text="N/A" Grid.Row="0" Grid.Column="1"/>
+                <Label x:Name="PoolTemp" Text="N/A" Grid.Row="1" Grid.Column="1"/>
+                <Label x:Name="SpaTemp" Text="N/A" Grid.Row="2" Grid.Column="1"/>
+                <Label x:Name="SaltLevel" Text="N/A" Grid.Row="3" Grid.Column="1"/>
+                <Label x:Name="PoolChlor" Text="N/A" Grid.Row="4" Grid.Column="1"/>
+                <Label x:Name="SpaChlor" Text="N/A" Grid.Row="5" Grid.Column="1"/>
+                <Label x:Name="FilterSpeed" Text="N/A" Grid.Row="6" Grid.Column="1"/>
+                <Label x:Name="PumpWatts" Text="N/A" Grid.Row="7" Grid.Column="1"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage>
+    
     <ContentPage Title="Labels" BackgroundColor="Black" Disappearing="OnDisappearing_Labels" HideSoftInputOnTapped="True">
         <ScrollView>
             <Grid VerticalOptions="Start" Margin="4" MaximumWidthRequest="428">
@@ -102,14 +142,14 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="Label0" Text="Aux1 Label:" Grid.Row="0"/>
-                <Label x:Name="Label1" Text="Aux2 Label:" Grid.Row="1"/>
-                <Label x:Name="Label2" Text="Aux3 Label:" Grid.Row="2"/>
-                <Label x:Name="Label3" Text="Aux4 Label:" Grid.Row="3"/>
-                <Label x:Name="Label4" Text="Aux5 Label:" Grid.Row="4"/>
-                <Label x:Name="Label5" Text="Aux6 Label:" Grid.Row="5"/>
-                <Label x:Name="Label6" Text="Valve3 Label:" Grid.Row="6"/>
-                <Label x:Name="Label7" Text="Valve4 Label:" Grid.Row="7"/>
+                <Label x:Name="Label10" Text="Aux1 Label:" Grid.Row="0"/>
+                <Label x:Name="Label11" Text="Aux2 Label:" Grid.Row="1"/>
+                <Label x:Name="Label12" Text="Aux3 Label:" Grid.Row="2"/>
+                <Label x:Name="Label13" Text="Aux4 Label:" Grid.Row="3"/>
+                <Label x:Name="Label14" Text="Aux5 Label:" Grid.Row="4"/>
+                <Label x:Name="Label15" Text="Aux6 Label:" Grid.Row="5"/>
+                <Label x:Name="Label16" Text="Valve3 Label:" Grid.Row="6"/>
+                <Label x:Name="Label17" Text="Valve4 Label:" Grid.Row="7"/>
 
                 <Entry x:Name="Aux1_Edit" Text="Aux1" Grid.Row="0" Grid.Column="1"/>
                 <Entry x:Name="Aux2_Edit" Text="Aux2" Grid.Row="1" Grid.Column="1"/>
@@ -145,37 +185,37 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="Label10" Text="System Mode:" Grid.Row="0"/>
+                <Label x:Name="Label20" Text="System Mode:" Grid.Row="0"/>
                 <Button x:Name="Service" Text="Service" Clicked="Button_Click" Grid.Row="0" Grid.Column="1"/>
 
-                <Label x:Name="Label11" Text="Connection:" Grid.Row="1"/>
+                <Label x:Name="Label21" Text="Connection:" Grid.Row="1"/>
                 <Button x:Name="Reset" Text="Reset" Clicked="Button_Click" Grid.Row="1" Grid.Column="1"/>
 
-                <Label x:Name="Label12" MinimumHeightRequest="24" HeightRequest="24" Text="" Grid.Row="2"/>
+                <Label x:Name="Label22" MinimumHeightRequest="24" HeightRequest="24" Text="" Grid.Row="2"/>
 
-                <Label x:Name="Label13" Text="IP Address:" Grid.Row="3"/>
+                <Label x:Name="Label23" Text="IP Address:" Grid.Row="3"/>
                 <Entry x:Name="IPaddr" MaxLength="15" Grid.Row="3" Grid.Column="1"/>
 
-                <Label x:Name="Label14" Text="Port Number:" Grid.Row="4"/>
+                <Label x:Name="Label24" Text="Port Number:" Grid.Row="4"/>
                 <Entry x:Name="PortNum" MaxLength="5" Grid.Row="4" Grid.Column="1"/>
 
-                <Label x:Name="Label15" Text="P4 Mode:" Grid.Row="5"/>
+                <Label x:Name="Label25" Text="P4 Mode:" Grid.Row="5"/>
                 <CheckBox x:Name="P4Mode" Grid.Row="5" Grid.Column="1"/>
 
                 <Label x:Name="LogLabel" Text="Log Temp:" Grid.Row="6"/>
                 <CheckBox x:Name="LogCheck" Grid.Row="6" Grid.Column="1"/>
 
-                <Label x:Name="Label17" MinimumHeightRequest="24" HeightRequest="24" Text="" Grid.Row="7"/>
+                <Label x:Name="Label27" MinimumHeightRequest="24" HeightRequest="24" Text="" Grid.Row="7"/>
 
-                <Label x:Name="Label18" Text="Instructions:" Grid.Row="8"/>
+                <Label x:Name="Label28" Text="Instructions:" Grid.Row="8"/>
                 <Button x:Name="Info" Text="Click Here" BackgroundColor="Black" TextColor="PowderBlue" 
                         FontAttributes="Bold, Italic"
                         HorizontalOptions="Start" Clicked="Info_Click" Grid.Row="8" Grid.Column="1"/>
                 
-                <Label x:Name="Label19" Text="Developer:" Grid.Row="9"/>
+                <Label x:Name="Label29" Text="Developer:" Grid.Row="9"/>
                 <Label x:Name="Developer" Text="MAS Consulting" Grid.Row="9" Grid.Column="1"/>
                 
-                <Label x:Name="Label20" Text="Version:" Grid.Row="10"/>
+                <Label x:Name="Label29a" Text="Version:" Grid.Row="10"/>
                 <Label x:Name="App_Version" Text="0.0.0.0" Grid.Row="10" Grid.Column="1"/>
 
             </Grid>

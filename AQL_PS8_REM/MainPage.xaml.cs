@@ -1,6 +1,8 @@
-﻿using AQL_PS8_SKT;
+﻿using AQL_PS8_REM;
 using System.ComponentModel;
 using System.Net;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 
 namespace AQL_PS8_REM
 {
@@ -142,6 +144,8 @@ namespace AQL_PS8_REM
             Preferences.Set(P4Mode.StyleId, P4Mode.IsChecked);
         }
 
+        private int _pmin = -999;
+
         // UI Update
         private void UpdateDisplay(SocketProcess.SocketData socketData)
         {
@@ -150,8 +154,58 @@ namespace AQL_PS8_REM
                 //System.Diagnostics.Debug.WriteLine(string.Format("{0} {1} {2} {3}", Aux1.FontSize, Aux1.Height, TextDisplay.FontSize, TextDisplay.Height));;
                 if (socketData.DisplayText != null)
                 {
-                    TextDisplay.Text = socketData.DisplayText;
+                    string disp = socketData.DisplayText;
                     //TextDisplay.Text = "Aux4 Group\nSuperChlr:[Unaffected]";
+
+                    if (disp.Contains("Air Temp"))
+                    {
+                        disp = disp.Replace(" Temp ", " Temp\n");
+                        AirTemp.Text = disp.Split('\n').Last();
+                    }
+                    else if (disp.Contains("Pool Temp"))
+                    {
+                        disp = disp.Replace(" Temp ", " Temp\n");
+                        PoolTemp.Text = disp.Split('\n').Last();
+                    }
+                    else if (disp.Contains("Spa Temp"))
+                    {
+                        disp = disp.Replace(" Temp ", " Temp\n");
+                        SpaTemp.Text = disp.Split('\n').Last();
+                    }
+                    else if (disp.Contains("Salt Level"))
+                    {
+                        SaltLevel.Text = disp.Split('\n').Last();
+                    }
+                    else if (disp.Contains("Pool Chlorinator"))
+                    {
+                        PoolChlor.Text = disp.Split('\n').Last();
+                    }
+                    else if (disp.Contains("Spa Chlorinator"))
+                    {
+                        SpaChlor.Text = disp.Split('\n').Last();
+                    }
+                    else if (disp.Contains("Filter Speed"))
+                    {
+                        FilterSpeed.Text = disp.Split('\n').Last();
+                    }
+                    else if (disp.Contains("Display Light"))
+                    {
+                        disp = disp.Replace("Display Light", "Display\nLight");
+                    }
+                    PumpWatts.Text = SocketProcess.PumpWatts;
+                    TextDisplay.Text = disp;
+                }
+
+                // Write Windows Log Data
+
+                if (LogCheck.IsChecked)
+                {
+                    int min = DateTime.Now.Minute;
+                    if (min != _pmin)
+                    {
+                        _pmin = min;
+                        WriteString("AQL_PS8_TEMP.CSV",AirTemp.Text.Split('°').First() + "," + PoolTemp.Text.Split('°').First() + "," + SpaTemp.Text.Split('°').First(), true);
+                    }
                 }
 
                 if (socketData.Status != 0)
@@ -224,7 +278,7 @@ namespace AQL_PS8_REM
                 }
                 else
                 {
-                    SocketProcess.SocketData socketData = socketProcess.Update(LogCheck.IsChecked);
+                    SocketProcess.SocketData socketData = socketProcess.Update();
 
                     if (socketData.HasData)
                     {
@@ -269,5 +323,19 @@ namespace AQL_PS8_REM
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
         }
+
+        private static void WriteString(string name, string str, bool head)
+        {
+#if WINDOWS
+            string fPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), name);
+            if (!File.Exists(fPath) && head) // Write header
+            {
+                File.WriteAllText(fPath, "Time,Air T,Pool T,Spa T\n");
+            }
+            using StreamWriter file = new(fPath, append: true);
+            file.WriteLine(DateTime.Now.ToString() + "," + str);
+#endif
+        }
+
     }
 }
